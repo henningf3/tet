@@ -11,6 +11,8 @@ Kompiliert werden können die Dateien mit (2x, wenn das Inhaltsverzeichnis aktua
 lualatex -synctex=1 -interaction=nonstopmode -shell-escape "tet-tex".tex
 ```
 
+# Lizenz
+Das Dokument steht unter der CC-BY-SA Lizenz; [Link](https://creativecommons.org/licenses/by-sa/4.0/legalcode.de).
 
 # TODO bevor Repo public werden kann
 - [ ] Leitungstheorie -> Bildrechte von Dr. Ossevorth einholen
