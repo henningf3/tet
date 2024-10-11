@@ -1,0 +1,86 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{util}[2022/05/02 util package, written by Henning Dierks and Tristan Krause]
+\RequirePackage{amsmath}  % \DeclareMathOperator
+\RequirePackage{amssymb}  % \DeclareMathOperator
+\RequirePackage{environ}
+\RequirePackage{eso-pic}
+\RequirePackage{accents}  % ubar, obar
+\RequirePackage{bm} % for fancy vectors
+
+% various math operators
+\DeclareMathOperator{\fmax}{max}
+\DeclareMathOperator{\fmin}{min}
+\DeclareMathOperator{\fdiag}{diag}
+\DeclareMathOperator{\sign}{sign}
+\DeclareMathOperator{\Eig}{Eig}
+\DeclareMathOperator{\adj}{adj}
+\DeclareMathOperator{\atann}{arctan2}
+% div grad rot
+\let\div\undefined
+\DeclareMathOperator{\div}{div}
+\DeclareMathOperator{\grad}{grad}
+\DeclareMathOperator{\rot}{rot}
+
+% abs-values
+\newcommand{\abs}[1]{\left|#1\right|}
+% vector and matrix symbols
+\renewcommand{\v}[1]{\bm{#1}}
+\newcommand{\m}[1]{\bm{#1}}
+%unit vectors
+\newcommand{\vu}[1]{\vec{e}_#1}
+
+%for fancy lines on titlepage
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+% differential d
+\def\dd{\,\mathrm{d}}
+
+% real and imaginary part
+\newcommand{\re}[1]{\mathfrak{Re}\left(#1\right)}
+\newcommand{\im}[1]{\mathfrak{Im}\left(#1\right)}
+% conjugate complex numbers
+\newcommand{\conj}[1]{#1^\text{*}}
+
+% equivalent symbol
+\newcommand{\equivv}{\overset{\wedge}{=}}
+
+% bar and line operators
+\newcommand{\oline}[1]{\mkern 1.5mu\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}
+\newcommand{\uline}[1]{\underbar{$#1$}}
+\newcommand*\obar[1]{%
+	\hbox{\vbox{%
+			\hrule height 0.5pt % The actual bar
+			\kern0.5ex%         % Distance between bar and symbol
+			\hbox{%
+				\kern-0.2em%      % Shortening on the left side
+				\ensuremath{#1}%
+				\kern-0.2em%      % Shortening on the right side
+			}%
+	}}%
+}
+%\newcommand*\ubar[1]{%
+	%	\hbox{\vbox{%
+			%			\hbox{%
+				%				\kern-0.1em%      % Shortening on the left side
+				%				\ensuremath{#1}%
+				%				\kern-0.2em%      % Shortening on the right side
+				%			}%
+			%			\kern0.2ex%         % Distance between bar and symbol
+			%			\hrule height 0.5pt % The actual bar
+			%	}}%
+	%}
+%\newcommand{\ubar}[1]{\underaccent{\obar{\hphantom{#1}}}{#1}}
+\newcommand{\ubar}[1]{\underaccent{\bar}{#1}}
+
+% text shortcuts for math environments
+\newcommand{\f}[1]{\textnormal{#1}}
+
+% number types
+\newcommand{\IN}{\ensuremath{\mathbb{N}}}			
+\newcommand{\IZ}{\ensuremath{\mathbb{Z}}}		
+\newcommand{\IQ}{\ensuremath{\mathbb{Q}}}			
+\newcommand{\IR}{\ensuremath{\mathbb{R}}}		
+\newcommand{\IC}{\ensuremath{\mathbb{C}}}
+
+%constant
+\newcommand{\const}{\text{const. }}
