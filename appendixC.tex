@@ -1,0 +1,651 @@
+\chapter{Sonstige Mathematik}
+ \section{Dirac-Delta-Funktion}
+  \subsection{Motivation}
+	  Die Berechnung von Differentialen in der Nähe von Singularitäten des Feldes
+	  ist häufig problematisch. Beispiel Coulomb Feld einer Punktladung Q im Ursprung:
+	  \begin{equation}
+		  \begin{split}
+			  \vec{E}= \frac{1}{4\pi\varepsilon_{0}}\frac{Q}{r^{2}}\vu{r}
+		  \end{split}
+	  \end{equation}
+	  Die Divergenz (Quellstärke) sollte nur am Ursprung ungleich Null sein und am
+	  Ursprung einen definierten Wert haben.
+	  \begin{equation}
+		  \begin{split}
+			  \div \left( \frac{1}{r^{2}}\vu{r}\right)&= \frac{1}{r^{2}}\partial_{r} \left
+			  ( r^{2} \frac{1}{r^{2}}\right)\\&= \frac{1}{r^{2}}\partial_{r} \left( 1 \right
+			  ) \mbox{???}
+		  \end{split}
+	  \end{equation}
+	  Mit dem Gaußschen Integralsatz und der $\delta$-Funktion lässt sich $\div\left(
+		  \frac{1}{r^{2}}\vu{r}\right)$ leicht bestimmen ($K(R)$ ist eine Kugel mit Radius $R$):
+	  \begin{equation}
+		  \begin{split}
+			  \int\limits_{K(R)}\div\left(\frac{1}{r^{2}}\vu{r}\right) \dd V =&\oint\limits
+			  _{O(K)}\frac{1}{r^{2}}\vu{r}\cdot\dd \vec{A}\qquad r=R, \qquad \dd\vec{A}= R^{2} \sin
+			  \vartheta \dd \vartheta \dd \varphi \vu{r}\\ =&2\pi \int\limits_{0}^{\pi} \frac{1}{R^{2}}
+			  R^{2} \sin\vartheta \dd \vartheta \\ =&4\pi \\ \div\left(\frac{1}{r^{2}}\vu
+			  {r}\right) =&4\pi\delta^{3}(\vec{r})
+		  \end{split}
+	  \end{equation}
+	  Würde man $\div\left(\frac{1}{r^{2}}\vu{r}\right) =4\pi\delta^{3}(\vec{r})$ in das Integral $\int\limits_{K(R)}\div\left(\frac{1}{r^{2}}\vu{r}\right) \dd V$ einsetzen und auswerten, würde man $4\pi$ (also das gleiche Ergebnis wie mit dem Integralsatz) erhalten. Die Quellstärke am Ursprung ist somit \enquote{$\infty$}, es handelt sich um eine \enquote{$\infty$} kleine Punktladung.\\
+	  Einfach berechnen lässt sich:
+	  \begin{equation}
+		  \begin{split}
+			  \grad \frac{1}{r}= \vu{r}\partial_{r} \frac{1}{r}+ \vec{0}+ \vec{0}=-\frac{1}{r^{2}}
+			  \vu{r}
+		  \end{split}
+	  \end{equation}
+	  Hiermit (einsetzen) folgt die wichtige Beziehung für den \textbf{Laplace-Operator}
+	  $\Delta = \div\grad$:
+	  \begin{equation}
+		  \begin{split}
+			  \Delta \frac{1}{r}= \div\grad \frac{1}{r}= -4\pi\delta^{3}(\vec{r})
+		  \end{split}
+	  \end{equation}
+	Beziehungsweise:
+	\begin{equation}\label{diraclaplace}
+		\delta^3(\vec{r}  - \vec{r}\prime ) = -\frac{1}{4\pi}\Delta \frac{1}{|\vec{r}  - \vec{r}\prime |}
+	\end{equation}
+	Aufgrund der Symmetrie ist es unerheblich ob im Dirac bzw. im Betrag $\vec{r}-\vec{r}\prime$ bzw.$\vec{r}\prime-\vec{r}$ steht. Deshalb muss an den Laplace-Operator auch nicht geschrieben werden bezüglich was dieser angewandt wird, es gilt beides ($\Delta_r/\Delta_{r\prime}$).
+  \subsection{Definition über ihre Eigenschaften}
+	  Es soll gelten
+	  \begin{equation}
+		  \begin{split}
+			  \delta(x)=0 \text{ für }x\neq 0 \text{ und }\int\limits_{-\infty}^{+\infty}
+			  \delta(x) dx = 1
+		  \end{split}
+	  \end{equation}
+
+	  Solche Funktionen existieren nur im Grenzwert von $n\to\infty$ von Funktionen $f
+			  _{n}(x)$ mit $\int\limits_{-\infty}^{+\infty}f_{n}(x) dx = 1$ und $f_{n}(x) \stackrel{n\to\infty}{\to}
+		  0$ für $x\neq 0$ und $f_{n}(0) \stackrel{n\to\infty}{\to}\infty$.
+  \subsection{Beispiele}
+	  \begin{equation}
+		  \begin{split}
+			  f_{n}(x) =&
+			  \begin{cases}
+				  n & \text{ für }|x|\le\frac{1}{2n} \\
+				  0 & \text{ sonst }
+			  \end{cases}\\ f_{n}(x)&= n e^{-\pi n^2x^2}\\ f_{n}(x)&= \frac{n}{\pi}\left(
+			  \frac{\sin nx}{nx}\right)^{2}
+		  \end{split}
+	  \end{equation}
+  \subsection{Wichtige Beziehungen}
+	  Da die $\delta$-Funktion für alle $x\neq 0$ verschwindet und aufgrund der Normierung
+	  folgt unmittelbar:
+	  \begin{equation}
+		  \begin{split}
+			  \int\limits_{-\infty}^{+\infty}f(x) \delta(x) \dd x = f(0) \int\limits_{-\infty}
+			  ^{+\infty}\delta(x) \dd x = f(0)
+		  \end{split}
+	  \end{equation}
+	  Dies kann einfach für eine Verschiebung $x\to x-a$ verallgemeinert werden:
+	  \begin{equation}
+		  \begin{split}
+			  \int\limits_{-\infty}^{+\infty}f(x) \delta(x-a) \dd x = f(a) \int\limits_{-\infty}
+			  ^{+\infty}\delta(x-a) dx = f(a)
+		  \end{split}
+	  \end{equation}
+	  Wichtig ist auch die Skalierungseigenschaft (z.B. für dimensionsbehaftete
+	  Größen ist $k =$ die Einheit von $x$, Zeigbar mit Substitution bei der Integration):
+	  \begin{equation}
+		  \begin{split}
+			  \delta(kx) = \frac{1}{|k|}\delta(x)
+		  \end{split}
+	  \end{equation}
+	  Verallgemeinerung auf 3D:
+	  \begin{equation}
+		  \begin{split}
+			  \vec{r}= x\vu{x}+y\vu{y}+z\vu{z}\to \delta^{3}(\vec{r})=\delta(x) \delta(y)
+			  \delta(z) \to \int\limits_{\mathbb{R}^3}\delta^{3}(\vec{r}) \dd V = 1
+		  \end{split}
+	  \end{equation}
+	  Bei einer Koordinatentransformation (kartesisch $\to$ beliebig) gilt mit der Funktionaldeterminante $\left|\det \frac{\partial (x,y,z)}{\partial (u,v,w)}\right|$:
+	  \begin{equation}
+	  	\begin{split}
+	  	\iiint\limits_V \delta(x) \delta(y) \delta(z) \dd V &= \iiint\limits_V \underbrace{\bm{\alpha} (u,v,w)\delta(u) \delta(v) \delta(w)}_{\delta(\vec{r})} \left|\text{det} \frac{\partial (x,y,z)}{\partial (u,v,w)}\right| \dd V =1 \\ &\implies \delta(\vec{r}) = \underbrace{\frac{1}{\left|\text{det} \frac{\partial (x,y,z)}{\partial (u,v,w)}\right|}}_{\alpha}\delta(u) \delta(v) \delta(w)
+	  	\end{split}
+	  \end{equation}
+	  Die Aufteilung der Funktionaldeterminante auf die Diracs ist die selbe wie bei den Linienelementen in den jeweiligen Koordinaten. So ist sichergestellt, dass auch für Weg- und Flächenintegrale wie ewartet $\int f(x)\delta(x-x')=f(x')$ ist. Also gilt:
+	  \begin{equation}
+	  	\delta(\vec{r}-\vec{r}')=\frac{\delta(u-u')}{g_u}\frac{\delta(v-v')}{g_v}\frac{\delta(w-w')}{g_w}
+	  \end{equation}
+	  mit (\href{https://www.physik.uni-jena.de/pafmedia/47985/mathematische-methoden-der-physik-ii.pdf}{Quelle})
+	  \begin{equation*}
+	  	\begin{array}{|c|c|c|c|c|c|}
+	  		 \hline u & v & w & g_u & g_v & g_w \\ \hline\hline
+	  		 x & y & z & 1 & 1 & 1 \\\hline
+	  		 \varrho & \varphi & z & 1 & \varrho & 1 \\\hline
+	  		 r & \vartheta & \varphi & 1 & r & r\sin\vartheta\\\hline
+	  	\end{array}
+	  \end{equation*}
+	  Im Zusammenhang mit der Fourier-Transformation gilt insbesondere:
+	  \begin{equation}\label{diracft}
+	  	\delta(x-\alpha)=\frac{1}{2\pi} \int_{-\infty}^\infty e^{\mathrm{j}p(x-\alpha)}\,\dd p
+	  \end{equation}
+ \section{Orthogonale Funktionensysteme}\label{orth}
+  \subsection{Raum der quadratintegrablen Funktionen}
+	  Für ein Gebiet $D \subset \mathbb{R}^n$ bezeichnet $L^2(D)$ ($L^p$: \href{https://de.wikipedia.org/wiki/Lp-Raum}{Lebesgue-Raum} der $p$-fach integrierbaren Funktionen, $L^2$ lässt sich als einziger mit Skalarprodukt versehen) den Raum der quadratintegrablen Funktionen $U:\; D\to\mathbb{C}$, die die folgende Gleichung erfüllen:
+	  \begin{equation}\begin{split}
+			  \int\limits_D \left| U(x) \right|^2 \dd x = \int\limits_D  U^\star(x) U(x)  \dd x< \infty
+		  \end{split}\end{equation}
+	  Das Skalarprodukt ist definiert als:
+	  \begin{equation}\begin{split}\label{FktSP}
+			  \langle U, V\rangle = \int\limits_D U^\star(x)V(x) \dd x = \underset{D\subset\IR^n}{\int\dots\int}  U^\star(x_1,\dots,x_n)V(x_1,\dots,x_n) \dd x_1 \dots \dd x_n
+		  \end{split}\end{equation}
+	  Dadurch wird die Norm $\| \cdot \|$ induziert:
+	  \begin{equation}\begin{split}
+			  \| U(x) \| = \sqrt{\langle U, U\rangle} = \sqrt{\int\limits_D  U^\star(x) U(x)  \dd x} = \sqrt{\int\limits_D \left| U(x) \right|^2 \dd x}
+		  \end{split}\end{equation}
+	  Mit dem oben definiertem Skalarprodukt ist der Raum der quadratintegrablen Funktionen ein \href{https://de.wikipedia.org/wiki/Hilbertraum}{\textbf{Hilbertraum}}.
+	  \subsubsection{Orthogonalität}
+		  Seien für $n,m \in \mathbb{N}$ $U_{n,m}$ Funktionen aus $L^2(D)$. Die Funktionen $U_n$ sind untereinander \textbf{orthogonal}, wenn gilt
+		  \begin{equation}\begin{split}
+				  \langle U_n, U_m\rangle = \int\limits_D U_n^\star (x) U_m(x) \dd x =
+				  \begin{cases}
+					  0            & \text{ für } n\ne m \\
+					  c_{nm}\neq 0 & \text{ für } n = m
+				  \end{cases}
+			  \end{split}\end{equation}
+	  \subsubsection{Orthonormalität}
+		  Seien für $n \in \mathbb{N}$ $U_n$ Funktionen aus $L^2(D)$. Die Funktionen $U_n$ sind untereinander \textbf{orthonormal}, wenn gilt
+		  \begin{equation}\begin{split}
+				  \langle U_n, U_m\rangle = \int\limits_D U_n^\star (x) U_m(x) \dd x = \delta_{nm} =
+				  \begin{cases}
+					  0 & \text{ für } n\ne m \\
+					  1 & \text{ für } n = m
+				  \end{cases}
+			  \end{split}\end{equation}
+  \subsection{Vollständigkeit}
+		  Es sei $f(x)$ eine quadratintegrable Funktion und $U_n(x)$ ein System quadratintegrabler, zueinander orthonormaler Funktionen auf $D \subset \mathbb{R}^n$.
+		   Weiter sei
+		        \begin{equation}\begin{split}
+				        f_N(x) = \sum_{n=1}^N c_n U_n(x)
+			        \end{split}\end{equation}
+		        eine \textbf{lineare Überlagerung} der ersten $N$ Funktionen $U_n(x)$ mit Koeffizienten $c_N$. Eine solche Überlagerung heißt auch \textbf{Entwicklung nach $U_n$}. Die $c_n$ sind die \textbf{Entwicklungskoeffizienten}.
+		   Gesucht sind nun Koeffizienten $c_n$, so dass $f_N$ die Funktion $f(x)$ \textbf{möglichst gut approximiert} im Sinne, dass die $L^2$-Norm minimal wird:
+		        \begin{equation}\begin{split}
+				        \| f(x) - f_N(x)\|^2 = \langle f(x) - f_N(x), f(x) - f_N(x) \rangle^2 = \int\limits_D |f(x) - f_N(x)|^2 \dd x = \text{minimal}
+			        \end{split}\end{equation}
+		   Zunächst soll dafür der Integrand umgeformt werden und das Integral als Funktion von $c_n$ (bzw. $c_n^\star$) interpretiert werden:
+		        \begin{equation}\begin{split}
+				        f_\Delta =\int\limits_D |f(x) - f_N(x)|^2 \dd x = \int\limits_D f^\star f \dd x -\sum_{n=1}^N c_n^\star \int\limits_D U_n^\star f \dd x -\sum_{n=1}^N c_n \int\limits_D U_n f^\star \dd x + \sum_{n=1}^N c_n^\star c_n
+			        \end{split}\end{equation}
+		   Das Integral ist zu minimieren, also sind Ableitungen zu bilden:
+		        \begin{equation}\begin{split}
+				        \frac{\partial f_\Delta}{\partial c_n} &= - \int\limits_D U_n f^\star \dd x + c_n^\star \stackrel{!}{=} 0\\
+				        \frac{\partial f_\Delta}{\partial c_n^\star} &= - \int\limits_D U_n^\star f \dd x + c_n \stackrel{!}{=} 0
+			        \end{split}\end{equation}
+		   Offenbar ergibt sich hieraus die beste Wahl der Koeffizienten zu (Anschaulich die Projektion der Funktionen auf die Basis):
+		        \begin{equation}\begin{split}
+				        \boxed{c_n = \int\limits_D U_n^\star f \dd x}
+			        \end{split}\end{equation}
+		   Man spricht von \textbf{Konvergenz im quadratischen Mittel} falls mit der obigen Wahl von $c_n$ gilt
+		        \begin{equation}\begin{split}
+				        \lim_{N\to\infty} \int\limits_D |f(x) - f_N(x)|^2 \dd x = 0
+			        \end{split}\end{equation}
+
+	  \subsubsection{Vollständige Funktionensysteme}
+		  Ein orthonormales Funktionensystem $U_n(x)$ auf $D$, $n= 1, 2, 3,\dots$, heißt \textbf{vollständig}, falls für \textbf{jede quadratintegrable Funktion} $f(x)$ auf $D$ die Reihe
+		  \begin{equation}\begin{split}
+				  f_N(x) = \sum_{n=1}^N \underbrace{\left(\int\limits_D U_n^\star(x') f(x') \dd x'\right)}_{c_n} U_n(x)
+			  \end{split}\end{equation}
+		  \textbf{im Mittel} ($\neq$ punktweise Konvergenz!) gegen $f(x)$ konvergiert.
+		  Es gilt dann
+		  \begin{equation}\begin{split}
+				  f(x) = \sum_{n=1}^\infty \underbrace{\left(\int\limits_D U_n^\star(x') f(x') \dd x'\right)}_{c_n} U_n(x),
+			  \end{split}\end{equation}
+		  woraus die \textbf{Vollständigkeitsrelation} (ziehe Summe und $U_n$ ins Integral)
+		  \begin{equation}\label{vollst}\begin{split}
+				  \sum_{n=1}^\infty U_n^\star(x') U_n(x) = \delta(x-x') \text{ folgt.}
+			  \end{split}\end{equation}
+		  Bei kartesischen Symmetrien sind häufig \textbf{harmonische Funktionen} (Fourier) eine gute Wahl als Basisfunktionen.
+		  Bei sphärischer Symmetrie greift man häufig auf \textbf{sphärisch harmonische Funktionen} (Kugelflächenfunktionen) zurück wohingegen
+		  bei zylindrischer Symmetrie häufig \textbf{Bessel-Funktionen} eine gute Wahl sind ($\nearrow$\ref{laplkoord}).
+  \subsection{Fourier-Reihe}\label{FourReihe}
+  \subsubsection{Allgemeine Überlegungen}
+  Möchte man eine Funktion $f$ durch eine Überlagerung von orthogonalen Basisfunktionen $b_i$ darstellen, so kann man dies als Superposition aller entsprechenden Basisfunktionen mit entsprechender Wichtung $f=\sum C_i b_i$. Die Konstanten $C_i$ können durch Projektion (Skalarprodukte) von beiden Seiten der Gleichung auf die Basisfunktionen ermittelt werden: 
+  \begin{equation}\label{FourKAllg}
+  	\langle f,b_j\rangle = \langle\sum C_i b_i, b_j\rangle \stackrel{\text{Orthogonalität,\\Linearität}}{=}C_j \langle b_j,b_j\rangle \implies C_j=\frac{\langle f,b_j\rangle}{\langle b_j,b_j\rangle}
+  \end{equation}
+  \subsubsection{Fourier-Reihe mit sin und cos}
+		   Für $D = [-a, a]$ ist
+		        \begin{equation}\begin{split}
+				        U_0(x) & = \frac{1}{\sqrt{2a}} \\
+				        U_{2n-1}(x) & =  \frac{1}{\sqrt{a}}\sin\left(\frac{n\pi}{a}x\right) \text{ für } n=1,2,3,\dots\\
+				        U_{2n}(x) &=  \frac{1}{\sqrt{a}}\cos\left(\frac{n\pi}{a}x\right) \text{ für } n=1,2,3,\dots
+			        \end{split}\end{equation}
+		        ein vollständiges Funktionensystem (die Basis ist bereits normiert). Die Entwicklung
+		        \begin{equation}\begin{split}
+				        f(x) = a_0 + \sum_{n=1}^\infty \left[  a_n \sin\left(\frac{n\pi}{a}x\right) + b_n \cos\left(\frac{n\pi}{a}x\right)\right]
+			        \end{split}\end{equation} heißt \textbf{Fourier-Reihe} von $f(x)$.
+		   Hierbei ist
+		        \begin{equation}\begin{split}
+				        a_0 = \sqrt{2a}\; \overline{f(x)};\; a_n = \frac{1}{a} \int\limits_{-a}^a \sin\left(\frac{n\pi}{a}x\right) f(x) \dd x ;\; b_n = \frac{1}{a} \int\limits_{-a}^a \cos\left(\frac{n\pi}{a}x\right) f(x) \dd x
+			        \end{split}\end{equation}
+	  Auch wenn jede Funktion als Fourier-Reihe entwickelt werden kann, heißt das noch nicht, dass die Fourier Entwicklung in jedem Fall besonders geeignet ist! Ist $f\in C^p(-a,a)$, also $p\in\IN$-mal stetig differenzierbar, so ist $c_n\propto\frac{1}{n^{p+2}}$ (Erweiterung: unstetig: $p=-1$, stetig: $p=0$). 
+	  \subsection{Besselfunktionen}
+	  Ausgewählte Funktionen lassen sich durch Besselfunktionen ausdrücken ($\nearrow$\ref{bessel}):
+	  \begin{equation}f(z)=\sum_{k=0}^\infty a_k^\nu J_{\nu+2k}(z)\end{equation}
+	  mit
+	   \begin{equation}a_k^\nu=2(\nu+2k) \int_0^\infty f(z) \frac{J_{\nu+2k}(z)}z \,dz\end{equation}
+	  aufgrund der Orthogonalitätsrelation
+	  \begin{equation}\int_0^\infty J_\alpha(z) J_\beta(z) \frac {dz} z= \frac 2 \pi \frac{\sin\left(\frac \pi 2 (\alpha-\beta) \right)}{\alpha^2 -\beta^2}\end{equation}
+	  
+  \subsection{Kugelflächenfunktion (spherical harmonics)}\label{kugelf}
+Nomenklatur:
+\begin{align}
+	P_{lm}(x) &= (-\sqrt{1-x^2})^m \frac{\dd^m P_l(x)}{\dd x^m} &&\to  \text{zugeordnetes Legendrepolynom}\\
+P_l(x) &= P_{l0}(x)= \frac{1}{2^l l!} \frac{\dd^l (x^2-1)^l}{\dd x^l} &&\to \text{Legendre Polynom}
+\end{align}
+
+			   Die Kugelflächenfunktionen $Y_{lm}$ stehen in Zusammenhang mit den \textbf{zugeordneten \href{https://de.wikipedia.org/wiki/Legendre-Polynom}{Legendre-Polynomen}} $P_{lm}(z)$:
+			        \begin{equation}\begin{split}
+					        Y_{lm}\; :\; [0,\pi] \times [0,2\pi] &\to \mathbb{C}, \\ (\vartheta,\varphi) &\mapsto \frac{1}{\sqrt{2\pi}} \underbrace{\sqrt{\frac{2l+1}{2}\frac{(l-m)!}{(l+m)!}}}_{N_{lm}} P_{lm}(\cos\vartheta) e^{jm\varphi}
+				        \end{split}\end{equation}
+		  \begin{center}
+			  \begin{tabular}{c|c|c|c}
+				  $Y_{lm}$ & $l=0$                   & $l=1$                                               & $l=2$                                                              \\
+				  \hline
+				  $m=-2$   &                         &                                                     & $\sqrt{\frac{15}{32\pi}} \sin^2\vartheta e^{-j2\varphi}$           \\
+				  $m=-1$   &                         & $\sqrt{\frac{3}{8\pi}} \sin\vartheta e^{-j\varphi}$ & $\sqrt{\frac{15}{8\pi}} \sin\vartheta\cos\vartheta e^{-j\varphi}$  \\
+				  $m=0$    & $\sqrt{\frac{1}{4\pi}}$ & $\sqrt{\frac{3}{4\pi}} \cos\vartheta$               & $ \sqrt{\frac{5}{16\pi}} (3\cos^2\vartheta -1)$                    \\
+				  $m=+1$   &                         & $-\sqrt{\frac{3}{8\pi}} \sin\vartheta e^{j\varphi}$ & $- \sqrt{\frac{15}{8\pi}} \sin\vartheta\cos\vartheta e^{j\varphi}$ \\
+				  $m=+2$   &                         &                                                     & $\sqrt{\frac{15}{32\pi}} \sin^2\vartheta e^{j2\varphi}$
+			  \end{tabular}
+		  \end{center}
+		   Es gilt Orthonormalität:
+		  \begin{equation}
+		  	\int_0^{2\pi}\int_{-1}^1  Y_{l'm'}^\star(\vartheta,\varphi) Y_{lm}(\vartheta,\varphi)\dd(\cos\vartheta)\dd\varphi = \delta_{ll'}\delta_{mm'} 		  \end{equation}		  
+		   Die Vollständigkeitsrelation ($\nearrow$\ref{vollst}) lautet:
+		  \begin{equation}
+\sum_{l=0}^{\infty}\sum_{m=-l}^l  Y_{lm}^\star(\vartheta',\varphi') Y_{lm}(\vartheta,\varphi) = \delta(\varphi-\varphi')\delta(\vartheta-\vartheta')
+		  \end{equation}
+		   Der Entwicklungssatz für $f=f(\vartheta,\varphi)$ als quadratintegrable Funktion auf der Einheitskugel ist:
+		  \begin{align}
+		  	f(\vartheta,\varphi) &= \sum_{l=0}^{\infty}\sum_{m=-l}^l  c_{lm} Y_{lm}(\vartheta,\varphi) \text{ mit}\\
+		  	c_{lm} & = \int_0^{2\pi}\int_{-1}^1  Y_{lm}^\star(\vartheta,\varphi) f(\vartheta,\varphi) \dd(\cos\vartheta)\dd\varphi            
+		  \end{align}
+		   Damit (und mit dem Produktansatz \ref{produktans}) kann man auch einen Entwicklungssatz für quadratintegrable Funktionen $\phi=\phi(r, \vartheta,\varphi)$  auf dem $\mathbb{R}^3$ angeben:
+		  \begin{align}\label{entwicklungKugelf}
+		  	\phi(r, \vartheta,\varphi) &= \sum_{l=0}^{\infty}\sum_{m=-l}^l  \underbrace{\left(A_{lm} r^l+\frac{B_{lm}}{r^{l+1}}\right)}_{R_{lm}(r)} Y_{lm}(\vartheta,\varphi) \quad \text{ mit}\\
+		  	R_{lm}(r) & = \int_0^{2\pi}\int_{-1}^1  Y_{lm}^\star(\vartheta,\varphi) \phi(r,\vartheta,\varphi) \dd(\cos\vartheta) \dd\varphi            
+		  \end{align}
+		  
+ \section{Fourier-Transformation}\label{fourtrans}
+
+  Es sei \(f: \mathbb{R}^n \to \mathbb{R}^n\) eine integrierbare Funktion (\(f \in L^1(\mathbb{R}^n\))). Dann ist die \textbf{Fourier-Transformierte} ${\mathcal F}$ von \(f\) definiert durch
+  \begin{equation}
+	  \boxed{({\mathcal F}f)(\vec{y}) = \tilde{f}(\vec{y}) = \int\limits_{\mathbb{R}^n} f(\vec{x})  \mathrm{e}^{-\mathrm{j}\vec{x}\cdot\vec{y}} \dd^n x}
+  \end{equation}
+  Die \textbf{Rücktransformation} ${\mathcal F}^{-1}$ ist dann
+  \begin{equation}
+	  \boxed{f(\vec{x}) = ({\mathcal F}^{-1} ({\mathcal F}f)(\vec{y}))(\vec{x}) = \frac{1}{(2\pi)^n} \int\limits_{\mathbb{R}^n} \tilde{f}(\vec{y})  \mathrm{e}^{\mathrm{j}\vec{x}\cdot\vec{y}} \dd^n y}
+  \end{equation}
+	  Das Produkt der Faktoren bei Hin- und Rücktransformation muss \(\frac{1}{(2\pi)^n} \) ergeben und die Vorzeichen der Exponentialfunktionen müssen unterschiedlich sein. Wie genau die Faktoren/Vorzeichen verteilt sind, ist in der Literatur unterschiedlich gehandhabt. Viele wichtige Regeln werden auf \href{https://en.wikipedia.org/wiki/Multidimensional_transform}{Wikipedia} zusammengefasst. Insbesondere steckt in den negativen Frequenzen bei der Fourier-Transformation von reellen Zeitfunktionen keine Information (Symmetrie des Spektrums), anschaulich gibt es praktisch keine negativen Frequenzen.\\
+	  Bei der Arbeit mit der Bronstein-Tabelle der Fourier-Korrespondenzen ist zu beachten, dass $\delta^{(n)}$ für die $n$-te Ableitung des Diracs steht.
+  \section{Hilbert-Transformation}\label{hiltrans}
+  Dieser Abschnitt basiert auf \href{https://en.wikipedia.org/wiki/Hilbert_transform}{Wikipedia}.\\\\
+  Die Hilbert-Transformation von $u$ ist gegeben als Faltung von $u$ mit dem sog. Cauchy-Kernel $h(t)=\frac{1}{\pi t}$. $\frac{1}{t}$ ist aber nicht integrierbar bei $t=0$, weshalb das Faltungsintegral im Sinne des \href{https://en.wikipedia.org/wiki/Cauchy_principal_value}{Cauchyschen Hauptwertes} (p.v.) definiert wird. Somit ist die Hilbert-Transformation von $u$ ausgewertet in $t$, falls der Hauptwert existiert, gegeben mit:
+  \begin{equation}
+  	 \mathcal{H}(u)(t) = \frac{1}{\pi}\, \operatorname{p.v.} \int_{-\infty}^{+\infty} \frac{u(\tau)}{t - \tau}\,\mathrm{d}\tau=\frac{2}{\pi}\, \lim_{\varepsilon \to 0} \int_\varepsilon^\infty \frac{u(t - \tau) - u(t + \tau)}{2\tau} \,\mathrm{d}\tau.
+  \end{equation}
+  Wendet man die Hilbert-Transformation zweimal infolge an, dann ist das Ergebnis $-u$. Die Rücktransformation ist entsprechend $\mathcal{H}^3$. Die Hilbert Transformation eines Signals wird oft als $\hat{u}(t)$ geschrieben.\\
+  Die Fourier-Transformierte ist:
+  \begin{equation}
+  	\mathcal{F}\left(\mathcal{H}(u)\right)(\omega) = -\mathrm{j} \text{sgn}(\omega) \cdot \mathcal{F}(u)(\omega)
+  \end{equation}
+ Aus dieser Formel ist ersichtlich, dass positive Frequenzkomponenten eines Signals (im Sinne einer Darstellung des Signals durch harmonische Funktionen) einen Phasenshift von $-\frac{\pi}{2}$ erhalten, während negative Frequenzkomponenten um $+\frac{\pi}{2}$ verschoben werden.
+ \section{Analytische Signale}\label{ansig}
+ Dieser Abschnitt basiert auf Wikipedia \href{https://en.wikipedia.org/wiki/Analytic_signal}{1} und \href{https://en.wikipedia.org/wiki/Phasor}{2}.\\\\
+ Wenn $s(t)$ ein reellwertiges Signal mit der Fourier-Transformierten $S(f)$ ist, dann ist die Transformierte bezüglich $f=0$ symmetrisch mit (Hermitian symmetry):
+ \begin{equation}
+ 	S(-f) = S(f)^*
+ \end{equation}
+ Das Fourier-Spektrum einer reellwertigen Funktion ist also redundant, weshalb das Spektrum
+ \begin{align*}
+ 	S_\mathrm{a}(f) &:=
+ 	\begin{cases}
+ 		2S(f), &\text{für}\ f > 0,\\
+ 		S(f), &\text{für}\ f = 0,\\
+ 		0, &\text{für}\ f < 0
+ 	\end{cases}\\
+ 	&= \underbrace{2 \sigma(f)}_{1 + \operatorname{sgn}(f)}S(f) = S(f) + \operatorname{sgn}(f)S(f),
+ \end{align*}
+  welches nur die positiven Frequenzkomponenten des usprünglichen Spektrums enthält, weiterhin die gesamte Information beinhaltet ($\sigma \hat{=}$  Heaviside-Funktion). Da keine Information verloren gegangen ist, ist die Operation reversibel:
+  \begin{align*}
+  	S(f) &=
+  	\begin{cases}
+  		\frac{1}{2}S_\mathrm{a}(f), &\text{für}\ f > 0,\\
+  		S_\mathrm{a}(f), &\text{für}\ f = 0,\\
+  		\frac{1}{2}S_\mathrm{a}(-f)^*, &\text{für}\ f < 0\ \text{(Hermitian symmetry)}
+  	\end{cases}\\
+  	&= \frac{1}{2}[S_\mathrm{a}(f) + S_\mathrm{a}(-f)^*].
+  \end{align*}
+  Das \textbf{analytische Signal} ist nun die inverse Fourier-Transformierte von $S_a$, also ($\nearrow$ \ref{hiltrans}):
+  \begin{align*}
+  	s_\mathrm{a}(t) &= \mathcal{F}^{-1}[S_\mathrm{a}(f)]\\
+  	&= \mathcal{F}^{-1}[S (f)+ \operatorname{sgn}(f) \cdot S(f)]\\
+  	&= \underbrace{\mathcal{F}^{-1}\{S(f)\}}_{s(t)} + \overbrace{
+  		\underbrace{\mathcal{F}^{-1}\{\operatorname{sgn}(f)\}}_{\mathrm{j}\frac{1}{\pi t}} * \underbrace{\mathcal{F}^{-1}\{S(f)\}}_{s(t)}
+  	}^\text{Faltung}\\
+  	&= s(t) + \mathrm{j}\underbrace{\left[{\frac{1}{\pi t}  } * s(t)\right]}_{\operatorname{\mathcal{H}}[s(t)]}\\
+  	&= s(t) + \mathrm{j}\hat{s}(t)\\
+  	&= s(t)*\underbrace{\left[\delta(t)+ \mathrm{j}{\frac{1}{\pi t}}\right]}_{\mathcal{F}^{-1}\{2u(f)\}}
+  \end{align*}
+  Die negativen Frequenzkomponenten können nun durch $\re{s_\mathrm{a}(t)}$ wiederhergestellt werden. Der Imaginärteil von $s_\mathrm{a}$ \enquote{entzieht} dem Signal also Frequenzkomponenten. Betrachtet man nur noch den Realteil, wird dies wider rückgängig gemacht.\\
+  Beim Übergang vom Zeitbereich in den Bildbereich wird in der komplexen Wechselstromlehre folgendermaßen gerechnet:
+  	\begin{equation}\begin{split}
+  		x(t) &= \hat{X} \cos\left(\omega t + \varphi_x\right) = \sqrt{2}\,\re{\ubar{X} \mathrm{e}^{j \omega t}} = \re{\hat{\ubar{X}} e^{j \omega t}}=\re{x(t)+ \mathrm{j}\hat{x}(t)} \\
+  		&\text{mit\ \ \ } \ubar{X} = \frac{\hat{X}}{\sqrt{2}} e^{j\varphi_x} = X e^{j\varphi_x}
+  \end{split}\end{equation}
+	Für komplexe Zahlen gelten dabei die folgenden Rechenregeln:
+  \begin{equation}\begin{split}
+  		\textbf{Additivität: }& \re{\ubar{Z}_1+\ubar{Z}_2}=\re{\ubar{Z}_1}+\re{\ubar{Z}_2} \\
+  		\textbf{Homogenität: }& \re{\alpha\ubar{Z}}=\alpha \re{\ubar{Z}}\\
+  		\textbf{Differenziation: }&\re{\frac{\dd}{\dd t}\ubar{Z}(t)}= \frac{\dd}{\dd t}\re{\ubar{Z}(t)}\\
+  		\textbf{Äquivalenz: }& \re{\ubar{Z}_1e^{j\omega t}} =\re{\ubar{Z}_2e^{j\omega t}} \Leftrightarrow \ubar{Z}_1 = \ubar{Z}_2
+  \end{split}\end{equation}
+  Damit folgen folgende Regeln für den Bildbereich:
+  \begin{equation}\begin{split}
+  		\textbf{Skalarmultiplikation: }& y(t)=kx(t) \implies \ubar{Y}=k\ubar{X}, k\in\mathbb{R} \\
+  		\textbf{Addition: }& y(t)=x_1(t)+x_2(t) \implies \ubar{Y}=\ubar{X}_1+\ubar{X}_2\\
+  		\textbf{Differenziation: }&y(t)=\frac{\dd x(t)}{\dd t} \implies \ubar{Y}=j\omega\ubar{X}\\
+  		\textbf{Integration: }& y(t)=y(t_0)+\int\limits_{t_0}^t x(\tau ) \dd \tau \implies \ubar{Y}=\frac{1}{j\omega}\ubar{X}
+  \end{split}\end{equation}
+	In der komplexen Wechselstromlehre wird also das analytische Signal zu $x$ gebildet und $x$ als Realteil dessen interpretiert. Da die Realteilsbildung additiv und homogen ist, ist sie linear. Wendet man nun also lineare Operationen auf $x$ an, dann kann man die lineare Operation auch in den Realteil hineinziehen, also die lineare Operation auf die komplexe Repräsentation anwenden. Das Ergebnis ist wegen der Linearität weiterhin äquivalent. Außerdem kann man noch auf den Term $\mathrm{e}^{j \omega t}$ normieren und diesen vor der Rücktransformation einfügen. $\ubar{X}$ bzw. $\ubar{\hat{X}}$ werden dann \textbf{Phasoren} genannt.\\
+	 Setzt man die Substitution $x(t)= \re{\hat{\ubar{X}} e^{j \omega t}}$ in eine lineare DGL ein und versucht eine neue DGL ohne $t-$Abhängigkeit herzuleiten, wird klar, dass die rechte Seite auch harmonisch von $t$ abhängen muss. Deshalb kann man mit dieser Methode auch nur die stationäre Lösung ermitteln, die harmonische Abhängikeit impliziert, dass die Anregung \enquote{schon immer} da war. Außerdem müssen sich die $t-$Abhängikeiten der Koeffizienten kürzen (was bei elektrischen Netzwerken wegen der konstanten Koeffizienten immer gegeben ist), um die angestrebte vereinfachte Gleichung im Bildbereich zu erhalten.  \\
+	 Dei Fourier-Transformierte von $x_a(t)=\ubar{\hat{X}}\mathrm{e}^{\mathrm{j}\omega_0 t}$ ist $\ubar{X}_a(\omega)=2\pi\ubar{\hat{X}}\delta (\omega - \omega_0)$, bzw. der entsprechende Fourier-Koeffizient der Fourier-Reihe ist: $\ubar{X}_1=\ubar{\hat{X}}$. Die Fourier-Transformierte von $x(t)=\hat{X}\cos (\omega_0 t+\varphi_x)$ ist $\ubar{X}(\omega)=\pi\ubar{\hat{X}}\left(\delta (\omega - \omega_0)+\delta (\omega + \omega_0)\right)$. Hier sieht man die unmittelbare Relation zwischen Phasor und Fourier-Spektrum. Daraus folgt auch, dass die Übertragungsfunktion $\ubar{G}$, welche durch die Laplace-Transformation/Fourier-Transformation ermittelt wird, der Übertragungsfunktion der komplexen Wechselstromrechung äquivalent ist. Ein Sinus am Eingang eines LTI-Systems ruft als Eigenfunktion nämlich einen Sinus der selben Frequenz hervor. Entsprechend gilt: $\ubar{Y}(\omega)=\pi\ubar{\hat{Y}}\left(\delta (\omega - \omega_0)+\delta (\omega + \omega_0)\right)$, also ist die Übertragungsfunktion bei der Frequenz, wo Ein- und Ausgangssignal bekannt sind $\ubar{G}(\omega_0)=\frac{\ubar{\hat{Y}}}{\ubar{\hat{X}}}=\frac{\ubar{{Y}}(\omega_0)}{\ubar{{X}}(\omega_0)}$ (Annahmen: Nullzustand, $\frac{\delta(0)}{\delta(0)}=1$). 
+  \section{Levi-Cita-Symbol}\label{LeviCita}
+  Dieser Abschnitt basiert auf \href{https://de.wikipedia.org/wiki/Levi-Civita-Symbol}{Wikipedia}.\\\\
+  \begin{equation}
+  	 \epsilon_{ijk\dots} :=
+  	\begin{cases}
+  		+1, & \text{wenn }(i,j,k,\dots) \text{ eine gerade Permutation von } (1,2,3,\dots) \text{ ist,} \\
+  		-1, & \text{wenn }(i,j,k,\dots) \text{ eine ungerade Permutation von } (1,2,3,\dots) \text{ ist,} \\
+  		0,  & \text{wenn mindestens zwei Indizes gleich sind.}
+  	\end{cases}
+  \end{equation}
+  Das Vorzeichen ist in der Kombinatorik eine wichtige Kennzahl von Permutationen, wobei man im Fall $+1$ von einer \textbf{geraden} und im Fall $-1$ von einer \textbf{ungeraden} Permutation spricht.\\
+  Zum ermitteln von $\epsilon_{35124}$ schreibt man:
+  \begin{equation*}
+  	\begin{array}{c|c|c|c|c|c r}
+  		i&1&2&3&4&5&\rightarrow\text{Zahlen der Reihenfolge nach}\\\hline
+  		\pi(i)&3&5&1&2&4&\rightarrow\text{Permutation}
+  	\end{array}
+  \end{equation*}
+  Nun zählt man alle Fälle zusammen, in denen $i<j$ und $\pi(i)>\pi(j)$ gilt. Also $1<2$ aber $3<5$ $\rightarrow$ kein Fehlstand. $1<3$ und $3>1$ $\rightarrow$ Fehlstand $(1,3)$. Alle Fehlstände in diesem Beispiel sind:
+  \begin{equation*}
+  	\text{inv} (\pi)=\{(1,3),(1,4),(2,3),(2,4),(2,5)\} \Rightarrow |\text{inv} (\pi)|=5 \Rightarrow \epsilon_{35124}=-1
+  \end{equation*}
+  \section{Taylor-Approximation}
+  Die \textbf{Taylorentwicklung} eines skalaren Feldes $f:\IR^N\to\IR$ am Punkt $\vec{r}_0 $ lautet:
+  \begin{equation}\begin{split}
+  	 \Aboxed{	f(\vec{r})&=\sum_{n=0}^\infty \left((\vec{r}-\vec{r}_0)\cdot\nabla\right)^n\frac{f(\vec{r}_0)}{n!}}\\
+  	   \end{split}\end{equation}
+ $\left((\vec{r}-\vec{r}_0)\cdot\nabla\right)^n$ ist dabei symbolisch zu lesen, also z.B. für $n=2$ und Raumdimension $N=2$: $\left((\vec{r}-\vec{r}_0)\cdot\nabla\right)^2 = \left((x-x_0)\frac{\partial }{\partial x}+(y-y_0)\frac{\partial }{\partial y}\right)^2=(x-x_0)^2\frac{\partial^2 }{\partial x^2}+2(x-x_0)(y-y_0)\frac{\partial }{\partial x}\frac{\partial }{\partial y}+(y-y_0)^2\frac{\partial^2 }{\partial y^2}$. Daraus folgt die die Taylor-Entwicklung am Punkt $\vec{r}_0$ in Richtung $\vec{a}$:
+       \begin{equation}\label{TaylorSkalar}\begin{split}
+  		  f(\vec{r}_0 +\vec{a}) &= \sum_{n=0}^\infty \frac{1}{n!} (\vec{a} \cdot \nabla)^n f(\vec{r}_0 ) = \exp(\vec{a} \cdot \nabla) f(\vec{r}_0 ) 
+  \end{split}\end{equation}
+ $\vec{a} \cdot \nabla$ ist hierbei die Richtungsableitung in von $f$ in Richtung $\vec{a}$ ($\nearrow$ \ref{Richtungsableitung4}).
+\section{Greensche Funktionen}\label{greenfkt}
+
+	 Sei $\mathcal{L}=\mathcal{L}(x)$ ein \textbf{linearer Differentialoperator} der auf Funktionen (besser Distributionen) angewendet wird, die auf einen Teilraum $\Omega$ des $\mathbb{R}^n$ definiert sind.
+	  Eine \textbf{Greensche Funktion} oder \textbf{Fundamentallösung} $G=G(x,s)$ zum Operator $\mathcal{L}$ am Punkt $s\in \Omega$ ist \textbf{jede Lösung} der Gleichung ($s$ und $x$ haben gleiche Dimension)
+	\begin{equation}\begin{split}
+			\mathcal{L}G(x,s) = \delta(x-s)
+	\end{split}\end{equation}
+	 Die Bedeutung der Greenschen Funktionen für die Lösung inhomogener partieller Differentialgleichungen soll nun gezeigt werden.
+	 Bei Multiplikation mit beliebiger Funktion $f(s)$ und Integration über $s$ folgt:
+	\begin{equation}\begin{split}
+			\int \mathcal{L}G(x,s)f(s) \dd s = \int \delta(x-s) f(s) \dd s = f(x)
+	\end{split}\end{equation}
+	 Der Operator $\mathcal{L}$ ist linear und wirkt nur auf $x$, also:
+	\begin{equation}\begin{split}
+			\mathcal{L}\left[ \int G(x,s)f(s) \dd s  \right] = f(x)
+	\end{split}\end{equation}
+	 Sucht man also eine Lösung der inhomogenen linearen Differentialgleichung $\mathcal{L} y(x) = f(x)$, und kennt eine Greensche Funktion (Fundamentallösung) $G(x,s)$, so gilt:
+	\begin{equation}\begin{split}
+			\boxed{y(x) = \int G(x,s)f(s)\dd s \text{ ist Lösung von } \mathcal{L} y(x) = f(x)}
+	\end{split}\end{equation}
+	Kennt man \textbf{eine} Greensche Funktion zu einem linaren Differentialoperator, dann kann man \textbf{eine} partikuläre Lösung der inhomogenen Gleichung errechnen. Es ist über den kompletten Raum / die komplette Ebene ... über $s$ zu integrieren, weil die Gleichung sonst nicht für alle $x$ gilt.\\\\
+	Zwei bei der Betrachtung linearer Abbildungen wichtige Mengen sind das \textbf{Bild} und der \textbf{Kern} einer linearen Abbildung $f\colon  V \to W$:
+	\begin{itemize}
+		\item Das Bild $\mathrm {im} (f)$ der Abbildung ist die Menge der Bildvektoren unter $f$, also die Menge aller $f(v)$ mit $v$ aus $V$. Die Bildmenge wird daher auch durch $f(V)$ notiert. Das Bild ist ein Untervektorraum von $W$.
+		\item Der Kern $\mathrm{ker}(f)$ der Abbildung ist die Menge der Vektoren aus $V$, die durch $f$ auf den Nullvektor von $W$ abgebildet werden. Er ist ein Untervektorraum von $V$. Die Abbildung $f$ ist genau dann injektiv, wenn der Kern nur den Nullvektor enthält, der Kern heißt dann auch trivial (wenn auch andere Vektoren auf Null abgebildet werden ist der Kern nichttrivial).
+	\end{itemize}
+	\textbf{Eigenschaften Greenscher Funktionen:}
+	\begin{enumerate}
+		\item Wenn der Kern von $\mathcal{L}$ nicht trivial ist, hat das Problem $\mathcal{L}G(x,s)=\delta(x-s)$ \textbf{unendlich} viele Lösungen $G(x,s)$ (man könnte einem beliebigen $G$ ein Element des Kerns addieren).
+		Im Allgemeinen hat ein Operator $\mathcal{L}$ keine eindeutige Greensche Funktion.
+		Diese Mehrdeutigkeit wird bei der Lösung von \textbf{Randwertproblemen} genutzt.
+		\item Ist $\mathcal{L}$ ein \href{https://de.wikipedia.org/wiki/Selbstadjungierter_Operator}{\textbf{selbstadjungierter Operator}} welcher keine komplexen Koeffizienten hat, also $\mathcal{L} = \mathcal{L}^\star$, dann sind seine Greenschen Funktionen \textbf{symmetrisch}:
+		\begin{equation}\label{selbstadj}\begin{split}
+				\boxed{\mathcal{L} = \mathcal{L}^\star \Rightarrow G(x,s) = G(s,x)  }
+		\end{split}\end{equation}
+	\end{enumerate}
+Einige Greensche Funktionen sind auf \href{https://en.wikipedia.org/wiki/Green%27s_function}{Wikipedia} gelistet.
+	
+
+	
+	
+	\section{Tensoren}\label{tensoren}
+	Dieser Abschnitt basiert auf der Serie von \href{https://www.youtube.com/playlist?list=PLJHszsWbB6hrkmmq57lX8BV-o-YIOFsiG}{eigenchris}.
+	\subsection{Koordinatentransformation}
+	Eine Basis eines Vektorraums lässt sich über eine Koordinatentransformation auf eine neue Basis abbilden. Sei zum Beispiel $\vu{1},\dots,\vu{n}$ die alte Basis und $\hat{\vec{e}}_1,\dots,\hat{\vec{e}}_n$ die neue Basis. Dann gilt für die Basisvektoren (mit Summenkonvention):
+	\begin{equation}\label{unitvectrans}\begin{split}
+			\vu{j} &=  B_{j}^i\hat{\vec{e}}_i\\
+			\hat{\vec{e}}_i &=  F_{j}^i\vu{i}
+	\end{split}\end{equation}
+	Dabei meint $F_{j}^i$ (forward, Matrixrepräsentation $\to i$ Zeilenindex, $j$ Spaltenindex) eine Komponente der Transformationsmatrix von der alten zur neuen Basis und $B_{j}^i$ (backward) eine Komponente der Transformationsmatrix von der neuen zur alten Basis. Das Produkt der beiden Matrizen ergibt die Einheitsmatrix: $F\cdot B=E$. 
+	\subsection{Spezielle Tensoren}
+	\subsubsection{Vektoren}
+	Vektoren (hier: $\vec{v}=v^i\vu{i}$) können als Teil eines Vektorraums $(V,S,+,¸\cdot)$ definiert werden. Man kann Vektoren addieren $(+)$ und mit einem Skalar $(S)$ multiplizieren $(\cdot)$:
+	\begin{equation}
+		\vec{v}+\vec{w} = (v^i+w^i)\vu{i},\quad \lambda\vec{v} = \lambda v^i\vu{i}
+	\end{equation}
+	Vektoren verändern sich nicht unter einer Koordinatentransformation, wohl aber die Vektorkomponenten. Für die Basisvektoren gilt die Transformationsregel \ref{unitvectrans}. Wenn die Basisvektoren wachsen, müssen die Vektorkomponenten schrumpfen, damit der Vektor gleich bleiben kann. Daher gilt für die Vektorkomponenten die eine genau umgekehrte Transformationsregel:
+	\begin{equation}\begin{split}
+			v^i &=  F_j^i\hat{v}^j\\
+			\hat{v}^i &= B_{j}^i v^j
+	\end{split}\end{equation}
+	Vektoren werden daher als \textbf{kontravariante} Tensoren 1. Stufe bezeichnet (auch (1,0)-Tensor), weil sie sich die Komponenten unter Koordinatentransformation entgegengesetzt zu \ref{unitvectrans} verhalten. Sie sind als Spaltenvektoren repräsentierbar, aber nicht jeder Spaltenvektor ist ein Tensor.
+	\subsubsection{Kovektoren}
+	Kovektoren (hier: $a=\alpha_i\varepsilon^i$) sind lineare Abbildungen von Vektoren auf Skalare ($a:V\to\mathbb{R}, \vec{v}\mapsto \alpha_i v^i$) mit:
+	\begin{equation}
+		a(\vec{v}+\vec{w}) = a(\vec{v})+a(\vec{w}),\quad a(\lambda\vec{v}) = \lambda a(\vec{v})
+	\end{equation}
+	Visualisieren kann man sie durch Linien, auf denen $a=\const$ gilt. Formal kann man sie als Element des \textbf{dualen Vektorraums} $(\tilde{V},S,\tilde{+},\tilde{\cdot})$ auffassen. Für diesen kann man eine Basis, die \textbf{duale Basis}, folgendermaßen definieren:
+	\begin{equation}
+		\varepsilon^i(\vu{j}) = \delta_{j}^i
+	\end{equation}
+	Es gilt:
+	\begin{equation}
+		a (\vec{v})=a(v^i\vu{i})=v^i a(\vu{i})=\varepsilon^i(\vec{v}) \alpha_i=\varepsilon^i \alpha_i
+	\end{equation}
+	Genau wie Vektoren verändern sich Kovektoren nicht unter einer Koordinatentransformation, wohl aber die Kovektor-Komponenten. Für die dualen Basisvektoren gilt:
+	\begin{equation}\begin{split}
+			\varepsilon^i &=  F_j^i\hat{\varepsilon}^j\\
+			\hat{\varepsilon}^i &= B_{j}^i \varepsilon^j
+	\end{split}\end{equation}
+	Für die Komponenten gilt:
+	\begin{equation}\begin{split}
+			\alpha_i &=  B_{i}^j\hat{\alpha}_j\\
+			\hat{\alpha}_i &= F_{i}^j \alpha_j
+	\end{split}\end{equation}
+	Damit sind Kovektoren \textbf{kovariante} Tensoren 1. Stufe (auch (0,1)-Tensor), weil sie sich die Komponenten unter Koordinatentransformation genauso verhalten wie in \ref{unitvectrans}. Sie sind als Zeilenvektoren repräsentierbar, aber nicht jeder Zeilenvektor ist ein Tensor.
+	\subsubsection{Lineare Abbildungen zwischen Vektorräumen}
+	Lineare Abbildungen zwischen Vektorräumen sind Abbildungen von Vektoren auf Vektoren, die linear sind, also:
+	\begin{equation}\begin{split}
+			&L:V\to W\\
+			&L(\vec{v}+\vec{w}) = L(\vec{v})+L(\vec{w})\\
+			&L(\lambda\vec{v}) = \lambda L(\vec{v})
+	\end{split}\end{equation}
+	Es gilt (die Matrixmultiplikation ist hier wiederzuerkennen, die bekannten Rechenregeln sind eine Konsequenz der abstrakten Linearität):
+	\begin{equation}\label{linearabb}\begin{split}
+			L(v^i\vu{i}) = v^i \left[L(\vu{i})\right]=v^i \left[L^j_i\vu{j}\right]
+	\end{split}\end{equation}
+	Die Transformationsregel lautet hier:
+	\begin{equation}\label{translin}\begin{split}
+			\hat{L}^i_j&=B^i_k L^k_l F^l_j\\
+			L^i_j&=F^i_k \hat{L}^k_l B^l_j
+	\end{split}\end{equation}
+	Lineare Abbildungen zwischen Vektorräumen sind also (1,1)-Tensoren. Sie sind als Matrizen repräsentierbar, aber nicht jede Matrix ist ein Tensor.
+	\subsubsection{Metrischer Tensor}
+	Mit dem \textbf{symmetrischen} metrischen Tensor $g_{ij}=\vu{i}\cdot\vu{j}=g_{ji}$, kann man Längen und Winkel von Vektoren auch in \textbf{nicht orthonormalen} Basen berechnen. Es gilt für das Skalarprodukt und die dadurch induzierte Norm:
+	\begin{equation} \begin{split}
+			\vec{v}\cdot\vec{w}&=\lVert v\rVert\lVert w\rVert \cos \theta=v^i w^j g_{ij}\\
+			\lVert v\rVert^2&=v^i v^j g_{ij}
+	\end{split}\end{equation}
+	Die Transformationsregel lautet:
+	\begin{equation}\begin{split}
+			\hat{g}_{ij}&=F^k_i F^l_j g_{kl}\\
+			g_{ij}&=B^k_i B^l_j \hat{g}_{kl}
+	\end{split}\end{equation}
+	Der Metrische Tensor ist ein (0,2)-Tensor. Er ist eine spezielle bilineare (Eigenschaften wie multilinear [\ref{multilin}] bei 2 Eingangsgrößen) Abbildung $V\times V \to  \IR$.
+	\subsection{Allgemeine Tensoren}
+	\subsubsection{Verhalten unter Koordinatentransformation}
+	Es ist möglich, die Regeln für die speziellen Tensoren auf einen allgemeinen $(m,n)$-Tensor zu übertragen:
+	\begin{equation}\label{tensortrans}
+		T^{i_1\dots i_m}_{j_1\dots j_n}=(B^{i_1}_{k_1}\dots B^{i_m}_{k_m})\hat{T}^{k_1\dots k_m}_{l_1\dots l_n}(F^{l_1}_{j_1}\dots F^{l_n}_{j_n})
+	\end{equation}
+	\textbf{Tensoren sind also mathematische Objekte, welche unter Koordinatentransformation invariant sind} und durch Arrays wie Matrizen oder Vektoren repräsentiert werden können. Die Komponenten transformieren sich dabei entsprechend \ref{tensortrans} auf eine vorhersehbare Art und Weise. \enquote{Ein Tensor transformiert sich unter Koordinatentransformation wie ein Tensor.}
+		\subsubsection{Basis und Tensorprodukt}
+	Außerdem ist es zweckmäßig in Analogie zu $\vu{i}$ und $\varepsilon^i$ eine Basis für Tensoren zu definieren, \textbf{Tensoren sind dann eine Kombination von Vektoren und Kovektoren durch das Tensorprodukt}. Dieses bildet zwei Tensoren auf einen neuen Tensor ab. Eine \textbf{Basis} ist das Tensorprodukt von Basisvektoren und dualen Basisvektoren, ein Tensor lässt sich damit folgendermaßen schreiben:
+	\begin{equation}\label{tensorbasis}
+		T=T^{i_1\dots i_m}_{j_1\dots j_n}\vu{{i_1}}\otimes\dots\otimes\vu{{i_m}}\otimes\varepsilon^{j_1}\otimes\dots\otimes\varepsilon^{j_n}
+	\end{equation}
+	Dieser $(m,n)$-Tensor ist ein Element des Vektorraumes $V^{ m}\times \tilde{V}^n$, entsprechend gelten die Rechenregeln in \ref{regelntens}. Im Spezialfall $n=0$ nennt man den Tensor kovariant, im Spezialfall $m=0$ kontravariant. Sei nun $S$ ein $(m_1,n_1)$-Tensor und $T$ ein $(m_2,n_2)$-Tensor, dann ist $S\otimes T$ ein $(m_1+m_2,n_1+n_2)$-Tensor.\\
+	 An der in \ref{tensorbasis} eingeführten Darstellung ist vorteilhaft, dass direkt die Transformationsregeln, Multiplikationsformel für die Anwendung des Tensors als Funktion auf einen anderen Tensor (Tensoren sind multilineare Abbildungen $\nearrow$\ref{multilin}) und die Array-Dimensionen folgen. Das soll am Beispiel der linearen Abbildung ($L=L^i_j\vu{i}\otimes\varepsilon^j$), die einen Vektor auf einen anderen Vektor abbildet, demonstriert werden:
+	\begin{itemize}
+		\item $L^i_j\vu{i}\otimes\varepsilon^j=L^i_j(B_i^k\hat{\vec{e}}_k)\otimes (F^j_l \hat{\varepsilon}^l)=\underbrace{F^j_l L^i_j B_i^k}_{\hat{L}^k_l} \hat{\vec{e}}_k \otimes\hat{\varepsilon}^l$: Tansformationsregel $\nearrow$\ref{translin}
+		\item $L(\vec{v})=L^i_j\vu{i}\otimes\varepsilon^j(v^l\vu{l})=L^i_jv^l\vu{i}\otimes\varepsilon^j(\vu{l})=L^i_jv^l\vu{i}\delta^j_l=L^i_lv^l\vu{i}$: Multiplikationsregel $\nearrow$ \ref{linearabb}. Den Übergang $\vu{i}\otimes\varepsilon^j(\vu{l})=\vu{i}\delta^j_l$ kann man aus \ref{tensorprod} folgern.
+		\item $\vu{1}\otimes\varepsilon^1\to \begin{pmatrix}
+			1\\
+			0
+		\end{pmatrix}\otimes \begin{pmatrix}
+		1 & 0
+		\end{pmatrix}=\begin{pmatrix}
+		1 & 0 \\
+		0 & 0
+		\end{pmatrix}:$ Array-Dimensionen, $2\times 2$ Matrix.
+	\end{itemize}
+	  Die Multiplikationsformel ist nicht immer eindeutig sein (z.B.: $D_{ab}v^b\neq D_{ab}v^a \to 2$ Kovektoren könnten auf die Basisvektoren angewandt werden). Die einzige Möglichkeit Eindeutigkeit zu schaffen, also klarzustellen wie der Tensor als Funktion auf einen anderen Tensor wirkt, besteht darin, die Multiplikationsformel aufzuschreiben. Ein weiterer Vorteil der Darstellung eines Tensors als Produkt aus Vektoren und Kovektoren ist, dass so bi-/multilineare Abbildungen auf lineare Abbildungen zurückgeführt werden können.\\
+	  Es gelten die folgenden \textbf{Rechenregeln} für das Tensorprodukt:
+	  \begin{equation}\label{regelntens}
+	  	\begin{split}
+	  		\lambda (\vec{v}\otimes a) &= (\lambda \vec{v})\otimes a=\vec{v}\otimes (\lambda a)\\
+	  		(\vec{v}+\vec{w})\otimes a &= \vec{v}\otimes a + \vec{w}\otimes a\\
+	  		\vec{v}\otimes (a+b) &= \vec{v}\otimes a + \vec{v}\otimes b
+	  	\end{split}
+	  \end{equation}
+	  Diese Regeln können beispielsweise auch mit den Vertauschungen $\vec{v}\leftrightarrow c, \vec{w}\leftrightarrow b$ formuliert werden. 
+	  
+	\subsubsection{Tensor als multilineare Abbildung}
+	\textbf{Jeder Tensor ist eine multilineare Abbildung}, also $T: V^{ m}\times \tilde{V}^n\to \mathbb{R}$. Eine multilineare Abbildung ist eine Abbildung, die in \textit{jeder} Komponente für sich Linearität zeigt, wenn alle anderen Komponenten konstant gehalten werden. Mathematisch heißt das:
+	\begin{equation}\label{multilin}\begin{split}
+			T(x_1,\dots, \lambda x_i,\dots,x_n)&=\lambda T(x_1,\dots,x_i,\dots,x_n)\\
+			T(x_1,\dots, x_i+y_i,\dots,x_n)&=T(x_1,\dots,x_i,\dots,x_n)+T(x_1,\dots,y_i,\dots,x_n)
+	\end{split}\end{equation}
+	Entsprechend ist auch das Tensorprodukt eine multilineare Abbildung. Mit $\vec{v}\in V$ und $a\in \tilde{V}$ gilt:
+	\begin{equation}\label{tensorprod}
+		(S\otimes T)(\vec{v}_1,\dots,\vec{v}_m,a_1,\dots,a_n)=S(\vec{v}_1,\dots,\vec{v}_{m_1}, a_1,\dots,a_{n_1})T(\vec{v}_{m_1+1},\dots,\vec{v}_m,a_{n_1+1},\dots,a_n)
+	\end{equation}
+	Beispielsweise ist $(\vec{v}_1\otimes\vec{v}_2)(a_1,a_2)=\vec{v}_1(a_1)\cdot\vec{v}_2(a_2)\in\mathbb{R}$. Als weiteres Beispiel betrachtet werden, wie der $(1,1)$-Tensor $L=L^i_j \vu{i}\otimes\varepsilon^j\in V\times \tilde{V}$ als Funktion angewendet werden kann:
+	\begin{itemize}
+		\item $L: V \to V, v^j \mapsto L^i_j v^j := w^i $ 
+		\item $L: \tilde{V} \to \tilde{V}, \alpha_i \mapsto L^i_j \alpha_i := b_j$
+		\item $L: V\times\tilde{V} \to \IR, v^j\alpha_i \mapsto L^i_j v^j\alpha_i := \lambda$
+		\item $L: \tilde{V}\times V \to \IR, \alpha_iv^j \mapsto L^i_j \alpha_iv^j := \lambda$
+	\end{itemize}
+	Wie man sehen kann, ist es möglich, eine ganze Reihe an sinnvollen Funktionen mit dem Tensor $L$ zu definieren. Alle haben aber gemeinsam, dass sie die Multiliniraitätseigenschaften aus \ref{multilin} erfüllen.
+	\subsubsection{Verschieben von Indizes}
+	 Es ist sinnvoll möglich, einem Vektor $\vec{v}\in V$ einen Kovektor $a\in\tilde{V}$ zuzuordnen. Man definiert:
+	\begin{equation}
+		a: V \to \IR, \vec{v} \mapsto \vec{v}\cdot \_ =\flat\vec{v}=g(\vec{v},\_ )
+	\end{equation}
+	Wegen $a(\lambda\vec{w})=\vec{v}\cdot(\lambda\vec{w})=\lambda (\vec{v}\cdot\vec{w})$ und $a(\vec{u}+\vec{w})=\vec{v}\cdot(\vec{u}+\vec{w})=\vec{v}\cdot\vec{u}+\vec{v}\cdot\vec{w}$ ist $a$ linear und somit erfüllt $\vec{v}\cdot \_$ alle Eigenschaften eines Kovektors. Außerdem gilt mit dem kovarianten metrischen Tensor $g$:
+	\begin{equation}\begin{split}
+			\vec{v}\cdot\vec{w}&=g(\vec{v},\vec{w})=g_{ij} \varepsilon^i\varepsilon^j(v^k\vu{k},w^l\vu{l})=\begin{cases}g_{ij} \varepsilon^i(v^k\vu{k})\varepsilon^j(w^l\vu{l})=g_{ij}v^i w^j \\ g_{ij} \varepsilon^i(v^l\vu{l})\varepsilon^j(w^k\vu{k})=g_{ji}v^i w^j\end{cases} \stackrel{g_{ji}=g_{ij}}{=}g_{ij}v^i w^j\\
+			\vec{v}\cdot\_ &= g(\vec{v},\_)=g_{ij}\varepsilon^i\varepsilon^k(v^j\vu{j})=\underbrace{g_{ij}v^j}_{\alpha_i}\varepsilon^i 
+			\end{split}\end{equation}
+		Damit gilt für die Komponenten des $\vec{v}$ zugeordneten Kovektors: $\alpha_i=g_{ij}v^j\implies a=\alpha_i\varepsilon^i$. Es gilt im Allgemeinen $\alpha_i\neq v^i$. Nur im \textbf{orthonormalen} Koordinatensystem gilt $g_{ij}=\delta_{ij}\implies\alpha_i = v^i$, man kann Idizes also ohne zu rechnen einfach verschieben. Genau wie man mit dem metrischen Tensor $g\in\tilde{V}\times\tilde{V}$ einem Vektor einen Kovektor zuordnen kann, kann man mit dem \textbf{inversen metrischen Tensor} (auch kontravarianter metrischer Tensor) $\mathfrak{g}\in V\times V$ einem Kovektor den entsprechenden Vektor zuordnen. Dieser wird über $\mathfrak{g}^{ki}g_{ij}=\delta^k_j$ definiert. Damit gilt: $\mathfrak{g}^{ki}\alpha_i=\mathfrak{g}^{ki}g_{ij} v^j= \delta^k_j v^j= v^k$. Entsprechend dem $\flat$ s.o. schreibt man hier in der Musikanalogie  auch $\sharp$. Vektoren vollkommen analog kann man von beliebigen anderen Tensoren Indizes anheben oder absenken, bspw.: $Q^i_{jk}\mathfrak{g}^{jx}=Q^{ix}_k;\quad D^{ab}g_{ax}=D_x^b$. 
+\subsection{Dyadisches Produkt}\label{dyad}
+Dieser Abschnitt basiert teilweise auf \href{https://solidmechanics.org/text/AppendixD/AppendixD.htm}{solidmechanics}.\\\\
+ Im Rahmen dieses Dokumentes wird (bis auf SRT, $\nearrow$\ref{SRT}) nur mit orthonormalen Koordinatensystemen im euklidischen Raum gearbeitet. Das macht vieles leichter, z.B. ist $g_{ij}=\delta_{ij}$, Indizes von Tensoren können also beliebig hoch und runter geschoben werden, ko- und kontravariante Ableitungen sind gleich, etc. Deshalb bietet sich es auch an, das einfachere dyadische Produkt anstelle des allgemeineren Tensorproduktes zu verwenden. Die vereinfachten Betrachtungen in diesem Abschnitt beziehen sich insbesondere auf die Arbeit mit dem maxwellschen Spannungstensor ($\nearrow$ \ref{spanten}).
+	\begin{equation}
+		\vec{v}\vec{w}:=\begin{pmatrix}v^1\\v^2\\v^3\end{pmatrix}\begin{pmatrix}w^1&w^2&w^3\end{pmatrix}=\begin{pmatrix}v^1w^1&v^1w^2&v^1w^3\\v^2w^1&v^2w^2&v^2w^3\\v^3w^1&v^3w^2&v^3w^3\end{pmatrix}
+	\end{equation}
+	Das Dyadische Produkt von zwei Einheitsvektoren $\vu{i}$ und $\vu{j}$ ist eine Matrix, die an nur an der in der $i$-ten Zeile und $j$-ten Spalte eine $1$ hat, sonst nur Nullen. Es gilt bspw.:
+	\begin{equation}
+		\vu{2}\vu{2}=\begin{pmatrix}
+			0&0&0\\
+			0&1&0\\
+			0&0&0
+		\end{pmatrix}
+	\end{equation}
+Aus den dyadischen Produkten der Einheitsvektoren untereinander wird eine Basis für Matrizen gebildet. Die folgenden Eigenschaften des dyadischen Produkts ergeben sich direkt aus den Eigenschaften der Matrixmultiplikation. Man beachte die enge Verflechtung mit den Regeln für das Tensorprodukt ($\nearrow$\ref{regelntens}).
+	Das dyadische Produkt ist \textbf{nicht kommutativ}. Es gilt aber:
+	\begin{equation}
+		\left(\vec{v}\vec{w}\right)^T=\vec{w}\vec{v}
+	\end{equation}
+	Das dyadische Produkt ist \textbf{distributiv}:
+	\begin{equation}\begin{split}
+		\vec{v}(\vec{w}+\vec{u})&=\vec{v}\vec{w}+\vec{v}\vec{u}\\
+		(\vec{v}+\vec{u})\vec{w}&=\vec{v}\vec{w}+\vec{u}\vec{w}
+	\end{split}	\end{equation}
+	Das dyadische Produkt ist verträglich mit der \textbf{Skalarmultiplikation}:
+	\begin{equation}
+		\lambda(\vec{v}\vec{w})=(\lambda\vec{v})\vec{w}=\vec{v}(\lambda\vec{w})
+\end{equation}
+	Außerdem ist es verträglich mit dem \textbf{Skalarprodukt} und dem \textbf{Kreuzprodukt}:
+	\begin{equation}\label{vertsp}\begin{split}
+		(\vec{u}\vec{v})\cdot\vec{w}&=\vec{u}(\vec{v}\cdot\vec{w})\\
+		\vec{w}\cdot (\vec{u}\vec{v})&=(\vec{w}\cdot\vec{u})\vec{v}\\
+		(\vec{u}\vec{v})\times\vec{w}&=\vec{u}(\vec{v}\times\vec{w})\\
+		\vec{w}\times (\vec{u}\vec{v})&=(\vec{w}\times\vec{u})\vec{v}
+	\end{split}\end{equation}
+	In einem kartesischen Koordinatiensystem mit orthonormalen Einheitsvektoren lässt sich der Tensor $T$ zweiter Ordnung folgendermaßen schreiben:
+	\begin{equation}\begin{split}
+			T &= T_{xx} \vu{x}\vu{x} + T_{xy} \vu{x}\vu{y} + T_{xz} \vu{x}\vu{z} \\
+			&+ T_{yx} \vu{y}\vu{x} + T_{yy} \vu{y}\vu{y} + T_{yz} \vu{y}\vu{z} \\
+			&+ T_{zx} \vu{z}\vu{x} + T_{zy} \vu{z}\vu{y} + T_{zz} \vu{z}\vu{z} \\
+	\end{split}\end{equation}
+	In Kombination mit der Verträglichkeit mit dem Skalarprodukt ($\nearrow$\ref{vertsp}) kann man z.B. das Flächenintegral einfach lösen. Es ist z.B. $T\cdot\vu{x}=T_{xx}\vu{x}+T_{yx} \vu{y}+T_{zx} \vu{z}$. Auch $\vu{r},\vu{\vartheta},\vu{\varphi}$ sind orthonormal (Achtung: ortsabhängig!). Entsprechend kann man schreiben:
+	\begin{equation}\begin{split}
+			T &= T_{rr} \vu{r}\vu{r} + T_{r\vartheta} \vu{r}\vu{\vartheta} + T_{r\varphi} \vu{r}\vu{\varphi} \\
+			&+ T_{\vartheta r} \vu{\vartheta}\vu{r} + T_{\vartheta\vartheta} \vu{\vartheta}\vu{\vartheta} + T_{\vartheta\varphi} \vu{\vartheta}\vu{\varphi} \\
+			&+ T_{\varphi r} \vu{\varphi}\vu{r} + T_{\varphi\vartheta} \vu{\varphi}\vu{\vartheta} + T_{\varphi\varphi} \vu{\varphi}\vu{\varphi} \\
+	\end{split}\end{equation}
+	Die Umrechnung der beiden Tensoren erfolgt wie folgt:
+	\begin{equation}{\tiny\begin{split}
+			\begin{pmatrix}
+				T_{rr} & T_{r\vartheta} & T_{r\varphi} \\
+				T_{\vartheta r} & T_{\vartheta\vartheta} & T_{\vartheta\varphi} \\
+				T_{\varphi r} & T_{\varphi\vartheta} & T_{\varphi\varphi} \\
+			\end{pmatrix} &=\begin{pmatrix} \sin \vartheta \cos \varphi & \sin \vartheta \sin \varphi & \cos \vartheta \\ \cos \vartheta \cos \varphi & \cos \vartheta \sin \varphi & -\sin \vartheta \\ -\sin \varphi & \cos \varphi & 0 \end{pmatrix} \begin{pmatrix} T_{xx} & T_{xy} & T_{xz} \\ T_{yx} & T_{yy} & T_{yz} \\ T_{zx} & T_{zy} & T_{zz} \end{pmatrix} \begin{pmatrix} \sin \vartheta \cos \varphi & \cos \vartheta \cos \varphi & -\sin \varphi \\ \sin \vartheta \sin \varphi & \cos \vartheta \sin \varphi & \cos \varphi \\ \cos \vartheta & -\sin \vartheta & 0 \end{pmatrix}  \\
+			\begin{pmatrix}
+				T_{xx} & T_{xy} & T_{xz} \\
+				T_{yx} & T_{yy} & T_{yz} \\
+				T_{zx} & T_{zy} & T_{zz} \\
+			\end{pmatrix} &= \begin{pmatrix} \sin \vartheta \cos \varphi & \cos \vartheta \cos \varphi & -\sin \varphi \\ \sin \vartheta \sin \varphi & \cos \vartheta \sin \varphi & \cos \varphi \\ \cos \vartheta & -\sin \vartheta & 0 \end{pmatrix} \begin{pmatrix} T_{rr} & T_{r\vartheta} & T_{r\varphi} \\ T_{\vartheta r} & T_{\vartheta\vartheta} & T_{\vartheta\varphi} \\ T_{\varphi r} & T_{\varphi\vartheta} & T_{\varphi\varphi} \end{pmatrix} \begin{pmatrix} \sin \vartheta \cos \varphi & \sin \vartheta \sin \varphi & \cos \vartheta \\ \cos \vartheta \cos \varphi & \cos \vartheta \sin \varphi & -\sin \vartheta \\ -\sin \varphi & \cos \varphi & 0 \end{pmatrix}
+	\end{split}}\end{equation}
+	Die Darstellung \ref{maxkofrei} ist zunächst noch koordinatenfrei. Das heißt, dass man schreiben kann:
+	\begin{equation}\label{maxkofreiaus}\begin{split}
+			T &= T_{11} \vu{1}\vu{1} + T_{12} \vu{1}\vu{2} + T_{13} \vu{1}\vu{3} \\
+			&+ T_{21} \vu{2}\vu{1} + T_{22} \vu{2}\vu{2} + T_{23} \vu{2}\vu{3} \\
+			&+ T_{31} \vu{3}\vu{1} + T_{32} \vu{3}\vu{2} + T_{33} \vu{3}\vu{3} \\
+	\end{split}\end{equation}
+	Für Zylinderkoordinaten funktionieren alle Betrachtungen analog, nur dass $\vu{r},\vu{\varphi},\vu{z}$ die orthonormalen Einheitsvektoren sind. Erst wenn man $1\leftrightarrow x,r,\varrho$, $2\leftrightarrow y,\vartheta,\varphi$ und $3\leftrightarrow z,\varphi,z$ ersetzt legt man sich auf ein Koordinatensystem fest. Wenn man also beispielsweise Kugelkoordinaten nutzt, ist $E_1=E_r$.
+\section{Einige Gleichungen}
+Zyklische Vertauschung beim Spatprodukt:
+\begin{equation}
+	(\vec{a} \times \vec{b}) \cdot \vec{c} = (\vec{b} \times \vec{c}) \cdot \vec{a} = (\vec{c} \times \vec{a}) \cdot \vec{b}
+\end{equation}
+Graßmann-Identität:
+\begin{equation}\label{grass}
+	\vec{a}\times(\vec{b}\times\vec{c}) = (\vec{a} \cdot \vec{c}) \,\vec{b} - (\vec{a} \cdot \vec{b})\, \vec{c}  \quad \text{ bzw. } \quad (\vec{a}\times\vec{b})\times \vec{c} =  (\vec{a} \cdot \vec{c})\, \vec{b}\ - (\vec{b} \cdot \vec{c}) \,\vec{a}
+\end{equation}
+	
+

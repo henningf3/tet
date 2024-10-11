@@ -1,0 +1,13 @@
+\begin{tikzpicture}
+	% Achsen zeichnen
+	\draw[->,thick] (-2,0) -- (2.5,0) node[right] {$x$};
+	\draw[->,thick] (0,-1.5) -- (0,1.8) node[above] {$y$};
+	%Plot
+	\draw[style=dashed] (-1.27,-1.05) rectangle (1.27,1.05);
+	\draw[rotate=30] (0, 0) ellipse (1.35 and 0.9);
+	\draw(1.25,0) node[below right] {$|E_{0x}|$} ;
+	\draw(0,1.05) node[above left] {$|E_{0y}|$} ;
+	\draw (0, 0) circle (.12);
+	\draw[fill=black] (0, 0) circle (.06);
+	\draw (0,0) node[below right] {$\vec{k}$};
+\end{tikzpicture}

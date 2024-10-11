@@ -1,0 +1,19 @@
+\begin{tikzpicture}
+	\begin{axis}[
+			grid=both,
+			xmin = 0, xmax = 6,
+			ymin = 0, ymax = 1.2,
+			xtick = {0,1,2,4,4.5,5},
+			xlabel = {$\omega$},
+			ylabel = {$\frac{ k_\lambda}{ k}$},
+			xticklabels = {0, $\omega_1$, $\omega_2$, $\omega_3$, $\omega_4$, $\omega_5$},
+			width=.9\textwidth,height=.5\textwidth]
+		\addplot[domain=0:6,samples=500,smooth,thick] {sqrt(1.-(1./x)^2)};
+		\addplot[domain=0:6,samples=500,smooth,thick] {sqrt(1.-(2./x)^2)};
+		\addplot[domain=0:6,samples=500,smooth,thick] {sqrt(1.-(4./x)^2)};
+		\addplot[domain=0:6,samples=500,smooth,thick] {sqrt(1.-(4.5/x)^2)};
+		\addplot[domain=0:6,samples=500,smooth,thick] {sqrt(1.-(5./x)^2)};
+		\addplot[domain=0:6,samples=100,smooth,thick] {1} [yshift=8pt] node[pos=0.35] {TEM-Mode (falls nicht einfach zusammenhängend)};
+		\node  at (300,25) {2 Moden (+TEM)};
+	\end{axis}
+\end{tikzpicture}

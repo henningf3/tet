@@ -1,0 +1,60 @@
+ \begin{tikzpicture}[%
+	3d view = {15}{15}
+	]
+	
+	\draw[-{Latex[scale = 0.7]}] (-4, -4, 0) -- (-3, -4, 0)
+	node[below] {$x_1$};
+	\draw[-{Latex[scale = 0.7]}] (-4, -4, 0) -- (-4, -3, 0)
+	node[right] {$x_2$};
+	\draw[-{Latex[scale = 0.7]}] (-4, -4, 0) -- (-4, -4, 1)
+	node[above] {$x_3$};
+	
+	\begin{scope}[canvas is xz plane at y = -2]
+		
+		\draw[
+		fill = lightgray
+		] (-2, -2) rectangle (2, 2);
+		
+		\draw[-Latex] (-1.75, 0) -- (1.75, 0)
+		node[below left] {$T_{12}$};
+		\draw[-Latex] (0, -1.75) -- (0, 1.75)
+		node[below left] {$T_{32}$};
+		
+	\end{scope}     
+	
+	\draw[Latex-] (0, -2, 0) -- (0, -3.5, 0)
+	node[left] {$T_{22}$};
+	
+	\begin{scope}[canvas is yz plane at x = 2]
+		
+		\draw[
+		fill = lightgray
+		] (-2, -2) rectangle (2, 2);
+		
+		\draw[-Latex] (1.75, 0) -- (-1.75, 0)
+		node[below right] {$T_{21}$};
+		\draw[-Latex] (0, -1.75) -- (0, 1.75)
+		node[below right] {$T_{31}$};
+		
+	\end{scope} 
+	
+	\draw[Latex-] (2, 0, 0) -- (3.5, 0, 0)
+	node[right] {$T_{11}$};
+	
+	\begin{scope}[canvas is xy plane at z = 2]
+		
+		\draw[
+		fill = lightgray
+		] (-2, -2) rectangle (2, 2);
+		
+		\draw[-Latex] (-1.75, 0) -- (1.75, 0)
+		node[above]{$T_{13}$};
+		\draw[-Latex] (0, 1.75) -- (0, -1.75)
+		node[above left]{$T_{23}$};
+		
+	\end{scope} 
+	
+	\draw[Latex-] (0, 0, 2) -- (0, 0, 3.5)
+	node[above] {$T_{33}$};
+	
+\end{tikzpicture}

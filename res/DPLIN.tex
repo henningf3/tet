@@ -1,0 +1,72 @@
+\tdplotsetmaincoords{60}{110}
+
+%define polar coordinates for some vector
+%TODO: look into using 3d spherical coordinate system
+\pgfmathsetmacro{\rvec}{.5}
+\pgfmathsetmacro{\thetavec}{30}
+\pgfmathsetmacro{\phivec}{60}
+
+%start tikz picture, and use the tdplot_main_coords style to implement the display 
+%coordinate transformation provided by 3dplot
+\begin{tikzpicture}[scale=5,tdplot_main_coords]
+
+	%set up some coordinates 
+	%-----------------------
+	\coordinate (O) at (0,0,0);
+
+	%determine a coordinate (P) using (r,\theta,\phi) coordinates.  This command
+	%also determines (Pxy), (Pxz), and (Pyz): the xy-, xz-, and yz-projections
+	%of the point (P).
+	%syntax: \tdplotsetcoord{Coordinate name without parentheses}{r}{\theta}{\phi}
+	\tdplotsetcoord{P}{\rvec}{\thetavec}{\phivec}
+
+	%draw figure contents
+	%--------------------
+
+	%draw the main coordinate system axes
+	\draw[thick,->] (0,0,0) -- (.5,0,0) node[anchor=north east]{$x$};
+	\draw[thick,->] (0,0,0) -- (0,.5,0) node[anchor=north west]{$y$};
+	\draw[thick,->] (0,0,0) -- (0,0,.5) node[anchor=south,pos=0.95]{$z$};
+
+	%draw a vector from origin to point (P) 
+	\draw[-stealth,color=red,thick] (O) -- (P) node[midway, below]{$\vec{r} $};
+	\draw[-stealth,color=green,thick] (P) -- +(0,0,0.2) node[above]{$ \vec{\ubar{A}}= \ubar{A}_z\vu{z}$};
+
+	%draw projection on xy plane, and a connecting line
+	\draw[dashed, color=red] (O) -- (Pxy);
+	\draw[dashed, color=red] (P) -- (Pxy);
+
+	%draw the angle \phi, and label it
+	%syntax: \tdplotdrawarc[coordinate frame, draw options]{center point}{r}{angle}{label options}{label}
+	\tdplotdrawarc{(O)}{0.2}{0}{\phivec}{anchor=north}{$\varphi$}
+
+	%set the rotated coordinate system so the x'-y' plane lies within the
+	%"theta plane" of the main coordinate system
+	%syntax: \tdplotsetthetaplanecoords{\phi}
+	\tdplotsetthetaplanecoords{\phivec}
+
+	%draw theta arc and label, using rotated coordinate system
+	\tdplotdrawarc[tdplot_rotated_coords]{(0,0,0)}{0.3}{0}{\thetavec}{anchor=south west}{$\vartheta$}
+
+	%draw some dashed arcs, demonstrating direct arc drawing
+	%\draw[dashed,tdplot_rotated_coords] (\rvec,0,0) arc (0:90:\rvec);
+	%\draw[dashed] (\rvec,0,0) arc (0:90:\rvec);
+
+	%set the rotated coordinate definition within display using a translation
+	%coordinate and Euler angles in the "z(\alpha)y(\beta)z(\gamma)" euler rotation convention
+	%syntax: \tdplotsetrotatedcoords{\alpha}{\beta}{\gamma}
+	\tdplotsetrotatedcoords{\phivec}{\thetavec}{0}
+
+	%translate the rotated coordinate system
+	%syntax: \tdplotsetrotatedcoordsorigin{point}
+	\tdplotsetrotatedcoordsorigin{(P)}
+
+	%use the tdplot_rotated_coords style to work in the rotated, translated coordinate frame
+	\draw[thin,tdplot_rotated_coords,->] (0,0,0) -- (.1,0,0) node[anchor=north west]{$\vu{\vartheta}$};
+	\draw[thin,tdplot_rotated_coords,->] (0,0,0) -- (0,.1,0) node[anchor=west]{$\vu{\varphi}$};
+	\draw[thin,tdplot_rotated_coords,->] (0,0,0) -- (0,0,.1) node[anchor=south]{$\vu{r}$};
+
+	\node (a) [cylinder, shape border rotate=90, draw, minimum height=5mm, minimum width=2mm,yshift=-1mm] {};
+	\draw [<->] ([xshift=-2pt]a.before bottom) -- ([xshift=-2pt]a.after top) node [midway, left] {$\ell$};
+
+\end{tikzpicture}

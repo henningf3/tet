@@ -1,0 +1,50 @@
+\tdplotsetmaincoords{70}{20}
+\begin{tikzpicture}[scale=0.6,tdplot_main_coords]
+	\draw[fill=gray!50,canvas is xy plane at z=0] (-5,-5) rectangle (5,5);
+	\node[transform shape,canvas is xy plane at z=0,anchor=south west]
+	at (-5,-5) {{\huge Grenzfläche}};
+	\draw[-stealth] (-5.5,0,0) -- (5.5,0,0) node[pos=1.05]{$x$};
+	\draw[-stealth] (0,5.5,0) -- (0,-5.5,0) node[pos=1.05]{$y$};
+	\draw[-stealth] (0,0,5) -- (0,0,-2.5) node[pos=1.025]{$z$};
+	\begin{scope}[canvas is xy plane at z=0]
+		\draw[-latex] (2.5,0) arc(0:-40:2.5) node[below right]{$\varphi_r, \; \varphi_t$};
+	\end{scope}
+
+	\foreach \X [count=\Y,evaluate=\Y as \Col using {int(\Y*20)}] in {0,-20,-40}
+		{\tdplotsetrotatedcoords{\X}{00}{0}
+			\begin{scope}[tdplot_rotated_coords]
+				\begin{scope}[canvas is xz plane at y=0]
+					\draw[fill=blue!\Col, fill opacity=0.5] (0:2.5) arc (0:90:2.5) -- (0,0);
+				\end{scope}
+			\end{scope}}
+
+	\begin{scope}[canvas is xz plane at y=0]
+		\draw[fill=blue!20,fill opacity=0.5] (90:4.2) arc (90:180:4.2) -- (0,0);
+		\draw[thick] (150:6.5) node[above,align=center]{Einfalls-\\ richtung} -- (0,0);
+		\draw[thick,-latex] (150:6.5) -- (150:4.7) node[anchor=south west]{$\vec{k_i}$};
+		\node[anchor=south east] at (110:3) {$\vartheta_i$};
+		\draw[-latex] (90:3) arc(90:150:3);
+
+		\draw[thick] (55:6.5) node[above,align=center]{Refelxions-\\ richtung} -- (55:2.2);
+		\draw[dashed] (55:2.2) -- (0,0);
+		\draw[thick,-latex] (55:2.5) -- (55:4.5) node[anchor=south east]{$\vec{k_r}$};
+		\node[anchor=south west] at (75:3.2) {$\vartheta_r$};
+		\draw[-latex] (90:3.2) arc(90:55:3.2);
+		%
+		\draw[thick] (-65:3.7) node[right,align=center]{Transmissions-\\ richtung} -- (-65:2.2);
+		\draw[dashed] (-65:2.2) -- (0,0);
+		\draw[thick,-latex] (-65:2.5) -- (-65:3.2) node[anchor=east]{$\vec{k_t}$};
+		\node[anchor=south west] at (265:2.15) {$\vartheta_t$};
+		\draw[-latex] (-90:1.2) arc(-90:-65:1.2);
+
+	\end{scope}
+
+	\draw[thick, red,-latex] (xyz spherical cs: radius=1.5, phi=-90, theta=30) -- +(xyz spherical cs: radius=1, phi=90, theta=60) node[anchor=south]{$\vec{E_\parallel}$};
+	\draw[thick, blue,-latex] (xyz spherical cs: radius=1.5, phi=-90, theta=30) -- +(xyz spherical cs: radius=1, phi=180, theta=0) node[anchor=north]{$\vec{B_\parallel}$};
+
+	\draw[thick, red,-latex] (xyz spherical cs: radius=2.2, phi=-90, theta=30) -- +(xyz spherical cs: radius=1, phi=180, theta=0) node[anchor=east]{$\vec{E_\perp}$};
+	\draw[thick, blue,-latex] (xyz spherical cs: radius=2.2, phi=-90, theta=30) -- +(xyz spherical cs: radius=1, phi=90, theta=-120) node[anchor=north]{$\vec{B_\perp}$};
+	\draw[thick,-latex] (4,0,0) -- (4,0,-1) node[anchor= west] {$\vec{n}$};
+	\draw[thin] (-2.3,0,2.9) -- (-3,0,4) node[anchor=south,align=center]{Einfalls-\\ ebene};
+
+\end{tikzpicture}

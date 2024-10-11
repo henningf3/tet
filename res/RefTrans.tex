@@ -1,0 +1,71 @@
+\begin{minipage}{.5\textwidth}
+	\centering
+	\begin{tikzpicture}
+		\draw[-latex, thin] (-2,0) -- (2,0) node[anchor=west] {$z$};
+		\draw[-latex, thin] (0,-2) -- (0,2) node[anchor=south] {$x$};
+		\filldraw[fill=white,line width=1pt](0,0)circle(.12cm) node[anchor=north west]{$y$};
+		\filldraw[fill=black,line width=1pt](0,0)circle(.04cm);
+		\path (-1.5,2)  node[align=left]{{\normalsize\textcircled{1}}\\ $\varepsilon_1,\mu_1$\\ $n_1, Z_1$}
+		(1.5,2) node[align=left]{{\normalsize\textcircled{2}}\\ $\varepsilon_2,\mu_2$\\ $n_2, Z_2$};
+		\draw[dashed, thick] (0,0) -- +(20:2);
+		\draw[dashed, thick] (220:2) -- (0,0);
+		\draw[dashed, thick] (0,0) -- (140:2);
+		\draw[thin] (0.6,0) arc (0:20:0.6) node[right,yshift=-1]{$\vartheta_2$};
+		\draw[thin] (-0.6,0) arc (180:220:0.6) node[left,yshift=3]{$\vartheta_1$};
+		\draw[thin] (-0.6,0) arc (180:140:0.6) node[left,yshift=-2]{$\vartheta_1$};
+
+		\filldraw[fill=white,line width=1pt, draw=red](140:1.5)circle(.12cm) node[red, anchor=north east]{$\vec{E}_r$};
+		\filldraw[fill=red,line width=1pt, draw=red](140:1.5)circle(.04cm);
+		\draw[blue,-stealth, thick] (140:1.5) -- +(50:0.5) node[blue, anchor=north west]{$\vec{H}_r$};
+		\draw[black,-stealth, thick] (140:1.5) -- +(140:0.5) node[anchor=north east]{$\vec{k}_r$};
+
+		\filldraw[fill=white,line width=1pt, draw=red](220:1.5)circle(.12cm) node[red, anchor=south east]{$\vec{E}_i$};
+		\filldraw[fill=red,line width=1pt, draw=red](220:1.5)circle(.04cm);
+		\draw[blue,-stealth, thick] (220:1.5) -- +(310:0.5) node[blue, anchor=north east]{$\vec{H}_i$};
+		\draw[black,-stealth, thick] (220:1.5) -- +(220:-0.5) node[anchor=north west]{$\vec{k}_i$};
+
+		\filldraw[fill=white,line width=1pt, draw=red](20:1.5)circle(.12cm) node[red, anchor=south east]{$\vec{E}_t$};
+		\filldraw[fill=red,line width=1pt, draw=red](20:1.5)circle(.04cm);
+		\draw[blue,-stealth, thick] (20:1.5) -- +(-70:0.5) node[blue, anchor=north]{$\vec{H}_t$};
+		\draw[black,-stealth, thick] (20:1.5) -- +(20:0.5) node[anchor=north]{$\vec{k}_t$};
+		\draw (1.5,-1.5) node{$\perp$ Polarisation};
+		\draw[-stealth,thick] (0,-1) -- (0.5,-1) node[anchor=west]{$\vec{n}$};
+	\end{tikzpicture}
+\end{minipage}
+\begin{minipage}{.5\textwidth}
+	\centering
+	\begin{tikzpicture}
+		\draw[-latex, thin] (-2,0) -- (2,0) node[anchor=west] {$z$};
+		\draw[-latex, thin] (0,-2) -- (0,2) node[anchor=south] {$x$};
+		\filldraw[fill=white,line width=1pt](0,0)circle(.12cm) node[anchor=north west]{$y$};
+		\filldraw[fill=black,line width=1pt](0,0)circle(.04cm);
+		\path (-1.5,2)  node[align=left]{{\normalsize\textcircled{1}}\\ $\varepsilon_1,\mu_1$\\ $n_1, Z_1$}
+		(1.5,2) node[align=left]{{\normalsize\textcircled{2}}\\ $\varepsilon_2,\mu_2$\\ $n_2, Z_2$};
+		\draw[dashed, thick] (0,0) -- +(20:2);
+		\draw[dashed, thick] (220:2) -- (0,0);
+		\draw[dashed, thick] (0,0) -- (140:2);
+		\draw[thin] (0.6,0) arc (0:20:0.6) node[right,yshift=-1]{$\vartheta_2$};
+		\draw[thin] (-0.6,0) arc (180:220:0.6) node[left,yshift=3]{$\vartheta_1$};
+		\draw[thin] (-0.6,0) arc (180:140:0.6) node[left,yshift=-2]{$\vartheta_1$};
+
+		\filldraw[fill=white,line width=1pt, draw=blue](140:1.5)circle(.12cm) node[blue, anchor=south west]{$\vec{H}_r$};
+		\filldraw[fill=blue,line width=1pt, draw=blue](140:1.5)circle(.04cm);
+		%\draw[line width=.6pt] (0,0) +(-135:.12cm) -- +(45:.12cm) +(-45:.12cm) -- +(135:.12cm); 
+		\draw[red,-stealth, thick] (140:1.5) -- +(230:0.5) node[red, anchor=north west]{$\vec{E}_r$};
+		\draw[black,-stealth, thick] (140:1.5) -- +(140:0.5) node[anchor=north east]{$\vec{k}_r$};
+
+		\filldraw[fill=white,line width=1pt, draw=blue](220:1.5)circle(.12cm) node[blue, anchor=north,yshift=-2]{$\vec{H}_i$};
+		\filldraw[fill=blue,line width=1pt, draw=blue](220:1.5)circle(.04cm);
+		%\draw[blue, line width=.6pt] (220:1.5) +(-135:.12cm) -- +(45:.12cm) +(-45:.12cm) -- +(135:.12cm); 
+		\draw[red,-stealth, thick] (220:1.5) -- +(130:0.5) node[anchor=north east]{$\vec{E}_i$};
+		\draw[black,-stealth, thick] (220:1.5) -- +(220:-0.5) node[anchor=north west]{$\vec{k}_i$};
+
+		\filldraw[fill=white,line width=1pt, draw=blue](20:1.5)circle(.12cm) node[blue, anchor=north,yshift=-2]{$\vec{H}_t$};
+		\filldraw[fill=blue,line width=1pt, draw=blue](20:1.5)circle(.04cm);
+		%\draw[line width=.6pt] (0,0) +(-135:.12cm) -- +(45:.12cm) +(-45:.12cm) -- +(135:.12cm); 
+		\draw[red,-stealth, thick] (20:1.5) -- +(110:0.5) node[red, anchor=east]{$\vec{E}_t$};
+		\draw[black,-stealth, thick] (20:1.5) -- +(20:0.5) node[anchor=north]{$\vec{k}_t$};
+		\draw (1.5,-1.5) node{$\parallel$ Polarisation};
+		\draw[-stealth,thick] (0,-1) -- (0.5,-1) node[anchor=west]{$\vec{n}$};
+	\end{tikzpicture}
+\end{minipage}

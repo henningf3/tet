@@ -1,0 +1,432 @@
+\chapter{Vektoranalysis und Feldtheorie}
+ \section{Koordinatensysteme}
+\subsection{Relevante Koordinatensysteme}
+\input{res/Kosy}
+Will man sich nicht auf ein Koordinatensystem festlegen, kann man beispielsweise $(u,v,w,t)\in\IR^3\times\IR_0^+$ für die drei Raumdimensionen und die Zeit schreiben. Es muss unbedingt und immer beachtet werden, dass \textbf{nur kartisische} Einheitsvektoren \textbf{konstant} sind. Insbesondere ist das beim Differenzieren ($(\partial/\partial \varphi )\vu{\varphi}\neq 0$), Integrieren (meist ist $\int \vu{\varphi} \dots \dd \varphi \neq \vu{\varphi}  \int \dots \dd \varphi$) und bei der Differenzbildung (meist ist $a\vu{r}-a\vu{{r'}}\neq 0$)  von Vektoren zu beachten.
+\subsection{Umrechnungen}
+\subsubsection{Kartesisch -- Zylinder} \label{kartzyl}
+\begin{equation}
+	\begin{bmatrix}
+		\vu{\rho}    \\
+		\vu{\varphi} \\
+		\vu{z}
+	\end{bmatrix}
+	=
+	\begin{bmatrix}
+		\cos\varphi  & \sin\varphi & 0 \\
+		-\sin\varphi & \cos\varphi & 0 \\
+		0            & 0           & 1
+	\end{bmatrix}
+	\begin{bmatrix}
+		\vu{x} \\
+		\vu{y} \\
+		\vu{z}
+	\end{bmatrix}
+\end{equation}
+\subsubsection{Kartesisch -- Kugel} \label{kartkug}
+\begin{equation}
+	\begin{bmatrix}
+		\vu{r}         \\
+		\vu{\vartheta} \\
+		\vu{\varphi}
+	\end{bmatrix}
+	=
+	\begin{bmatrix}
+		\sin\vartheta\cos\varphi & \sin\vartheta\sin\varphi & \cos\vartheta   \\
+		\cos\vartheta\cos\varphi & \cos\vartheta\sin\varphi & - \sin\vartheta \\
+		-\sin\varphi             & \cos\varphi              & 0
+	\end{bmatrix}
+	\begin{bmatrix}
+		\vu{x} \\
+		\vu{y} \\
+		\vu{z}
+	\end{bmatrix}
+\end{equation}
+Beide Umrechnungsmatrizen sind orthogonale Matrizen: $A^T=A^{-1}$.\\
+Allgemein gilt für einen Einheitsvektor:
+\begin{equation}
+	\vu{u}=\frac{\frac{\partial\vec{r}}{\partial u}}{\left|\frac{\partial\vec{r}}{\partial u}\right|} \Rightarrow \vu{r}=\frac{\frac{\partial\left( r\sin\vartheta\cos\varphi \vu{x}+ r\sin\vartheta\sin\varphi \vu{y}+ r\cos\vartheta\vu{z}\right)}{\partial r}}{1}
+\end{equation}
+\subsubsection{Arbeit mit Bronstein-Tabelle}
+\begin{tabular}{|l|l|l|}
+	\hline Kartesische Koordinaten & Zylinderkoordinaten & Kugelkoordinaten \\
+	\hline $\vec{\mathrm{V}}=V_{x} \vec{{e}_{x}}+V_{y} \vec{{e}_{y}}+V_{z} \vec{{e}_{z}}$ & $V_{\rho} \vec{{e}_{\rho}}+V_{\varphi} \vec{{e}_{\varphi}}+V_{z} \vec{{e}_{z}}$ & $V_{r} \vec{{e}_{r}}+V_{\vartheta} \vec{{e}_{\vartheta}}+V_{\varphi} \vec{{e}_{\varphi}}$ \\
+	\hline$V_{x}$ & $=V_{\rho} \cos \varphi-V_{\varphi} \sin \varphi$ & $=V_{r} \sin \vartheta \cos \varphi+V_{\vartheta} \cos \vartheta \cos \varphi$ \\
+	& & $-V_{\varphi} \sin \varphi$\\
+	$V_{y}$& $=V_{\rho} \sin \varphi+V_{\varphi} \cos \varphi$ & $=V_{r} \sin \vartheta \sin \varphi+V_{\vartheta} \cos \vartheta \sin \varphi$ \\
+	& & $+V_{\varphi} \cos \varphi$ \\
+		$V_{z}$ & $=V_{z}$ & $=V_{r} \cos \vartheta-V_{\vartheta} \sin \vartheta$ \\\hline
+ $V_{x} \cos \varphi+V_{y} \sin \varphi$ & $=V_{\rho}$ & $=V_{r} \sin \vartheta+V_{\vartheta} \cos \vartheta$ \\
+$-V_{x} \sin \varphi+V_{y} \cos \varphi$	& $=V_{\varphi}$ & $=V_{\varphi}$ \\
+	 	$V_{z}$ & $=V_{z}$ & $=V_{r} \cos \vartheta-V_{\vartheta} \sin \vartheta$ \\\hline
+	$V_{x} \sin \vartheta \cos \varphi+V_{y} \sin \vartheta \sin \varphi+V_{z} \cos \vartheta$	& $=V_{\rho} \sin \vartheta+V_{z} \cos \vartheta$ & $=V_{r}$ \\
+	$V_{x} \cos \vartheta \cos \varphi+V_{y} \cos \vartheta \sin \varphi-V_{z} \sin \vartheta$ & $=V_{\rho} \cos \vartheta-V_{z} \sin \vartheta$ & $=V_{\vartheta}$ \\
+	$-V_{x} \sin \varphi+V_{y} \cos \varphi$ & $=V_{\varphi}$ &$=V_{\varphi}$  \\
+	\hline
+\end{tabular}
+Hiermit folgt bspw.:
+$$
+V_x\vu{x} +V_y\vu{y}+V_z\vu{z}=(V_x\cos\varphi+V_y\sin\varphi)\vu{\rho}+(-V_x\sin\varphi+V_y\cos\varphi)\vu{\varphi}+V_z\vu{z}
+$$
+Durch Koeffizientenvergleich erhält man: $\vu{z}=\vu{z},\,\vu{x}=\cos\varphi\vu{\rho}-\sin\varphi\vu{\varphi},\,\vu{y}=\sin\varphi\vu{\rho}+\cos\varphi\vu{\varphi}$\\
+Unter Nutzung von \ref{kartkug} folgt beispielsweise auch:
+$$
+\vu{r}=\sin\vartheta\cos\varphi \vu{x}+ \sin\vartheta\sin\varphi \vu{y}+ \cos\vartheta\vu{z}
+$$
+Dies kann man mit $V_i\leftrightarrow\vu{i}$ auch direkt aus der Tabelle ablesen.
+
+\section{Mehrdimensionale Differentialrechnung}
+\subsection{Satz von Schwarz}\label{SvS}
+Für $f:D\subset \IR^n\rightarrow \IR$, deren partielle Ableitungen bis zur Ordnung $p\in\IN$ existieren und auf $D$ stetig sind, folgt, dass die partiellen Ableitungen in der Ordnung $q\leq p$ nicht von der Reihenfolge abhängen.
+\subsection{Jacobi-Matrix}\label{Jac}
+Sei $f: U \subset \IR^n \to \IR^m$ eine Funktion, deren Komponentenfunktionen mit $f_1 , \dots, f_m$ bezeichnet seien und deren partielle Ableitungen alle existieren sollen. Für einen Raumpunkt $x$ im Urbildraum $\IR^n$ seien $x_1, \dots, x_n$ die jeweils zugehörigen Koordinaten. \\
+Dann ist für $a \in U$die Jacobi-Matrix im Punkt $a$ durch
+\begin{equation}
+	J_f(a) := \left(\frac{\partial f_i}{\partial x_j}(a)\right)_{i=1,\ldots,m;\ j=1,\ldots,n} =  \begin{pmatrix}
+		\frac{\partial f_1}{\partial x_1}(a) & \frac{\partial f_1}{\partial x_2}(a) & \ldots & \frac{\partial f_1}{\partial x_n}(a) \\
+		\vdots & \vdots & \ddots & \vdots \\
+		\frac{\partial f_m}{\partial x_1}(a) & \frac{\partial f_m}{\partial x_2}(a) & \ldots & \frac{\partial f_m}{\partial x_n} (a)
+	\end{pmatrix}
+\end{equation}
+definiert.\\
+In den Zeilen der Jacobi-Matrix stehen also gerade die (transponierten) Gradienten der Komponentenfunktionen $f_1, \dots, f_m$von $f$.
+Andere übliche Schreibweisen für die Jacobi-Matrix $J_f(a)$von $f$ an der Stelle $a$ sind $Df(a)$, $\frac{\partial f}{\partial x}(a)$ und $\textstyle\frac{\partial(f_1, \ldots, f_m)}{\partial(x_1, \ldots, x_n)}(a)$. Differentiale kann man folgendermaßen ineinander umrechnen:
+\begin{equation}
+	\begin{pmatrix}
+		\dd x\\
+		\dd y\\
+		\dd z
+	\end{pmatrix}=\frac{\partial (x,y,z)}{\partial (u,v,w)}	\begin{pmatrix}
+	\dd u\\
+	\dd v\\
+	\dd w
+	\end{pmatrix}
+\end{equation}
+
+\subsection{Hauptsatz über implizite Funktionen}\label{hs_impl}
+Es seien $\vec{f}:D\subset\IR^{\color{green}n}\times\IR^{\color{red}m}\rightarrow\IR^{\color{red}m}$ eine stetig differenzierbare Funktion und für $\vec{x_0}\in\IR^{\color{green}n}$, $\vec{y_0}\in\IR^{\color{red}m}$ gelte $(\vec{x_0},\vec{y_0})\in D$, $\vec{f}(\vec{x_0},\vec{y_0})=\vec{0}$ (Existenz einer Lösung) und $J_{\vec{f},\vec{y}}(\vec{x_0},\vec{y_0})\in \IR^{\color{red} m\times m}$ ist invertierbar. Das ist hinreichend dafür, dass es in einer Umgebung von $(\vec{x_0},\vec{y_0})$ genau eine auflösende Funktion $\vec{g}:\IR^{\color{green}n}\rightarrow\IR^{\color{red}m}$ mit $\vec{y}=\vec{g}(\vec{x})$ ($\vec{f}(\vec{x},\vec{g}(\vec{x}))=\vec{0}$) und, dass $\vec{g}$ stetig differenzierbar ist mit: $J_{\vec{g}} (\vec{x})=-J_{\vec{f},\vec{y}}(\vec{x},\vec{g}(\vec{x}))^{-1}\cdot J_{\vec{f},\vec{x}}(\vec{x},\vec{g}(\vec{x}))$.\\
+$J_{\vec{f},\vec{x}}$ und $J_{\vec{f},\vec{y}}$ sind dabei Notationen für Teilmatrizen der Jacobi-Matrix ($\nearrow$ \ref{Jac}) von $\vec{f}$ (Dimension: ${\color{red}m}\times{\color{green}n}$ bzw. ${\color{red}m}\times{\color{red}m}$). Es muss nicht nach den letzten ${\color{red}m}$ Variablen aufgelöst werden, es kann nach beliebigen ${\color{red}m}$ Variablen umsortiert werden. Es ist auch nur die Existenz einer auflösenden Funktion gesichert, nicht aber die Konstruktion dieser. Die Ableitungsinformation kann für eine Taylor-Entwicklung genutzt werden.
+ \section{Differentialoperatoren}
+ Unterschied zwischen Operator (bspw. $\Delta=\frac{\partial^2 }{\partial x^2}+\frac{\partial^2 }{\partial y^2}+\frac{\partial^2 }{\partial z^2}$) und Anwendung dessen (bspw. $\Delta U=\frac{\partial^2 U}{\partial x^2}+\frac{\partial^2 U}{\partial y^2}+\frac{\partial^2 U}{\partial z^2}$) beachten.
+  \subsection{Divergenz}
+	  Divergenz eines Vektorfeldes, \textit{Quellendichte $\to$ Skalarfeld}
+	  \begin{equation}
+		  \begin{split}
+			  \div \vec{F}:= \nabla \cdot \vec{F}= \sum_{i=1}^{3} \frac{\partial}{\partial
+				  x_{i}}F_{i} = \partial_{i} F_{i}&\qquad \text{in kartesischen Koordinaten}\\
+			  \div \vec{F}:= \lim_{V \to 0}\left( \frac{1}{V}\oint\limits_{O(V)}\vec{F}\cdot
+			  \vec{n}\dd S\right)&\qquad\text{koordinatenfrei}
+		  \end{split}
+	  \end{equation}
+	  $\vec{n}$ ist der Normalenvektor (nach außen) der Oberfläche des Volumens.
+  \subsection{Rotation}
+	  Rotation eines Vektorfeldes, \textit{Wirbelstärke $\to$ Vektorfeld}
+	  \begin{equation}
+		  \begin{split}
+			  \rot\vec{F}:= \nabla \times \vec{F}= \sum_{i=1}^{3}\vu{i}\sum_{j=1}^{3}\sum
+			  _{k=1}^{3} \epsilon_{ijk}\frac{\partial}{\partial x_{j}}F_{k} = \epsilon_{ijk}
+			  \vu{i}\partial_{j} F_{k}&\qquad \text{in kartesischen Koordinaten}\\ \vec{F}
+			  := \lim_{V \to 0}\left( \frac{1}{V}\oint\limits_{O(V)}\vec{n}\times \vec{F}
+			  \dd S\right)&\qquad\text{koordinatenfrei}
+		  \end{split}
+	  \end{equation}
+	  $\epsilon_{ijk}$ ist der total antisymmetrische Einheitstensor dritter Stufe ($\nearrow$\ref{LeviCita}).
+  \subsection{Gradient}
+	  Gradient eines Skalarfeldes, \textit{Richtungsfeld des stärksten Anstiegs
+		  $\to$ Vektorfeld}
+	  \begin{equation}
+		  \begin{split}
+			  \grad f := \nabla f = \sum_{i=1}^{3} \frac{\partial}{\partial x_{i}}f \vu{i}
+			  = \vu{i}\partial_{i} f&\qquad \text{in kartesischen Koordinaten}\\ \grad f
+			  := \lim_{V \to 0}\left( \frac{1}{V}\oint\limits_{O(V)}f \vec{n}\dd S\right)
+			  &\qquad\text{koordinatenfrei}
+		  \end{split}
+	  \end{equation}
+	  \subsubsection{Richtungsableitung}
+	  Die Richtungsableitung ist definiert als:
+	  \begin{align}
+	  	\nabla_{\vec{a}} f(x):&=\lim\limits_{h\to 0}\frac{f(\vec{x}+h\vec{a})-f(\vec{x})}{h}\\
+	  	&=\frac{\partial f(\vec{x})}{\partial \vec{a}}\\
+	  f	\text{ total differenzierbar }\Rightarrow\quad&=\nabla f(\vec{x})\cdot \vec{a}\label{Richtungsableitung3}\\
+	  	&=\underbrace{(\vec{a}\cdot\nabla)}_{\text{neuer Operator}}f(\vec{x})\label{Richtungsableitung4}
+	  \end{align}
+	  Mit \ref{Richtungsableitung3} folgt außerdem: $\max\limits_{||\vec{a}||=\const}\left\{\nabla f(\vec{x})\cdot \vec{a}\right\}$  bei $\vec{a}\parallel\nabla f(\vec{x})$, der Gradient zeigt also in die Richtung des steilsten Anstiegs.
+	  Für ein Vektorfeld $\vec{f}$ gilt analog:
+	  \begin{equation}\begin{split}
+	  		\lim_{h\to0}\frac{\vec f(\vec x+h\vec a)-\vec f(\vec x)}{h}&=(\vec a\cdot\nabla)\vec f=\left(\nabla  \vec{f}\right)^T\vec{a}\\
+	  		\grad(\vec{f}):&=\left(\nabla \vec{f}\right)^T
+	  		\end{split}  \end{equation}
+  		Dabei wird das dyadische Produkt genutzt (kein Punkt; $\nearrow$\ref{dyad}). Der Gradient eines Skalarfeldes (Tensor 0ter Stufe) führt auf ein Vektorfeld, analog führt der Gradient eines Vektorfeldes (Tensor 1ter Stufe) auf einen Tensor 2ter Stufe. Bezüglich einer Orthonormalbasis kann man den Vektorgradienten als Matrix schreiben. Die Komponenten des Vektorgradienten sind die kovarianten Ableitungen der Komponenten des Vektorfeldes in einem Punkt ($\nearrow$\ref{tensoren}).
+	  \subsection{Laplace}\label{laplaceop}
+	  Für Skalarfelder gilt:
+	  \begin{equation}
+\Delta U:=\div \grad U = \nabla\cdot \nabla U
+	  \end{equation}
+	  Der Laplace-Operator kann auch auf \textbf{Vektorfelder} angewendet werden (im Hintergrund nutzt man Tensoren 2. Stufe). Mit \ref{rotrot} folgt:
+	  \begin{equation}
+	  	\Delta \vec{V}:=\nabla(\nabla\cdot\vec{V})-\nabla\times(\nabla\times\vec{V})
+	  \end{equation}
+	   \textbf{Kartesisch} ist das wegen der Linearität und der Konstanz der Einheitsvektoren problemlos möglich:
+	  \begin{equation}
+	  	\Delta \vec{V}=\Delta\left(V_x\vu{x}+V_y\vu{y}+V_z\vu{z}\right)=(\Delta V_x)\vu{x}+(\Delta V_y)\vu{y}+(\Delta V_z)\vu{z}
+	  \end{equation}
+	  In \textbf{Zylinderkoordinaten}/... ist dies wegen der nicht konstanten Einheitsvektoren schwieriger (Anwendung einer Produktregel, im Allgemeinen sind diese nicht immer einfach übertragbar):
+	  \begin{equation}
+	  	\begin{split}
+	\Delta \vec{V}&=\Delta\left(V_\rho\vu{\rho}(\varphi)+V_\varphi\vu{\varphi}(\varphi)+V_z\vu{z}\right)\\&=(\Delta V_\rho)\vu{\rho}(\varphi)+V_\rho\underbrace{\left(\frac{1}{\rho^2}\frac{\partial^2\vu{\rho}(\varphi)}{\partial \varphi^2}\right)}_{\Delta\vu{\rho}(\varphi)}+(\Delta V_\varphi)\vu{\varphi}(\varphi)+V_\varphi\underbrace{\left(\frac{1}{\rho^2}\frac{\partial^2\vu{\varphi}(\varphi)}{\partial \varphi^2}\right)}_{\Delta\vu{\varphi}(\varphi)}+(\Delta V_z)\vu{z}
+	\end{split}
+	  \end{equation}
+	  Deswegen bietet es sich oft an, für eine Rechnung in kartesische Koordinaten zu wechseln. Siehe auch \ref{vektorpot} ff..
+	  \subsection{Rechenregelen für Differentialoperatoren}
+	  Mit den Festlegungen, dass $U_i$ und $F$ skalare Funktionen, $c$ eine Konstante sowie $\vec{V}_i$ vektorielle Funktionen sind, gilt:\\
+	  \begin{minipage}{.57\textwidth}
+	  	\begin{align}
+	  		\grad\left(U_1+U_2\right)&=\grad U_1+\grad U_2 \\
+	  		  \rot\left(\vec{ {V}}_1+\vec{ {V}}_2\right)&=\rot \vec{ {V}}_1+\rot \vec{ {V}}_2\\
+	  		  \div\left(\vec{ {V}}_1+\vec{ {V}}_2\right)&=\div \vec{ {V}}_1+\div \vec{ {V}}_2 \\
+	  		\grad\left(U_1 U_2\right)&=U_1 \grad U_2+U_2 \grad U_1 \\
+	  		\grad F(U)&=F^{\prime}(U) \grad U \\
+			\rot(U \vec{ {V}})&=U \rot \vec{ {V}}-\vec{ {V}} \times \grad U \label{rotuv} \\
+	  		\div(U \vec{ {V}})&=\vec{ {V}} \cdot \grad U+U \div \vec{ {V}} \label{divsV} \\
+	  		\div\left(\vec{ {V}}_1 \times \vec{ {V}}_2\right)&=\vec{ {V}}_2 \cdot \rot \vec{ {V}}_1-\vec{ {V}}_1 \cdot \rot \vec{ {V}}_2 \label{divcross}
+	  		\end{align}
+	  \end{minipage}
+	  	  \begin{minipage}{.43\textwidth}
+	  \begin{align}
+	  	\grad(c U)&=c \grad U\\
+	   \rot(c \vec{ {V}})&=c \rot \vec{ {V}} \\
+	   \div(c \vec{ {V}})&=c \div \vec{ {V}}\\
+	   \div \rot \vec{ {V}} &\equiv 0 \label{divrot}\\ 
+	   \rot \grad U &\equiv \vec{ {0}} \\
+	   \div \grad U&=\Delta U \\ 
+	   \rot \rot \vec{ {V}}&=\grad \div \vec{ {V}}-\Delta \vec{ {V}} \label{rotrot}	   
+	  \end{align}
+	  	  \end{minipage}
+	  	  \begin{align}\label{gradab}
+	  	  \grad (\vec{a}\cdot\vec{b}) &= \vec{a}\times\rot \vec{b} + \vec{b}\times\rot \vec{a} + (\vec{a}\cdot\grad )\vec{b} + (\vec{b}\cdot\grad )\vec{a}\\
+	  	  \grad (\underbrace{\vec{a}\cdot\vec{a}}_{|\vec{a}|^2}) &= 2 (\vec{a}\times\rot \vec{a}) + 2 (\vec{a}\cdot\grad )\vec{a}
+	  	  \end{align}
+	  	  Außerdem gilt mit $\langle\cdot,\cdot\rangle$ als \href{https://de.wikipedia.org/wiki/Standardskalarprodukt}{euklidisches Standardskalarprodukt}:
+	  	  \begin{equation}\label{ProdLapl}
+	  	  	\Delta (U_1U_2) = U_1 \Delta U_2 + 2 \langle \nabla U_1 , \nabla U_2\rangle + U_2 \Delta U_1
+	  	  \end{equation}
+	  \subsection{Differentialoperatoren in verschiedenen Koordinaten}\label{difOpKo}
+	  \resizebox{\textwidth}{!}{
+$	  	\begin{array}{|c|c|c|c|}
+	  		\hline & \text { Kartesische Koordinaten } & \text { Zylinderkoordinaten } & \text { Kugelkoordinaten } \\
+	  		\hline \dd\vec{s}=\dd \vec{r} & \vec{ {e}_{ {x}}} \dd x+\vec{ {e}_{ {y}}} \dd y+\vec{ {e}_{ {z}}} \dd z & \vec{ {e}_\rho} \dd\rho+\vec{ {e}_{\varphi}} \rho \dd\varphi+\vec{ {e}_{ {z}}} \dd z & \vec{ {e}_{ {r}}} \dd r+\vec{ {e}_{\vartheta}} r \dd\vartheta+\vec{ {e}_{\varphi}} r \sin \vartheta \dd\varphi \\
+	  		\hline \grad U & \vec{ {e}_{ {x}}} \frac{\partial U}{\partial x}+\vec{ {e}_{ {y}}} \frac{\partial U}{\partial y}+\vec{ {e}_{ {z}}} \frac{\partial U}{\partial z} & \vec{ {e}_\rho} \frac{\partial U}{\partial \rho}+\vec{ {e}_{\varphi}} \frac{1}{\rho} \frac{\partial U}{\partial \varphi}+\vec{ {e}_{ {z}}} \frac{\partial U}{\partial z} & \vec{ {e}_{ {r}}} \frac{\partial U}{\partial r}+\vec{ {e}_{\vartheta}} \frac{1}{r} \frac{\partial U}{\partial \vartheta}+\vec{ {e}_{\varphi}} \frac{1}{r \sin \vartheta} \frac{\partial U}{\partial \varphi} \\
+	  		\hline \div \vec{ {V}} & \frac{\partial V_x}{\partial x}+\frac{\partial V_y}{\partial y}+\frac{\partial V_z}{\partial z} & \frac{1}{\rho} \frac{\partial}{\partial \rho}\left(\rho V_\rho\right)+\frac{1}{\rho} \frac{\partial V_{\varphi}}{\partial \varphi}+\frac{\partial V_z}{\partial z} & \begin{array}{l}
+	  			\frac{1}{r^2} \frac{\partial}{\partial r}\left(r^2 V_r\right)+\frac{1}{r \sin \vartheta} \frac{\partial}{\partial \vartheta}\left(V_{\vartheta} \sin \vartheta\right) \\
+	  			+\frac{1}{r \sin \vartheta} \frac{\partial V_{\varphi}}{\partial \varphi}
+	  		\end{array} \\
+	  		\hline \rot \vec{ {V}} & \begin{array}{r}
+	  			\quad \vec{ {e}_{ {x}}}\left(\frac{\partial V_z}{\partial y}-\frac{\partial V_y}{\partial z}\right) \\
+	  			+\vec{ {e}_{ {y}}}\left(\frac{\partial V_x}{\partial z}-\frac{\partial V_z}{\partial x}\right) \\
+	  			+\vec{ {e}_{ {z}}}\left(\frac{\partial V_y}{\partial x}-\frac{\partial V_x}{\partial y}\right)
+	  		\end{array} & \begin{array}{l}
+	  			\vec{ {e}_\rho}\left(\frac{1}{\rho} \frac{\partial V_z}{\partial \varphi}-\frac{\partial V_{\varphi}}{\partial z}\right) \\
+	  			+\vec{ {e}_{\varphi}}\left(\frac{\partial V_\rho}{\partial z}-\frac{\partial V_z}{\partial \rho}\right) \\
+	  			+\vec{ {e}_{ {z}}}\left(\frac{1}{\rho} \frac{\partial}{\partial \rho}\left(\rho V_{\varphi}\right)-\frac{1}{\rho} \frac{\partial V_\rho}{\partial \varphi}\right)
+	  		\end{array} & \begin{array}{l}
+	  			\vec{ {e}_{ {r}}} \frac{1}{r \sin \vartheta}\left[\frac{\partial}{\partial \vartheta}\left(V_{\varphi} \sin \vartheta\right)-\frac{\partial V_{\vartheta}}{\partial \varphi}\right] \\
+	  			+\vec{ {e}_{\vartheta}} \frac{1}{r}\left[\frac{1}{\sin \vartheta} \frac{\partial V_r}{\partial \varphi}-\frac{\partial}{\partial r}\left(r V_{\varphi}\right)\right] \\
+	  			+\vec{ {e}_{\varphi}} \frac{1}{r}\left[\frac{\partial}{\partial r}\left(r V_{\vartheta}\right)-\frac{\partial V_r}{\partial \vartheta}\right]
+	  		\end{array} \\
+	  		\hline \Delta U & \frac{\partial^2 U}{\partial x^2}+\frac{\partial^2 U}{\partial y^2}+\frac{\partial^2 U}{\partial z^2} & \begin{array}{l}
+	  			\frac{1}{\rho} \frac{\partial}{\partial \rho}\left(\rho \frac{\partial U}{\partial \rho}\right)+\frac{1}{\rho^2} \frac{\partial^2 U}{\partial \varphi^2} \\
+	  			+\frac{\partial^2 U}{\partial z^2}
+	  		\end{array} & \begin{array}{l}
+	  			\frac{1}{r^2} \frac{\partial}{\partial r}\left(r^2 \frac{\partial U}{\partial r}\right) \\
+	  			+\frac{1}{r^2 \sin \vartheta} \frac{\partial}{\partial \vartheta}\left(\sin \vartheta \frac{\partial U}{\partial \vartheta}\right) \\
+	  			+\frac{1}{r^2 \sin ^2 \vartheta} \frac{\partial^2 U}{\partial \varphi^2}
+	  		\end{array} \\
+	  		\hline
+	  	\end{array}
+	  $}\\\\
+	  \href{http://groolfs.de/Verschiedenespdf/VektorfeldPolarkoordinaten.pdf}{Herleitungsansätze / Anschauung}\\
+	  Beispielhaft kann man $\dd \vec{r}$ in Zylinderkoordinaten folgendermaßen zeigen:
+	  $$
+\dd \vec{r}=\frac{\partial \vec{r}}{\partial \rho}\dd \rho+\frac{\partial \vec{r}}{\partial \varphi}\dd \varphi+\frac{\partial \vec{r}}{\partial z}\dd z
+		$$
+		Mit $\vec{r}=\rho\cos\varphi\vu{x}+\rho\sin\varphi\vu{y}+z\vu{z}$ folgt nach ableiten:
+		$$
+		\dd \vec{r}=\left(\cos\varphi\vu{x}+\sin\varphi\vu{y}\right)\dd \rho+\left(-\rho\sin\varphi\vu{x}+\rho\cos\varphi\vu{y}\right)\dd \varphi+\vu{z}\dd z
+		$$
+		Unter Nutzung von \ref{kartzyl} folgt schließlich die Gleichung in der Tabelle.\\
+		Möchte man nur den $\nabla$-Operator ablesen, lässt man $U$ in der Gradientenzeile weg. Bei den anderen Operatoren ist noch zu berücksichtigen, dass die Ableitung auch auf die Einheitsvektoren angewandt werden muss, entsprechend kann man $\nabla$ nicht einfach ablesen.
+ \section{Mehrdimensionale Integralrechnung}
+ Konzeptionell ist es eine wichtige Abgrenzung, dass die Differentiation \textbf{lokal} ist (d.h. man kann die Ableitungen lokal in einem Punkt ausrechnen). Bei der Integration werden hingegen häufig ganze Mannigfaltigkeiten betrachtet. 
+ \subsection{Grundlagen}
+ \subsubsection{Normalbereich}
+ Eine Teilmenge $B\subset\IR^2$ heißt Normalbereich, falls es Konstanten $a,b$ und Funktionen (Eigenschaften von Funktionen beachten, insbesondere dass jedem Element des Definitionsbereiches \textbf{genau ein} des Wertebereiches zugeordnet wird!) $\varphi_1,\varphi_2:[a,b]\to \IR$ gibt mit: 
+ \begin{equation*}
+ 	\begin{split}
+ 	B&=\left\{(x,y)\in\IR^2:a\leq x\leq b, \varphi_1(x)\leq y \leq\varphi_2(x)\right\} \\ \text{analog: }&=\left\{(x,y)\in\IR^2:a\leq y\leq b, \varphi_1(y)\leq x \leq\varphi_2(y)\right\}
+ 	\end{split}
+ \end{equation*}
+ In $\IR^3$ ist eine Definition ebenso möglich:
+ \begin{equation*}
+ 	B=\left\{(x,y,z)\in\IR^3:a\leq x\leq b, \varphi_1(x)\leq y \leq\varphi_2(x), \psi_1(x,y)\leq z \leq \psi_2(x,y)\right\}
+ \end{equation*}
+ \subsubsection{Eigenschaften vom Bereichsintegral}
+ Ist $\Omega\in \IR^n$ ein Normalbereich und $f,g:\Omega\to \IR$ beschränkt und stetig (bis auf eine Nullmenge), so existiert das Riemann-Integral über den Bereich $\Omega$ ($\IR^2:\iint\limits_\Omega f(\vec{x})\dd A$, $\IR^3:\iiint\limits_\Omega f(\vec{x})\dd V$ - im Fall $f=1$ hat man ein Flächen-/Volumenmaß) mit folgenden Eigenschaften:
+ \begin{itemize}
+ 	\item \textbf{Linearität: }$\iint\limits_\Omega\left(\alpha f(\vec{x}) +g(\vec{x})\right)\dd \Omega=\alpha\iint\limits_\Omega f(\vec{x})\dd \Omega+ \iint\limits_\Omega g(\vec{x})\dd \Omega$
+ 	\item \textbf{Monotonie: } $f\leq g$ bis auf Nullmenge $\implies \iint\limits_\Omega f(\vec{x})\dd \Omega \leq \iint\limits_\Omega g(\vec{x})\dd \Omega$
+ 	\item $\Omega$ ist \textbf{Nullmenge} (etwas $(n-1)$-dimensionales in $\IR^n$) $\implies \iint\limits_\Omega f(\vec{x})\dd \Omega =0$ 
+ 	\item \textbf{Zwei Gebiete: } $\iint\limits_{\Omega_1} f(\vec{x})\dd \Omega_1+\iint\limits_{\Omega_2} f(\vec{x})\dd \Omega_2=\iint\limits_{\Omega_1 \cup \Omega_2} f(\vec{x})\dd (\Omega_1 \cup \Omega_2)+\iint\limits_{\Omega_1 \cap \Omega_2} f(\vec{x})\dd (\Omega_1 \cap \Omega_2)$
+ 	\item[] $\rightarrow$ Nicht-Normalbereiche als Vereinigung von Normalbereichen darstellbar
+ 	\item \textbf{Mittelwertsatz:} Ist $f$ stetig auf $\Omega$, so existiert ein $\vec{x}\prime\in\Omega$ mit $\iint\limits_\Omega f(\vec{x})\dd \Omega = f(\vec{x}\prime) \cdot \mu(\Omega)$. 
+ 	\item[] $\rightarrow\mu$ ist Flächen-/Volumenmaß von $\Omega$
+ \end{itemize}
+ Ist $\Omega$ ein Normalbereich und $f$ auf $\Omega$ integrierbar, so kann $\iint\limits_\Omega f(\vec{x})\dd \Omega$ als iteriertes Integral von 1D-Integralen berechnet werden:
+ \begin{equation*}
+ 	B=\left\{(x,y)\in\IR^2:a\leq x\leq b, \varphi_1(x)\leq y \leq\varphi_2(x)\right\} \Rightarrow \iint\limits_B f(\vec{x})\dd B= \int\limits_{x=a}^b\left(\int\limits_{y=\varphi_1(x)}^{\varphi_2(x)}f(\vec{x})\dd y\right) \dd x
+ \end{equation*}
+ Dies kann von innen nach außen gelöst werden. $y$ ist bezüglich $x$ eine Konstante. Kommt im inneren Integral kein $x$ vor, kann dieses auch als ganzes nach draußen gezogen werden (Konstante bezüglich $x$).
+ \subsubsection{Koordinatentransformation}
+ Manche Bereiche sind in kartesischen Koordinaten schwer bis gar nicht beschreibbar, Abhilfe liefert eine Koordinatentransformation. Ist die Koordinatentransformation $\vec{T}:D\to\Omega$ bijektiv, stetig differenzierbar und die Determinante der Jacobi-Matrix der Transformation $\det J_{\vec{T}}(\vec{a})\neq 0$ für fast alle $\vec{a}$ (Nullmengen ok), dann ist $f$ genau dann über $\Omega$ integrierbar ist, wenn $f(\vec{T}(\vec{a}))\left|\det J_{\vec{T}}(\vec{a}) \right|$ über $D$ integrierbar ist. Außerdem gilt: 
+ \begin{equation}
+ 	\iint\limits_\Omega f (\vec{x})\dd\Omega=\iint\limits_D f(\vec{T}(\vec{a}))\left|\det J_{\vec{T}}(\vec{a}) \right|\dd D
+ \end{equation}
+ \subsection{Kurvenintegrale}
+ \subsubsection{Kurvenintegral 1. Art}
+ Anschaulich summiert man beim Kurvenintegral 1. Art Teile der Kurve auf ($\IR^2$): $\Delta s=\sqrt{\Delta x^2+\Delta y^2}$. Daraus wird:
+ \begin{enumerate}
+ 	\item $\vec{\gamma}(x)=\begin{pmatrix}
+ 		x\\g(x)
+ 	\end{pmatrix} \Rightarrow \Delta s = \sqrt{1+\left(\frac{g(x+\Delta x)-g(x)}{\Delta x}\right)}\Delta x \xrightarrow{\Delta x \to 0} \dd s = \sqrt{1+g^\prime(x)^2}\dd x = |\vec{\gamma}^\prime(x)|\dd x$
+ 	\item  $\vec{\gamma}(t)=\begin{pmatrix}
+ 		x(t)\\y(t)
+ 	\end{pmatrix}\Rightarrow\Delta s = \sqrt{\left(\frac{x(t+\Delta t)-x(t)}{\Delta t}\right)+\left(\frac{y(t+\Delta t)-y(t)}{\Delta t}\right)}\Delta t\xrightarrow{\Delta t \to 0} \dd s = \sqrt{x^\prime(t)^2+y^\prime(t)^2} \dd t = |\vec{\gamma}^\prime(t)|\dd t$
+ \end{enumerate} 
+ Für eine stetige Funktion $f: D\subset \IR^n\to\IR$ und eine differenzierbare Parametrisierung $\vec{\gamma}:[\lambda_1,\lambda_2]$ der Kurve ist das Kurvenintegral 1. Art definiert als:
+ \begin{equation}
+ 	\int\limits_\gamma f \dd s = \int\limits_{\lambda_1}^{\lambda_2} f(\vec{\gamma} (\lambda)) |\vec{\gamma}^\prime(\lambda)|\dd \lambda
+ \end{equation}
+ $|\cdot|\text{ ist als Betrag im Sinne der euklidischen Norm } ||\cdot||_2$ gemeint. Will man die Bogenlänge ermitteln setzt man $f=1$. Für ein und die selbe Kurve ist die genaue Parametrisierung irrelevant ($x$/$t$). Außerdem ist der Wert auch unabhängig von der Orientierung der Parametrisierung.
+ \subsubsection{Kurvenintegral 2. Art}\label{kurvint2art}
+ Entlang einer mit $\vec{\gamma}(t),t\in[a,b]$ parametrisierten Kurve kann man über Vektorfeld $\vec{F}:D\subset\IR^n\to\IR^n$ integrieren. Anschaulich wird das Vektorfeld auf die Kurve (Tangente) projiziert und dann summiert. Es handelt sich um ein \href{https://de.wikipedia.org/wiki/Standardskalarprodukt}{euklidisches Standardskalarprodukt}:
+ \begin{equation}
+ 	\int\limits_\gamma\vec{F}\dd\vec{s}=\int\limits_a^b\langle \vec{F}(\vec{\gamma}(t)),\vec{\gamma}^\prime(t)\rangle\dd t \quad\text{besonders:}\quad \dd \vec{s}=\vec{\gamma}^\prime(t) \dd t
+ \end{equation}
+ $\dd\vec{s}$ kann z.B. auch für ein Kreuzprodukt analog verwendet werden. \\
+ In einem \textbf{einfach zusammenhängendem Gebiet} $D$ kann jede geschlossene Kurve in $D$ zu einem Punkt zusammengezogen werden (\textit{wie Lasso}) ohne das Gebiet zu verlassen. Ist $\vec{F}$ ein Gradientenfeld, $\vec{\gamma}(a)$ und $\vec{\gamma}(b)$ Endpunkte der Kurve und $D$ einfach zusammenhängend gilt (mit $\vec{F}=\grad \Phi$):
+ \begin{equation}\label{totDiff}
+	\int\limits_\gamma \vec{F}\dd \vec{s}=\int\limits_\gamma\underbrace{ \grad \Phi \dd \vec{s}}_{\dd \Phi =\sum \frac{\partial \Phi}{\partial x_i}\dd x_i}=\Phi (\vec{\gamma}(b))-\Phi (\vec{\gamma}(a))
+ \end{equation}
+$\dd\Phi$ nennt man auch \textbf{totales Differential}. Das Integral ist wegunabhängig, nur die Endpunkte sind relevant (nicht der Weg selber). $\vec{F}$ ist immer ein Gradientenfeld, wenn die \textbf{Integrabilitätsbedingungen} $\frac{\partial F_i}{\partial x_j}=\frac{\partial F_j}{\partial x_i}\forall i,j$ erfüllt sind. Für $n=3$ entspricht dies $\rot \vec{F}=\vec{0}$. Integrale entlang geschlossener Kurven sind für Gradientenfelder (unter den o.g. Bedingungen) immer 0. 
+ \subsection{Flächenintegrale}
+ Ist $\vec{r}:D\subset \IR^2\to \IR^3$ stetig differenzierbar, $D$ zusammenhängend (d.h. je zwei Punkte in $D$ sind durch eine Kurve in $D$ verbindbar), $\vec{r}$ eindeutig (injektiv) und $\frac{\partial}{\partial u}\vec{r}(u,v)\times\frac{\partial}{\partial v}\vec{r}(u,v)\neq 0 \forall (u,v)\in D$, dann ist $\vec{r}$ eine Parametrisierung des Flächenstückes $S:=\vec{r}[D]=\{\vec{r}(u,v)\in\IR^3:(u,v)\in D\subset \IR^2\}$. Zwei Variablen $((u,v)\in D)$ reichen aus, um ein zweidimensionales Objekt zu parametrieren. $\frac{\partial}{\partial u}\vec{r}(u,v)\times\frac{\partial}{\partial v}\vec{r}(u,v)$ steht dabei immer senkrecht zu der Fläche, der Betrag hat geometrisch die Bedeutung des Flächeninhaltes des aufgespannten Parallelogramms. Die Fläche muss orientiert sein (man weiß was außen/innen ist), ein Möbiusband ist nicht orientiert.
+ \subsubsection{Flächenintegral 1. Art}
+ Für ein stetiges Skalarfeld $f:A\subset\IR^3\to\IR$, einen Normalbereich $B\subset\IR^2$, ein Flächenstück $S=\vec{r}[B]\subset\IR^3$ mit Parametrisierung $\vec{r}$ und $S\subset A$ ist das Flächenintegral erster Art definiert als ($|\cdot|\leftrightarrow||\cdot||_2$):
+ \begin{equation}
+ 	\iint\limits_S f \dd \vec{A} =\iint\limits_B f(\vec{r}(u,v))\left|\frac{\partial}{\partial u}\vec{r}(u,v)\times\frac{\partial}{\partial v}\vec{r}(u,v)\right| \dd (u,v)
+ \end{equation}
+ \subsubsection{Flächenintegral 2. Art}
+ Für ein stetiges Vektorfeld $\vec{F}:A\subset\IR^3\to\IR^3$, einen Normalbereich $B\subset\IR^2$, ein Flächenstück $S=\vec{r}[B]\subset\IR^3$ mit Parametrisierung $\vec{r}$ und Normale $\vec{n}$ sowie $S\subset A$ ist das Flächenintegral zweiter Art definiert als (\href{https://de.wikipedia.org/wiki/Standardskalarprodukt}{euklidisches Standardskalarprodukt}):
+ \begin{equation}
+ \iint\limits_S\vec{F}\dd\vec{A}=\pm\iint\limits_B \left\langle\vec{F}(\vec{r}(u,v)), \frac{\partial}{\partial u}\vec{r}(u,v)\times\frac{\partial}{\partial v}\vec{r}(u,v)\right\rangle \dd (u,v)
+ \end{equation}
+ $\vec{n}$ (also der Flächennormalenvektor) muss wie das Kreuzprodukt orientiert sein. Sollten $\vec{n}$ und das Kreuzprodukt antiparallel sein, muss mit $-$ gerechnet werden (deshalb $\pm$).
+  \subsection{Satz von Gauß}
+	  Das Oberflächenintegral eines Vektorfeldes $\vec{F}$ über eine geschlossene
+	  Fläche $O(V)$ ist gleich dem Volumenintegral der Divergenz von $\vec{F}$,
+	  erstreckt über das von der Fläche $O(V)$ eingeschlossene Volumen $V$:
+	  \begin{equation}\label{intgauss}
+		  \begin{split}
+			  \int\limits_{V} \div\vec{F}\; \dd V = \oint\limits_{O(V)}\vec{F}\cdot \vec
+			  {n}\; \dd S
+		  \end{split}
+	  \end{equation}
+	  Das geht natürlich auch in 2D: Volumen $\to$ Fläche; Oberflächenintegral $\to$
+	  geschlossenes Wegintegral\\
+	  \textit{Das was aus dem Volumen strömt ist gleich dem, was im Volumen entspringt.}
+  \subsection{Satz von Stokes}
+	  Das Kurven- oder Linienintegral eines Vektorfeldes $\vec{F}$ längs einer
+	  einfach geschlossenen Kurve $C(A)$ ist gleich dem Oberflächenintegral der
+	  Rotation von $\vec{F}$ über eine beliebige Fläche $A$, die durch die Kurve $C$
+	  berandet wird:
+	  \begin{equation}\label{stokes}
+		  \oint\limits_{C(A)}\vec{F}\cdot \dd \vec{s}= \int\limits_{A}\rot\vec{F}\cdot \; \dd
+		  \vec{S}= \int\limits_{A}\rot\vec{F}\cdot \vec{n}\; \dd S
+	  \end{equation}
+	  \subsection{Sätze von Green}
+	  Hat man zwei beliebige Skalarfelder $f$ und $g$, die in einem Volumen $V$ definiert sind, dann gelten die beiden Greenschen Identitäten:
+	  \begin{align}
+	  	\int\limits_V \left[ f\Delta g + (\grad g\cdot \grad f) \right] \dd^3r' = \oint\limits_{O(V)} f\frac{\partial g}{\partial n} \dd^2r' \text{ 1. Greensche Identität}\label{green1} \\
+	  	\int\limits_V \left[ f\Delta g - g \Delta f \right] \dd^3r' = \oint\limits_{O(V)} \left[ f \frac{\partial g}{\partial n} - g \frac{\partial f}{\partial n} \right] \dd^2r' \text{ 2. Greensche Identität} \label{green2}
+	  \end{align}
+	  Dabei ist $\frac{\partial f}{\partial n} = \grad f \cdot \vec{n}$ die Normalenableitung. Beachte: $\frac{\partial f}{\partial n}\dd^2r'=\grad f \vec{n}\dd^2r'=\grad f \dd\vec{S}$.
+	\subsection{Linien-, Flächen- und Volumenelemente}
+	\begin{tabular}{|c|c|c|c|}
+		\hline & Kartesische Koordinaten & Zylinderkoordinaten & Kugelkoordinaten \\
+		\hline$d \vec{{r}}$ & $\vec{{e}_{{x}}} d x+\vec{{e}_{{y}}} d y+\vec{{e}_{{z}}} d z$ & $\vec{{e}_{\rho}} d \rho+\vec{{e}_{\varphi}} \rho d \varphi+\vec{{e}_{{z}}} d z$ & $\vec{{e}_{{r}}} d r+\vec{{e}_{\vartheta}} r d \vartheta+\vec{{e}_{\varphi}} r \sin \vartheta d \varphi$ \\
+		\hline$d \vec{{S}}$ & $\begin{aligned} \vec{{e}}_{x} d y d z & +\vec{{e}}_{y} d x d z \\
+			& +\vec{{e}}_{z} d x d y\end{aligned}$ & $\begin{aligned} \vec{{e}}_{\rho} \rho d \varphi d z & +\vec{{e}}_{\varphi} d \rho d z \\
+			& +\vec{{e}}_{z} \rho d \rho d \varphi\end{aligned}$ & $\begin{array}{l}\vec{{e}}_{r} r^{2} \sin \vartheta d \vartheta d \varphi \\
+			+\vec{{e}}_{\vartheta} r \sin \vartheta d r d \varphi \\
+			+\vec{{e}}_{\varphi} r d r d \vartheta\end{array}$ \\
+		\hline$d v^{*)}$ & $d x d y d z$ & $\rho d \rho d \varphi d z$ & $r^{2} \sin \vartheta d r d \vartheta d \varphi$ \\
+		\hline & $\begin{array}{l}\vec{{e}}_{x}=\vec{{e}}_{y} \times \vec{{e}}_{z} \\
+			\vec{{e}}_{y}=\vec{{e}}_{z} \times \vec{{e}}_{x} \\
+			\vec{{e}}_{z}=\vec{{e}}_{x} \times \vec{{e}}_{y}\end{array}$ & $\begin{array}{l}\vec{{e}}_{\rho}=\vec{{e}}_{\varphi} \times \vec{{e}}_{z} \\
+			\vec{{e}}_{\varphi}=\vec{{e}}_{z} \times \vec{{e}}_{\rho} \\
+			\vec{{e}}_{z}=\vec{{e}}_{\rho} \times \vec{{e}}_{\varphi}\end{array}$ & $\begin{array}{l}\vec{{e}}_{r}=\vec{{e}}_{\vartheta} \times \vec{{e}}_{\varphi} \\
+			\vec{{e}}_{\vartheta}=\vec{{e}}_{\varphi} \times \vec{{e}}_{r} \\
+			\vec{{e}}_{\varphi}=\vec{{e}}_{r} \times \vec{{e}}_{\vartheta}\end{array}$ \\
+		\hline & $\begin{array}{l}\vec{{e}}_{i} \cdot \vec{{e}}_{j}= \begin{cases}0 & i \neq j \\
+				1 & i=j\end{cases} \end{array}$ & $\begin{array}{l}\vec{{e}}_{i} \cdot \vec{{e}}_{\jmath}= \begin{cases}0 & i \neq j \\
+				1 & i=j\end{cases} \end{array}$ & $\begin{array}{l}\vec{{e}}_{i} \cdot \vec{{e}}_{\jmath}= \begin{cases}0 & i \neq j \\
+				1 & i=j\end{cases} \end{array}$ \\
+			& \multicolumn{3}{c|}{$ \text{ Die Indizes } i \text { und } j \text { stehen stellvertretend für } x, y, z \text { bzw. } 	\rho, \varphi, z \text { bzw. } r, \vartheta, \varphi .$}\\
+		\hline *) & \multicolumn{3}{c|}{$\begin{array}{l}\text { Für das Volumen wurde hier abweichend von der üblichen Praxis das Symbol } v \text { gewählt, } \\
+				\text { um Verwechlungen mit dem Betrag der Vektorfunktion }|\vec{{V}}|=V \text { zu vermeiden }\end{array}$} \\
+		\hline
+	\end{tabular}
+	Für Anwendungsbeispiele der Linien- und Flächenelemente siehe Bronstein S. 733 ff..\\
+	Anschauung Volumenelement in Kugelkoordinaten: Projiziert man in die $x,y$-Ebene und betrachtet $\dd\varphi$ sieht man, dass die Änderung von $\dd \varphi$ proportional zur Größe $r\sin\vartheta$ ist (das ist der Abstand zur Drehachse). Analog sieht man bei Projektion in die $z,r$-Ebene, dass der Abstand von $\dd\vartheta$ zur Dreachse $r$ ist. Setzt man dies zusammen erhält man das gegebene Volumenelement.
+ \section{Zerlegung von Vektorfeldern}
+  \subsection{Satz von Helmholtz}\label{helmholtz}
+	  Ein Vektorfeld $\vec{F}(\vec{r})$, welches für $r\to\infty$ stärker als $1/r$ gegen
+	  Null abfällt (das ist für praktisch relevante Probleme regelmäßig erfüllt),
+	  lässt sich als Summe eines rotationsfreien Anteils $\vec{a}(\vec{r})$ und
+	  eines divergenzfreien Anteils $\vec{b}(\vec{r})$ darstellen:
+	  \begin{equation}
+		  \begin{split}
+			  \vec{F}(\vec{r}) = \vec{a}(\vec{r}) + \vec{b}(\vec{r}) \text{ mit } \rot\vec{a}=
+			  \vec{0}\land \div \vec{b}= 0
+		  \end{split}
+	  \end{equation}
+	  \begin{equation}
+		  \begin{split}
+			  \text{Gradientenfelder sind rotationsfrei: }&\rot\grad \phi =\vec{0}\\ \text{Rotationsfelder
+				  sind divergenzfrei: }&\div\rot \vec{A}= 0
+		  \end{split}
+	  \end{equation}
+	  Hiermit folgt die Darstellung eines genügend stark abfallenden Vektorfeldes mit einem \textbf{Skalarpotential} $\phi$ und
+	  einem \textbf{Vektorpotential} $\vec{A}$:
+	  \begin{equation}
+		  \begin{split}
+			  \vec{F}(\vec{r}) = - \underbrace{\grad \phi (\vec{r})}_{\vec{a}:\rot-\text{frei}} + \underbrace{\rot\vec{A}(\vec{r})}_{\vec{b}:\div-\text{frei}} \text{ (\enquote{-}
+				  ist Konvention)}
+		  \end{split}
+	  \end{equation}
+  \subsection{Skalar- und Feldpotenzial}
+	  \textbf{Skalar-} $\phi (\vec{r})$ und \textbf{Vektorpotential}
+	  $\vec{A}(\vec{r})$ lassen sich direkt aus dem Feld $\vec{F}(\vec{r})$
+	  berechnen. Die Oberflächenintegrale kommen nur dann hinzu, wenn $\vec{F}(\vec{r})$ für $r\to\infty$ \textbf{nicht} stärker als $1/r$ (also zu langsam) gegen Null abfällt. Es gilt (operator$'$ - bezieht sich auf $r\prime$):
+
+	  \begin{equation}
+		  \begin{split}
+			  \phi (\vec{r}) =&\frac{1}{4\pi}\int\limits_{V} \frac{\div' \vec{F}(\vec{r}\prime)}{\left|\vec{r}-\vec{r}\prime\right|}
+			  \dd^{3}r'{- \frac{1}{4\pi} \oint\limits_{O(V)} \vec{n}' \cdot \frac{\vec{F}(\vec{r}\prime)}{\left|\vec{r}-\vec{r}\prime\right|} \dd^2r'}
+			  \\ \vec{A}(\vec{r}) =&\frac{1}{4\pi}\int\limits_{V} \frac{\rot' \vec{F}(\vec{r}\prime)}{\left|\vec{r}-\vec{r}\prime\right|}
+			  \dd^{3}r'{- \frac{1}{4\pi} \oint\limits_{O(V)} \vec{n}' \times \frac{\vec{F}(\vec{r}\prime)}{\left|\vec{r}-\vec{r}\prime\right|} \dd^2r'}
+		  \end{split}
+	  \end{equation}
+ \subsection{Longitudinale und transversale Komponente}
+  Häufig bezeichnet man die rotationsfreie Komponente $- \grad \phi (\vec{r})$ als
+  \textbf{longitudinale Komponente} und die divergrenzfreie Komponente
+  $\rot\vec{A}(\vec{r})$ als \textbf{transversale Komponente} des Vektorfeldes $\vec{F}(\vec{r})$. 

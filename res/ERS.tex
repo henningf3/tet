@@ -1,0 +1,11 @@
+\ctikzset{voltage/bump b=1.1}
+\begin{circuitikz}[european voltages,scale=.75]
+	\draw (0,0) to[short,o-o] (4,0);
+	\draw (0,2) to [short, i=$\ubar{I}(z)$,o-] (1,2) to[L=L,-] (3,2) coordinate(a);
+	\draw (a) to[short, i=$\ubar{I}(z+\Delta z)$,-o]  (4,2);
+	\draw (a) to[C,l_=C,*-*] ++(0,-2);
+
+	% Voltage labels
+	\draw (0,2) to[open,v=$\ubar{U}(z)$] ++(0,-2);
+	\draw (4,2) to[open, v^=$\ubar{U}(z+\Delta z)$] ++(0,-2);
+\end{circuitikz}

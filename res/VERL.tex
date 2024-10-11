@@ -1,0 +1,14 @@
+\ctikzset{voltage/bump b=1.1}
+\ctikzset{bipoles/length=.7cm}
+\begin{circuitikz}[european voltages,scale=.75]
+	\draw (0,0) to[short,o-o] (7,0);
+	\draw (0,1.5) to [short, i=$\ubar{I}(z)$,o-] (1,1.5) to[R=$R^\prime \dd z$] (2,1.5) to[L=$L^\prime \dd z$,-] (4,1.5) coordinate(a);
+	\draw (a) to[short, -] (5,1.5) coordinate(b);
+	\draw (b) to[short, i=$\ubar{I}(z+\dd z)$,-o]  (7,1.5);
+	\draw (a) to[C,l_=$C^\prime \dd z$,*-*] ++(0,-1.5);
+	\draw (b) to[R,l=$G^\prime \dd z$,*-*] ++(0,-1.5);
+
+	% Voltage labels
+	\draw (0,1.5) to[open,v=$\ubar{U}(z)$] ++(0,-1.5);
+	\draw (7,1.5) to[open, v^=$\ubar{U}(z+\dd z)$] ++(0,-1.5);
+\end{circuitikz}

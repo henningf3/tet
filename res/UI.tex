@@ -1,0 +1,11 @@
+\begin{tikzpicture}
+	\draw[thin,-stealth] (-1.5,0) -- (+1.5,0) node[below]{$x$};
+	\draw[thin,-stealth] (0,-1.5) -- (0,+1.5) node[right]{$y$};
+	\draw[fill=black] (1,-0.7) circle (0.1);
+	\draw[fill=green!20,draw=green,thick] (-0.9,0.9) circle (0.3) node[color=green,below,yshift=-8]{$O(A)$};
+	\draw[fill=black] (-0.9,0.9) circle (0.1);
+	\draw[thick,red,-stealth] (1,-0.6) .. controls (1,.2) and (-0.1,0.9) .. (-0.8,0.9) node[midway,right,yshift=3] {$C$};
+	\draw[color=green!50] (-0.9,1.05) -- (-0.85,1.4) node[color=green!50,above]{$A$};
+	\draw[thick, fill=white] (0,0) circle (0.08) node[anchor=north east]{$z$};
+	\draw[thick, fill=black] (0,0) circle (0.03);
+\end{tikzpicture}

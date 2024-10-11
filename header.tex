@@ -1,0 +1,90 @@
+% compile with: lualatex -synctex=1 -interaction=nonstopmode -shell-escape  %.tex
+\documentclass[a4paper,11pt,ngerman,oneside,titlepage,numbers=noenddot]{scrreprt}
+% Language
+\usepackage[ngerman]{babel}
+% Page Layout
+\usepackage[left=2.5cm,right=2.5cm,top=1.5cm,bottom=2cm]{geometry}
+% Hyperlinks
+\usepackage{hyperref}
+\hypersetup{
+	pdftitle={Theoretische Elektrotechnik},
+	pdfsubject={Zusammenfassung},
+	pdfauthor={Henning Dierks},
+	pdfkeywords={Studienjahr 2023/24 - TU Dresden}
+}
+% Math
+\usepackage{amsmath}  	% \DeclareMathOperator
+\usepackage{amssymb}  	% \DeclareMathOperator
+\usepackage{bm}			% bold math
+\usepackage{esint}		% fancy integrals
+\usepackage{cancel}		% cancel in equations
+\usepackage{mathtools}
+% Array and Tabular environment
+\usepackage{array}
+% \includegraphics
+\usepackage{graphicx}
+% framed minipage (gitstamp on titlepage)
+\usepackage{framed}
+% Colors
+\usepackage{xcolor}
+\definecolor{blue}{rgb}{0.0, 0.3, 0.9}
+\definecolor{red}{rgb}{0.64, 0.0, 0.0}
+\definecolor{green}{rgb}{0,0.5,0}
+% German quotes
+\usepackage[babel,german=quotes]{csquotes}
+% some self defined commands
+\usepackage{util}
+% fancy images
+\usepackage{pgf}		% python-plots
+\usepackage{pgfplots}	% internal plots
+% tikz 
+\usepackage{contour}	% contours for letters in graphics
+\usepackage{tikz}		% tikz and its libraries
+\usepackage{tikz-3dplot}
+\usetikzlibrary{circuits.ee.IEC}
+\usetikzlibrary{shapes}
+\usetikzlibrary{positioning}
+\usetikzlibrary{patterns}
+\usetikzlibrary{calc}
+\usetikzlibrary{decorations.markings,decorations.pathmorphing,decorations.pathreplacing}
+\usetikzlibrary{angles}
+\usetikzlibrary{quotes}
+\usetikzlibrary{3d}
+\usetikzlibrary{intersections}
+\usetikzlibrary{perspective}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{shapes.geometric}
+\usepackage[europeanresistors,americaninductors]{circuitikz} % use after "usetikzlibrary"!
+
+\tikzset{>=latex} % for LaTeX arrow head
+\tikzstyle{proj}=[blue!80,line width=0.08] %very thin
+\tikzstyle{area}=[draw=green,fill=green!80,fill opacity=0.6]
+\tikzstyle{vector}=[-stealth,blue,thick,line cap=round]
+\tikzstyle{unit vector}=[->,green,thick,line cap=round]
+
+% for some tikz-pictures
+\def\centerarc[#1](#2)(#3:#4:#5)% Syntax: [draw options] (center) (initial angle:final angle:radius)
+{ \draw[#1] ($(#2)+({#5*cos(#3)},{#5*sin(#3)})$) arc (#3:#4:#5); }
+
+\makeatletter
+\pgfqkeys{/tikz/cs}{
+	latitude/.store in=\tikz@cs@latitude,% not needed with '3d' library
+	longitude/.style={angle={#1}},% not needed with '3d' library
+	theta/.style={latitude={#1}},
+	phi/.style={angle={#1}}
+}
+\tikzdeclarecoordinatesystem{xyz spherical}{% needed even with '3d' library!
+	\pgfqkeys{/tikz/cs}{angle=0,radius=0,latitude=0,#1}%
+	\pgfpointspherical{\tikz@cs@angle}{\tikz@cs@latitude}{\tikz@cs@xradius}% fix \tikz@cs@radius to \tikz@cs@xradius
+}
+\makeatother
+
+% disable auto-indent
+\setlength{\parindent}{0pt}
+
+% prevent messed-up line breaks, add "draft" to the \documentclass
+% https://jeromebelleman.gitlab.io/posts/publishing/latexlinebreaks/
+% https://tex.stackexchange.com/questions/241343/what-is-the-meaning-of-fussy-sloppy-emergencystretch-tolerance-hbadness
+%\emergencystretch{\hsize}
+\sloppy
+

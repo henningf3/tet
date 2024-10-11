@@ -1,0 +1,19 @@
+\begin{tikzpicture}[x={(-10:1cm)},y={(90:1cm)},z={(210:1cm)}]
+	% Axes
+	\draw (-1,0,0) -- (5,0,0) node[below] {$z, \vec{k}$};
+	\draw (0,0,0) -- (0,2,0) node[above] {$x$};
+	\draw (0,0,0) -- (0,0,2) node[left] {$y$};
+	% Propagation
+	\draw[->,ultra thick] (5,0,0) -- node[above] {$\vec{v}_p=\vec{v}_c$} (6,0,0);
+	% Waves
+	\draw[red,thick] plot[domain=0:4.5,samples=200] (\x,{cos(deg(pi*\x))},0);
+	\draw[green,thick] plot[domain=0:4.5,samples=200] (\x,0,{cos(deg(pi*\x))});
+	% Arrows
+	\foreach \x in {0.1,0.3,...,4.4} {
+			\draw[->,red] (\x,0,0) -- (\x,{cos(deg(pi*\x))},0);
+			\draw[->,green] (\x,0,0) -- (\x,0,{cos(deg(pi*\x))});
+		}
+	% Labels
+	\node[above right] at (0,1,0) {$\vec{E}$};
+	\node[below] at (0,0,1) {$\vec{B}$};
+\end{tikzpicture}

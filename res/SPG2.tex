@@ -1,0 +1,18 @@
+
+\begin{tikzpicture}[line width = 1.2pt, line join=round,>=stealth]
+	\coordinate (O) at (0,0);
+	\coordinate (a) at (-2,0);
+	\coordinate (b) at (2,0);
+	\draw (a) -- (b);
+	\draw[color=red, -stealth] (1.5,0) -- (1.5,.5) node[right] {$\vec{n}$};
+	\draw[ -stealth] (O) -- (0,2) node[right] {$z$};
+	\draw[ -stealth] (O) -- (-1,1.5) node[left] {$\vec{r} $};
+	\draw[ dashed, -stealth] (O) -- (-1,-1.5) node[left] {$T(\vec{r} )$};
+	\draw[ -stealth] (O) -- (1,2) node[below right] {$\vec{r}\prime _i$};
+	\filldraw [color=blue!70] (1,2) circle (1pt) node[above right] {$Q_i$};
+	\draw[ dashed, -stealth] (O) -- (1,-2) node[below right] {$T(\vec{r}\prime _i)$};
+	\filldraw [color=red!70] (1,-2) circle (1pt) node[above right] {$Q_i^\star=-Q_i$};
+	\draw(-1.5,0.5) node {$V_1$};
+	\draw(-1.5,-0.5) node {$V_2$};
+
+\end{tikzpicture}

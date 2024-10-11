@@ -1,0 +1,285 @@
+ \chapter{Feldtheoretische Beschreibung von Wellenleitern}
+Die Ausbreitung von Wellen im Freiraum wurde bereits betrachtet. Für technische Anwendungen ist es mitunter hilfreich, Wellen entlang einer führenden Struktur zu transportieren. Diese Struktur nennt man dann \textbf{Wellenleiter}. Es gibt viele Formen von \textbf{Wellenleitern} in technischer Nutzung. Beispiele sind:
+	\begin{center}
+		\resizebox{\textwidth}{!}{\input{res/wellenleiter}}
+	\end{center}
+	\section{Abgrenzung der Betrachtung}
+	In dem Kapitel \enquote{Feldtheoretische Beschreibung von Wellenleitern} werden nur (1) \textbf{zylindrische Wellenleiter} mit (2) \textbf{metallischen Begrenzungen} bei (3) \textbf{harmonischer Zeitabhängigkeit} betrachtet. Es gibt allgemein zwei Herangehensweisen zur Beschreibung von Wellenleitern, einmal die \textbf{feldtheoretische} (in diesem Abschnitt) und die \textbf{Leitungstheorie} (mit Strom und Spannung, siehe \ref{leitungstheorie}).
+	\subsection{Zylindrische Wellenleiter}
+	 Alle hier betrachteten Strukturen sind in $z$-Richtung (eine beliebige Richtung, Koordinatensystem ggf. passend hindrehen) \textbf{translationsinvariant}. Es sind alle Schnitte senkrecht zu $z$ identisch. In diesem Fall wird von \textbf{zylindrischen Wellenleitern} gesprochen (auch bei Nicht-Kreiszylindern). Das Lösungsgebiet ist ein lineares, homogenes und isotropes Dielektrikum mit den Parametern \(\varepsilon\) und \(\mu\). Alles andere ist ein perfekter Leiter (\(\kappa \to \infty\)). 
+	 \begin{center}
+	 	\input{res/ZYW}
+	 \end{center}
+	 Die Vektoren \(\vu{x}\) und \(\vu{y}\) spannen die \textbf{Querschnittebene} oder \textbf{Transversalebene} auf. Die genaue Geometrie ist aber bis auf die Translationsinvarianz in $z$-Richtung egal.    
+	 \subsection{Metallische Begrenzung}
+	 Hier werden nur Wellenleiter mit \textbf{metallischen Begrenzungen} betrachtet. Es existieren auch dielektrische Wellenleiter (basierend auf dem Prinzip der Totalreflexion), welche hier aber nicht näher betrachtet werden sollen. Reflexionen (und dadurch eine Führung) treten auch bei metallischen Wellenleitern auf. Man könnte als Lösungsansatz (für eine analytische Beschreibung der Felder im Leiter) die Welle im Zeitbereich mit all ihren Reflexionen überlagern und würde die selbe \textbf{stationäre Lösung} erhalten wie in diesem Abschnitt über den Weg im Frequenzbereich, die transiente Lösung geht durch den Weg über Phasoren aber verloren.
+\subsection{Harmonische Zeitabhängigkeit (Helmholtz-Gleichung)}
+Es wird der Fall \textbf{harmonischer Zeitabhängigkeit} analysiert (diese ist weiterhin keine Einschränkung, weil man eine Fourier-Synthese durchführen kann). Die homogene Wellengleichung ($\nearrow$\ref{homwell}) wird dadurch zur \textbf{Helmholtz-Gleichung} im Frequenzbereich (Phasoren, \(\mathrm{j}\omega\) statt $\frac{\partial}{\partial t}$):
+	\begin{align}
+		\square \ubar{\vec{E}}(\vec{r} , t) = \left(\Delta - \varepsilon\mu\frac{\partial^2}{\partial t^2}\right) \ubar{\vec{E}} (\vec{r} , t) = \vec{0} &  & \rightarrow &  & \left(\Delta + \varepsilon\mu\omega^2\right) \ubar{\vec{E}}(\vec{r} ) =\vec{0} \label{helmholtze} \\
+		\square \vec{\ubar{B}}(\vec{r} , t) = \left(\Delta - \varepsilon\mu\frac{\partial^2}{\partial t^2}\right) \vec{\ubar{B}} (\vec{r} , t) = \vec{0} &  & \rightarrow &  & \left(\Delta + \varepsilon\mu\omega^2\right) \vec{\ubar{B}}(\vec{r} ) =\vec{0}\label{helmholtzb}
+	\end{align}
+	Die Gleichungen können im Leiter bzw. im Dielektrikum analog mit einer komplexen Permittivität formuliert werden, wobei dadurch ein Dämpfungsterm entsteht bzw. Verluste auftreten.
+\section{Zerlegung von Gesetzen, Operatoren und Vektoren}
+Die Translationsinvarianz kann dahingehend genutzt werden, dass Vektoren und Operatoren zerlegt werden können.
+\subsection{Zerlegung von Feldstärke- und Flussdichtevektor}
+\begin{center}
+	\input{res/VKZ}
+\end{center}
+  Jeder Vektor kann immer in eine \textbf{transversale} und eine \textbf{longitudinale} Komponente zerlegt werden:
+	\begin{equation}\label{vekzerl}\begin{split}
+			\textcolor{red}{\ubar{\vec{E}}} &= \textcolor{green}{\ubar{\vec{E}}_t} + \textcolor{blue}{\ubar{\vec{E}}_z} = \textcolor{green}{\ubar{\vec{E}}_t} + \textcolor{blue}{\ubar{E}_z\vu{z}} \\
+			\textcolor{green}{\ubar{\vec{E}}_t} &= \textcolor{green}{(\vu{z}\times\ubar{\vec{E}})\times\vu{z}}
+	\end{split}\end{equation}
+ Diese Zerlegung funktioniert analog für magnetische Flussdichte.
+	\subsection{Zerlegung des Induktions- und Durchflutungsgesetzes}
+		\subsubsection{Longitudinale Komponente des Induktionsgesetzes}
+	  Magnetische Flussdichte und elektrisches Feld sind über \ref{ind} verkoppelt (\(\rot \ubar{\vec{E}} = -\mathrm{j}\omega\vec{\ubar{B}}\)). In kartesischen Koordinaten gilt für die Rotation:
+	\begin{equation}\begin{split}
+			\rot \vec{F} &= \left[ \frac{\partial F_{z}}{\partial y} - \frac{\partial F_{y}}{\partial z} \right] \vu{x} + \left[ \frac{\partial F_{x}}{\partial z} - \frac{\partial F_{z}}{\partial x} \right] \vu{y } + \left[ \frac{\partial F_{y}}{\partial x} - \frac{\partial F_{x}}{\partial y}\right] \vu{z} \\
+			&=\nabla \times \vec{F} = \left[ \frac{\partial}{\partial x}\vu{x} + \frac{\partial}{\partial y}\vu{y} + \frac{\partial}{\partial z}\vu{z}\right] \times \vec{F}
+	\end{split}\end{equation}
+	Es wird die \textbf{transversale Rotation} definiert:
+	\begin{equation}\label{transvrot}\begin{split}
+			\rot _t & = \nabla_t \times := (\nabla - \frac{\partial}{\partial z} \vu{z}) \times\\
+			\rot _t \vec{F} &= \nabla_t \times \vec{F} = \left[ \frac{\partial}{\partial x}\vu{x} + \frac{\partial}{\partial y}\vu{y} + 0\, \vu{z}\right] \times \vec{F}\\
+			&=  \left[ \frac{\partial F_{z}}{\partial y} \right] \vu{x} + \left[ - \frac{\partial F_{z}}{\partial x} \right] \vu{y } + \left[ \frac{\partial F_{y}}{\partial x} - \frac{\partial F_{x}}{\partial y}\right] \vu{z}
+	\end{split}\end{equation}
+	 Offenbar stimmen die \textbf{longitudinalen Anteile} (\(z\)-Komponente) überein, d.h. es gilt:
+	\begin{equation}
+		\vu{z} \cdot \left(\rot _t \vec{F}\right) = \vu{z} \cdot \rot \vec{F}
+	\end{equation}
+	 Angewendet auf die \(z\)-Komponente des Induktionsgesetzes bedeutet das:
+	\begin{equation}\label{longind}
+		\vu{z} \cdot \left(\rot _t \ubar{\vec{E}}\right)=\vu{z} \cdot \left(\rot _t \ubar{\vec{E}}_t + \rot _t \ubar{\vec{E}}_z\right) =\boxed{\vu{z} \cdot \left(\rot _t \ubar{\vec{E}}_t\right) = -\mathrm{j}\omega\ubar{B}_z}
+	\end{equation}
+\subsubsection{Transversale Komponente des Induktionsgesetzes}
+	 Für die transversalen Komponenten gilt entsprechend \ref{vekzerl}:
+	\begin{align}
+		(\vu{z}\times\rot \ubar{\vec{E}})\times\vu{z}                                                                                                                                                                         & = (\vu{z}\times(-\mathrm{j}\omega\vec{\ubar{B}}))\times\vu{z}                                                                     \nonumber\\
+		\left[ \frac{\partial \ubar{E}_{z}}{\partial y} - \frac{\partial \ubar{E}_{y}}{\partial z} \right] \vu{x} + \left[ \frac{\partial \ubar{E}_{x}}{\partial z} - \frac{\partial \ubar{E}_{z}}{\partial x} \right] \vu{y} & = -\mathrm{j}\omega \left(\ubar{B}_x \vu{x} + \ubar{B}_y \vu{y} \right) = -\mathrm{j}\omega \vec{\ubar{B}}_t \;\;|\; \vu{z}\times \nonumber\\
+		\left[ \frac{\partial \ubar{E}_{z}}{\partial y} - \frac{\partial \ubar{E}_{y}}{\partial z} \right] \vu{y} - \left[ \frac{\partial \ubar{E}_{x}}{\partial z} - \frac{\partial \ubar{E}_{z}}{\partial x} \right] \vu{x} & = -\mathrm{j}\omega \vu{z}\times \vec{\ubar{B}}_t                                                                                 \nonumber\\
+		\left[ \frac{\partial \ubar{E}_{z}}{\partial x} \vu{x} + \frac{\partial \ubar{E}_{z}}{\partial y} \vu{y} \right] - \frac{\partial}{\partial z}\left(\ubar{E}_{x}\vu{x} + \ubar{E}_{y}\vu{y} \right)                   & = -\mathrm{j}\omega \vu{z}\times \vec{\ubar{B}}_t                                                                                 \nonumber\\
+		\Aboxed{\grad _t \ubar{E}_{z} - \frac{\partial}{\partial z}\ubar{\vec{E}}_t                                                                                                                                           & = -\mathrm{j}\omega \vu{z}\times \vec{\ubar{B}}_t} \label{transind}
+	\end{align}
+	Dabei wird offensichtlich der \textbf{transversale Gradient} definiert:
+	\begin{equation}
+		\grad_t=\nabla_t:= \nabla-\frac{\partial }{\partial z} \vu{z}=\left[ \frac{\partial }{\partial x} \vu{x} + \frac{\partial }{\partial y} \vu{y} \right]
+	\end{equation}
+\subsubsection{Transversale und longitudinale Komponente des Durchflutungsgesetzes}
+	 Aus dem Durchflutungsgesetz ($\nearrow$\ref{durchf} mit $J=0$), also \(\rot \vec{\ubar{B}} = \mathrm{j}\omega\varepsilon\mu\ubar{\vec{E}}\) folgt analog:
+	\begin{align}
+		\Aboxed{\vu{z} \cdot \left(\rot _t \vec{\ubar{B}}_t\right) &= \mathrm{j}\omega\varepsilon\mu\ubar{E}_z} \label{longdurchf} \\
+		 \Aboxed{\grad _t \ubar{B}_{z} - \frac{\partial}{\partial z}\vec{\ubar{B}}_t& = \mathrm{j}\omega\varepsilon\mu \vu{z}\times \ubar{\vec{E}}_t} \label{transdurchf}
+	\end{align}
+
+\subsection{Bestimmung der transversalen Komponenten der Vektoren}
+	Die transversalen Komponenten \ref{transind} und \ref{transdurchf}
+	können entkoppelt werden. Je nachdem, ob die Welle hinlaufend (-) oder rücklaufend (+) ist, gilt: \(\frac{\partial \ubar{E}_z}{\partial z} = \mp \mathrm{j} k \ubar{E}_z\). Außerdem gilt immer \(\frac{\partial^2 \ubar{E}_t}{\partial z^2} = -  k^2 \ubar{E}_t\). Damit folgt nun: 
+	\begin{equation}\begin{split}
+		&\grad _t \frac{\partial}{\partial z}\ubar{B}_{z} - \frac{\partial}{\partial z}\left(\frac{\partial}{\partial z}\vec{\ubar{B}}_t\right) = \mathrm{j}\omega\varepsilon\mu \vu{z}\times \frac{\partial}{\partial z}\ubar{\vec{E}}_t\\
+		\Rightarrow \quad &k^2 \vec{\ubar{B}}_t = -\grad _t \frac{\partial}{\partial z}\ubar{B}_{z}+\mathrm{j}\omega\varepsilon\mu \vu{z}\times \frac{\partial}{\partial z}\ubar{\vec{E}}_t\\
+		\text{analog: } \quad &\ubar{\vec{E}}_t =-\frac{1}{k^2}\grad _t \frac{\partial}{\partial z}\ubar{E}_{z}-\frac{1}{k^2}\mathrm{j}\omega \vu{z}\times \frac{\partial}{\partial z}\ubar{\vec{B}}_t\\
+		\Rightarrow \quad &\vec{\ubar{B}}_t = -\frac{1}{k^2}\grad _t \frac{\partial}{\partial z}\ubar{B}_{z}\\&\quad\quad\quad+\frac{1}{k^2}\mathrm{j}\omega\varepsilon\mu \vu{z}\times \frac{\partial}{\partial z}\left(-\frac{1}{k^2}\grad _t \frac{\partial}{\partial z}\ubar{E}_{z}-\frac{1}{k^2}\mathrm{j}\omega \vu{z}\times \frac{\partial}{\partial z}\ubar{\vec{B}}_t\right)\\
+		\Rightarrow \quad &\vec{\ubar{B}}_t = \pm \frac{\mathrm{j}}{k}\grad _t\ubar{E}_{z}+\frac{1}{k^2}\mathrm{j}\omega\varepsilon\mu \vu{z}\times \left(\grad _t \ubar{E}_{z}+\mathrm{j}\omega \vu{z}\times \ubar{\vec{B}}_t\right)\\
+		\stackrel{\text{\ref{grass}}}{\Rightarrow} \quad &\ubar{\vec{B}}_t = \pm \frac{\mathrm{j}}{k}\grad _t\ubar{E}_{z}+\frac{\mathrm{j}}{k^2}\omega\varepsilon\mu \vu{z} \times\grad _t \ubar{E}_{z}+\frac{\mathrm{1}}{k^2}\omega^2\varepsilon\mu  \ubar{\vec{B}}_t\\
+		\Rightarrow \quad & \vec{\ubar{B}}_t(k^2-\omega^2\varepsilon\mu)=\pm \mathrm{j}k\grad _t\ubar{E}_{z}+\mathrm{j}\omega\varepsilon\mu \vu{z} \times\grad _t \ubar{E}_{z}\\
+		\Rightarrow \quad & \vec{\ubar{B}}_t = \frac{\mathrm{j}}{\omega^2\varepsilon\mu-k^2}\left[\mp k\grad _t\ubar{E}_{z}-\omega\varepsilon\mu \vu{z} \times\grad _t \ubar{E}_{z} \right]
+	\end{split}\end{equation}
+	 $E_t$ lässt sich analog berechnen. Es ist zu beachten, dass im TEM-Fall ($E_z=0$, \ref{disp}$\Rightarrow k^2-\omega^2\varepsilon\mu=0$) die letzte Division nicht zulässig ist. Die Gleichung ist durch $0=0$ bereits davor erfüllt. Die entkoppelten Gleichungen lauten zusammengefasst:
+	\begin{equation}\label{entkoppelgl}\begin{split}
+			\Aboxed{\ubar{\vec{E}}_t &= \frac{\mathrm{j}}{\omega^2\varepsilon\mu -  k^2} \left[ \mp  k\, \grad _t \ubar{E}_{z} + \omega  \vu{z}\times\grad _t \ubar{B}_{z}\right]}\\
+			\Aboxed{\vec{\ubar{B}}_t &= \frac{\mathrm{j}}{\omega^2\varepsilon\mu -  k^2} \left[ \mp  k\, \grad _t \ubar{B}_{z} - \omega\varepsilon\mu  \vu{z}\times\grad _t \ubar{E}_{z}\right]}
+	\end{split}\end{equation}
+	Sind die \textbf{longitudinalen Feldkomponenten bekannt}, so lassen sich die \textbf{transversalen Feldkomponenten berechnen}. Im Allgemeinen ist es schwierig, die longitudinalen Komponenten zu finden, aber es gibt einfache Spezialfälle. 
+\subsection{Helmholtz-Gleichungen mit transversalem Laplace-Operator}
+	Der Laplace-Operator kann in kartesischen Koordinaten \((x,y,z)\) folgendermaßen zerlegt werden, wobei ein \textbf{transversaler Laplace-Operator} definiert wird:
+	\begin{equation}\begin{split}
+			\Delta &= \underbrace{\frac{1}{\rho}\frac{\partial }{\partial \rho}\left(\rho\frac{\partial }{\partial \rho}\right)+\frac{1}{\rho^{2}}\frac{\partial^{2}}{\partial \varphi^{2}}}_{:=\Delta _t}+\frac{\partial^{2}}{\partial z^{2}} = \Delta _t + \frac{\partial^{2}}{\partial z^{2}}\\
+			\Delta &= \underbrace{\frac{\partial^2}{\partial x^2}+\frac{\partial^2}{\partial y^2}}_{:=\Delta _t}+\frac{\partial^2}{\partial z^2} = \Delta _t + \frac{\partial^{2}}{\partial z^{2}}
+	\end{split}\end{equation}
+	 Zur Lösung der Helmholtzgleichungen ($\nearrow$\ref{helmholtze},\ref{helmholtzb})
+	wird eine \textbf{in \(z\)-Richtung propagierende Welle} angesetzt (hier beispielhaft nur für $E$):
+	\begin{equation}
+		\ubar{\vec{E}}(\vec{r} , t) = \ubar{\vec{E}}_0(x,y)  \mathrm{e}^{\mathrm{j}(\omega t \pm  k z)} \stackrel{\text{ruhender Zeiger}}{\to}  \ubar{\vec{E}}(\vec{r} ) = \ubar{\vec{E}}_0(x,y)  \mathrm{e}^{\pm\mathrm{j} k z}
+	\end{equation}
+$\ubar{\vec{E}}_0(x,y)$ kann keine $z$-Abhängigkeit haben, sonst würde es Probleme bei der Erfüllung der Wellengleichung geben, wenn diese unter Einhaltung harmonischer Zeitabhängigkeit erfüllt werden soll. Wenn mit diesem Ansatz eine Lösung erhalten wird, die die Randbedingungen erfüllt, ist diese Lösung eindeutig ($\nearrow$\ref{poilsg}). Es propagiert die \enquote{+}-Lösung in Richtung \(-\vu{z}\) und die \enquote{-}-Lösung in Richtung \(+\vu{z}\).	 Mit der Zerlegung des Laplace-Operators und mit \(\frac{\partial^2}{\partial z^2} = - k^2\) schreibt sich die Helmholtz-Gleichung nun in der Form:
+	\begin{equation}\label{helmholtzmitgamma}\begin{split}
+		\Aboxed{\Delta _t \ubar{\vec{E}}(\vec{r} ) + \underbrace{(\varepsilon\mu\omega^2 -  k^2)}_{:=\gamma^2} \ubar{\vec{E}}(\vec{r} ) &=\vec{0}}\\
+			\Aboxed{\Delta _t \ubar{\vec{B}}(\vec{r} ) + \underbrace{(\varepsilon\mu\omega^2 -  k^2)}_{:=\gamma^2} \ubar{\vec{B}}(\vec{r} ) &=\vec{0}}
+	\end{split}\end{equation}
+\section{Modentypen}
+	Es werden nun zunächst die entkoppelten Gleichungen aus \ref{entkoppelgl} mit  \(\gamma^2= \omega^2\varepsilon\mu -  k^2\) geschrieben:
+	\begin{equation}\begin{split}
+			\gamma^2\ubar{\vec{E}}_t &= \mathrm{j}\left[ \mp  k\, \grad _t \ubar{E}_{z} + \omega  \vu{z}\times\grad _t \ubar{B}_{z}\right]\\
+			\gamma^2\vec{\ubar{B}}_t &= \mathrm{j}\left[ \mp  k\, \grad _t \ubar{B}_{z} - \omega\varepsilon\mu  \vu{z}\times\grad _t \ubar{E}_{z}\right]
+	\end{split}\end{equation}
+Nun kann eine \textbf{Fallunterscheidung} ausgeführt werden:
+\begin{enumerate}
+	\item Im \textbf{TEM-Mode} verschwinden beide longitudinalen Komponenten (\(\ubar{E}_z=0\) \textbf{und} \(\ubar{B}_z=0\)). Insbesondere sind also beide longitudinalen Komponenten bekannt, die transversalen Komponenten also berechenbar.
+	\item Im \textbf{TE-Mode} verschwindet die longitudinale Komponente von $E$ (\(\ubar{E}_z=0\) \textbf{und} \(\ubar{B}_z\neq0\)).
+	\item Im \textbf{TM-Mode} verschwindet die longitudinale Komponente von $B$ (\(\ubar{E}_z\neq0\) \textbf{und} \(\ubar{B}_z= 0\)).
+	\item In \textbf{hybriden Moden} verschwindet \textbf{keine} der longitudinalen Komponenten (\(\ubar{E}_z\neq0\) \textbf{und} \(\ubar{B}_z\neq0\)).
+\end{enumerate}
+\subsection{TEM-Lösungen}\label{tem-loes}
+\subsubsection{Triviale Lösung und nichttriviale Lösung (Dispersionsrelation)}
+Im TEM-Mode gilt \(\ubar{E}_z=0\) \textbf{und} \(\ubar{B}_z=0\), dabei werden nochmals zwei Fälle unterschieden:
+\begin{enumerate}
+	\item Für den TEM-Mode gibt es die triviale Lösung (\(\ubar{\vec{E}}=\vec{0}\) und \(\vec{\ubar{B}}=\vec{0}\)), auch die transversalen Komponenten sind $0$. Diese ist nicht weiter interessant.
+	\item Für die \textbf{nichttriviale} Lösung gilt folgende Bedingung (\textbf{Dispersionsrelation}):
+	\begin{equation}\label{disp}
+		\gamma^2=0 \Rightarrow \boxed{ k^2 =  k_0^2= \varepsilon\mu\omega^2}
+	\end{equation}
+\end{enumerate}
+$k_0$ wird dabei als das $k$ des TEM-Modes eingeführt. Diese Relation ist schon von ebenen Wellen und Kugelwellen, beide (lokal) TEM-Wellen, bekannt. Wenn es im Wellenleiter einen TEM-Mode gibt, dann für \textbf{beliebige Frequenzen}. Für \textbf{jedes} $\omega$ kann dann nämlich ein $k$ gefunden werden, sodass die Gleichung nichttrivial gelöst wird. \textbf{Keinen TEM-Mode} kann es geben, wenn es \textbf{verschiedene Materialien} im Lösungsvolumen gibt, die Gleichung für eine Frequenz kann dann nur noch lokal erfüllt werden. In diesem wichtigen Spezialfall (z.B. praktisch Mikrostreifenleitung: Platinenmaterial und Luft als Dielektrika; isolierte Zweidrahtleitung: Isolator und Luft) wird der TEM-Mode nur noch approximiert. Man spricht vom \textbf{Quasi-TEM-Mode}, die TEM-Eigneschaften dominieren.
+\subsubsection{Berechnung der Felder - 2D Laplace-Gleichung}
+Die transversale Rotation war in \ref{transvrot} gegeben. Im TEM-Fall sind wegen \(\ubar{E}_z=0\) \textbf{\(x\) und \(y\)-Komponente} von \(\rot _t \ubar{\vec{E}}\) also \textbf{offensichtlich Null}. Aus der \textbf{\(z\)-Komponente} des Induktionsgesetz aus Gleichung \ref{longind} folgt wegen \(\ubar{B}_z=0\) (beachte, dass wegen \(\ubar{E}_z=0\) folgt, dass $\ubar{\vec{E}}=\ubar{\vec{E}}_t$):
+	\begin{equation}
+		\vu{z} \cdot \left(\rot _t \ubar{\vec{E}}_t\right) = -\mathrm{j}\omega\ubar{B}_z  \stackrel{!}{=} 0 \Rightarrow
+		\rot _t \ubar{\vec{E}}_t = \vec{0} \Rightarrow \boxed{\rot _t \ubar{\vec{E}} = \vec{0}}
+	\end{equation}
+Eine wichtige Folgerung ist, dass wegen \(\rot _t \ubar{\vec{E}} = \vec{0}\) in den \textbf{Transversalebenen} mit \textbf{Spannungen} im Sinne von Potentialdifferenzen gearbeitet werden kann. Die Begründung, warum das funktioniert, liefert der Satz von Stokes ($\nearrow$\ref{stokes}). Die $z$-Komponente der Rotation ist gleich der $z$-Komponente der transversalen Rotation, womit $\rot _t \ubar{\vec{E}} \cdot \vu{z}=\rot  \ubar{\vec{E}}\cdot \vu{z}=0$ gilt. Jeder beliebige geschlossene Integrationsweg in der Transversalebene spannt eine Fläche auf. Wegen $\rot  \ubar{\vec{E}}\cdot \vu{z}=0$ ist jedes Oberflächenintegral über solch eine Fläche in der Transversalebene mit Flächennormalenvektor $\vu{z}$ 0. Damit verschwindet nach dem Satz von Stokes auch das Linienintegral entlang jedes geschlossenen Integrationsweges in dieser Ebene. Das bedeutet, dass die Integration wegunabhängig sein muss. Entsprechend kann in der Transversalebene sinnvollerweise ein Skalarpotential definiert werden. Ohne Ladungsquellen im Lösungsgebiet gilt wegen \(\ubar{E}_z=0\) auch:
+	\begin{equation}
+		\div \ubar{\vec{E}} = 0 \Rightarrow \div _t\ubar{\vec{E}}_t = -\frac{\partial \ubar{E}_z}{\partial z} = 0 \Rightarrow  \boxed{\div _t\ubar{\vec{E}}=0}
+	\end{equation}
+	Sowohl die transversale Rotation als auch die transversale Divergenz verschwindet. Wenn man also nur nach den transversalen Komponenten ableitet, hat man keine Rotation. Entsprechend kann wegen der Rotationsfreiheit ein Potential eingeführt werden mit:
+	\begin{equation}
+		\ubar{\vec{E}}_t=\ubar{\vec{E}} = -\grad \phi= -\grad_t \phi 
+	\end{equation}
+	 Damit folgt eine \textbf{zweidimensionale Laplace-Gleichung} für \(\phi\):
+	\begin{equation}
+		\boxed{\Delta _t \phi  = 0} 
+	\end{equation}
+Diese Laplace-Gleichung kann unter Beachtung der \textbf{Randbedingungen} auf dem perfekt leitenden Rand gelöst werden. Aus der Transversalkomponente des Induktionsgesetzes ($\nearrow$\ref{transind}) folgt zusammen mit der Dispersionsrelation ($\nearrow$\ref{disp}) auch eine Berechnungsvorschrift für $B$ ($E$ ist durch Lösung der Laplace-Gleichung bekannt):
+	\begin{equation}
+		\grad _t \underbrace{\ubar{E}_{z}}_{=0} - \underbrace{\frac{\partial}{\partial z}\ubar{\vec{E}}_t}_{=\pm\mathrm{j} k_0 \ubar{\vec{E}}}
+		= -\mathrm{j}\omega \vu{z} \times \vec{\ubar{B}}_t
+		\Rightarrow
+		\boxed{\vec{\ubar{B}} = \mp \frac{ k_0}{\omega}\, \vu{z}\times\ubar{\vec{E}} = \mp \sqrt{\varepsilon\mu}\, \vu{z}\times\ubar{\vec{E}}} 
+	\end{equation}
+	\enquote{+} steht dabei wieder für die hinlaufende Lösung. Für das Magnetfeld schreibt sich diese Beziehung wieder mit der \textbf{Feldwellenimpedanz} (Feldwellenwiderstand, $\nearrow$\ref{feldwellenwid}). Als $Z_0$ wird hier speziell die Feldwellenimpedanz bei TEM-Moden bezeichnet:
+	\begin{equation}
+		\boxed{Z_0=\sqrt{\frac{\mu}{\varepsilon}}}
+	\end{equation}
+	Es folgt:
+	\begin{equation}
+		\boxed{\vec{\ubar{H}} = \mp \frac{1}{Z_0}\, \vu{z}\times\ubar{\vec{E}}} 
+	\end{equation}
+	$\vec{H}$, $\vec{E}$ und $\vec{k}$ bilden also wieder ein orthogonales Rechtssystem.
+\subsubsection{Kriterium für die Nichtexistenz eines TEM-Mode}
+	In Strukturen mit \textbf{einfach zusammenhängender Querschnittfläche} existiert kein TEM-Mode. Der Begriff einfach zusammenhängend wird in \ref{kurvint2art} angerissen. Dies soll kurz begründet werden (es gibt exakte Beweise, die Begründung hier ist keiner):
+	\begin{center}
+		\input{res/TEMM}
+	\end{center}
+  Betrachtet wird ein ideal leitend berandetes Dielektrikum. Es wird zunächst davon ausgegangen, dass es eine TEM-Lösung gibt. Eine Feldlinie des Magnetfeldes müsste also (wie rot abgebildet) in der Transversalebene liegen. Sie muss sich innerhalb der Berandung schließen, weil die Ummantelung perfekt leitend ist. Diese \textbf{Randbedingung} sich mit \ref{normB} in Verbindung mit \ref{ind} begründen. Im idealen Leiter gilt, dass $\vec{E}=0$. Daraus folgt, dass auch $\rot\vec{E}=0$ und damit nach \ref{ind} auch $(\partial/\partial t) \vec{B}=0$ im im idealen Leiter null ist. Damit im idealen Leiter also ein Magnetfeld existieren kann, muss dieses zeitunabhängig sein. Im Raum propagierende elektromagnetische Wellen haben jedoch keinen Gleichanteil (der löst die Wellengleichung nicht). Folglich muss neben $E$ auch $B$ im idealen Leiter gleich 0 sein. Nach  \ref{normB} gilt $0=\vec{n}\cdot\left(\vec{B}_2-\vec{B}_1\right)$.
+  Entsprechend muss die Normalkomponente des $B$ Feldes im Dielektrikum an der Grenzfläche zum idealen Leiter gleich 0 sein. Das ist gleichbedeutend damit, dass sich die Feldlinie innerhalb der Berandung schließen muss, da sie nicht aus der Ummantelung ausbrechen kann.\\
+   Schaut man das Ampèreschs Durchflutungsgesetz ($\nearrow$\ref{durchf}) entlang einer beliebigen magnetischen Feldlinie an, gilt:
+		\begin{equation}
+			\oint\limits_{O(A)} \vec{\ubar{B}} \cdot \dd\vec{s} = \mathrm{j}\omega\varepsilon\mu \iint\limits_{A} \ubar{\vec{E}}\cdot\dd\vec{A} + \mu\iint\limits_{A} \ubar{\vec{J}}\cdot\dd\vec{A}
+		\end{equation}
+		Weil das Gebiet einfach zusammenhängend ist, fließt kein Strom durch die betrachtete Fläche (es gibt keinen Leiter im Dielektrikum). Das Integral über $J$ wird also 0. Gleichzeitig kann nicht sichergestellt werden, dass das Ringintegral über $B$ für alle beliebigen Integrationswege im Leiterquerschnitt gleich 0 ist.
+		 Wenn das Ringintegral aber irgendwo ungleich 0 ist, muss es irgendwo eine $z$-Komponente des $E$-Feldes geben (oder die Lösung ist trivial). Das ist ein Widerspruch zur TEM-Welle.
+\subsection{TE-Lösungen -- $E_z=0$}
+Es wird die \(z\)-Komponente der Helmholtzgleichung für \(\vec{\ubar{H}}\) ($\nearrow$\ref{helmholtzmitgamma}) betrachtet:
+	\begin{equation}
+		\boxed{\left(\Delta _t + \gamma^2\right) \ubar{H}_z =  0} 
+	\end{equation}
+	Eine Randbedingung kann mit \ref{entkoppelgl} hergeleitet werden. Da die Berandung als idealleitend angenommen wurde (elektrisches Feld verschwindet), muss nach \ref{tanE} $\vec{E}_t\cdot\vec{t}=0$ an der Berandung gelten, wobei $\vec{t}$ ein beliebieger Tangentialvektor ist (Normalkomponenten von $\vec{E}_t$ sind zulässig, das $t$ steht hier für transversal). Das kann nur erreicht werden, wenn $\grad_t \vec{B}$ keine Normalkomponente hat. Betrachtet man nämlich eine Fläche, dann gilt, dass $\vec{n}\times\vec{t_1}=\vec{t_2}$ ist, wobei $\vec{n}$ ein Normalenvektor und $\vec{t_1}$ sowie $\vec{t_2}$ Tangentialvektoren sind. $\vu{z}$ ist aufgrund der betrachteten Leiterstruktur auf jeden Fall ein Tangentialvektor. Entsprechend muss $\grad_t \vec{B}\cdot \vec{n}=0$ sein, damit $\vec{E}_t\cdot\vec{t}=0$ nach \ref{entkoppelgl} erfüllt sein kann. Das ist nach \ref{Richtungsableitung3} gleichbedeutend mit der folgenden Randbedingung:
+	\begin{equation}
+		\left. \frac{\partial \ubar{H}_z}{\partial \vec{n}}\right|_{O(V)} = 0
+	\end{equation}
+	 Dieses \textbf{Neumannsche Randwertproblem} für $\ubar{H}_z$ kann mit den Methoden der Magnetostatik  gelöst werden. Somit erhält man eine Lösung für $\ubar{H}_z$. Weiterhin gilt \(\ubar{E}_z = 0\), somit sind die longitudinalen Komponenten bekannt. Die transversalen Komponenten lassen sich entsprechend \ref{entkoppelgl} sofort berechnen. Es gilt:
+	\begin{equation}\begin{split}
+		\vec{\ubar{H}}_t &= \mp \frac{\mathrm{j}}{\gamma^2}  k\, \grad _t \ubar{{H_z}}\\ 
+			\ubar{\vec{E}}_t &= \pm Z\, \vu{z}\times \vec{\ubar{H}}_{t} 
+		\end{split}\end{equation}		
+	Damit sind die Felder im Lösungsvolumen vollständig bestimmt. Für die Feldwellenimpedanz gilt ($Z_0$ ist dabei die Feldwellenimpedanz vom TEM-Mode):	
+	\begin{equation}\begin{split}	
+			 \boxed{Z=\frac{\mu\omega}{ k} = \frac{ k_0}{ k}\sqrt{\frac{\mu}{\varepsilon}} = \frac{ k_0}{ k} Z_0}
+	\end{split}\end{equation}
+\subsection{TM-Lösungen -- $B_z=0$}
+Es wird die \(z\)-Komponente der Helmholtzgleichung für \(\ubar{\vec{E}}\) ($\nearrow$\ref{helmholtzmitgamma}) betrachtet:
+	\begin{equation}\label{TMGl}
+		\boxed{\left(\Delta _t + \gamma^2\right) \ubar{E}_z =  0}
+	\end{equation}
+	 An einem idealen Leiter muss nach \ref{tanE} jede beliebige Tangentialkomponente (die \(\ubar{E}_z\)-Komponente ist in den angenommenen Leiterstrukturen transversal) verschwinden. Es resultiert die Randbedingung:
+	 \begin{equation}
+	 	\left. \ubar{E}_z\right|_{O(V)} = 0
+	 \end{equation}
+	 Das \textbf{Dirichletsche Randwertproblem} für \(\ubar{E}_z\)  kann mit den Methoden der Elektrostatik gelöst werden ($\nearrow$\ref{poilsg}). Somit erhält man eine Lösung für \(\ubar{E}_z\). Weiterhin gilt \(\ubar{B}_z=0\), somit sind die longitudinalen Komponenten bekannt. Die transversalen Komponenten lassen sich entsprechend \ref{entkoppelgl} sofort berechnen. Es gilt:
+	\begin{equation}\begin{split}
+		\ubar{\vec{E}}_t &=  \mp  k \frac{\mathrm{j}}{\gamma^2} \, \grad _t \ubar{E}_{z} \\
+			\vec{\ubar{B}}_t = \mu\vec{\ubar{H}}_t&= -\frac{\mathrm{j}}{\gamma^2} \omega\varepsilon\mu  \vu{z}\times\grad _t \ubar{E}_{z}\\
+			&= \pm \frac{\omega\varepsilon\mu}{ k} \vu{z}\times \ubar{\vec{E}}_{t} = \pm \mu \frac{1}{Z} \vu{z}\times \ubar{\vec{E}}_{t}  
+	\end{split}\end{equation}
+	 Damit sind die Felder im Lösungsvolumen vollständig bestimmt. Für die Feldwellenimpedanz gilt ($Z_0$ ist dabei die Feldwellenimpedanz vom TEM-Mode):
+	 \begin{equation}
+	 	\boxed{Z=\frac{ k}{\omega\varepsilon} = \frac{ k}{ k_0}\sqrt{\frac{\mu}{\varepsilon}} = \frac{ k}{ k_0} Z_0}
+	 \end{equation}
+	 \subsection{Hybride Moden}
+	 Alle bisher betrachteten Moden sind Lösungen der Helmholtz-Gleichungen (lineare pDGL), die mit jeweils einem speziellen Ansatz berechnet wurden. Die Gesamtlösung im Wellenleiter ist die Superposition aus allen ausbreitungsfähigen Moden, die alle Randbedingungen erfüllt. In der Regel werden Leiter so dimensioniert, dass nur ein Mode ausbreitungsfähig ist ($\nearrow$HF), alle anderen Moden werden als Störmoden bezeichnet und sollten vermieden werden. In speziellen Anordnungen braucht man aber auch gleichzeitig TE- und TM-Mode (hybird), um überhaupt alle Randbedingungen erfüllen zu können. Dann wird die TE- mit der TM-Lösung superponiert und dann an die Randbedingungen angepasst ($\nearrow$Mikrostreifenleitung, siehe Pozar - Microwave engineering).
+\subsection{Dispersionsrelation vom TM- und TE-Mode}
+Beim TEM-Mode musste die Dispersionsrelation erfüllt sein ($\nearrow$\ref{disp}). Außerdem existierte er, wenn er existierte, für beliebige Frequenzen. Das ist bei TM- und TE-Moden anders! Beispielsweise muss bei TM-Moden zunächst das Randwertproblem für \(\ubar{E}_z\) gelöst werden ($\nearrow$\ref{TMGl}). Dies ist eine \textbf{Eigenwertgleichung} für die \textbf{Eigenfunktionen} \(\ubar{E}_{z\lambda}\) und den (diskreten) \textbf{Eigenwerten} \(\gamma^2_\lambda\) mit \(\lambda = 1,2,3,\ldots\). Die Eigenfunktionen werden auch \textbf{Moden} genannt und mit $\lambda$ durchnummeriert.
+	\begin{equation}
+		\left(\Delta _t + \gamma_\lambda^2\right) \ubar{E}_{z\lambda} =  0
+	\end{equation}
+	 Für eine Kreisfrequenz \(\omega\) gilt dann die Dispersionsrelation (die selbe Gleichung gilt mit analoger Herleitung auch für TE-Moden):
+	 	\begin{equation}
+		\gamma_\lambda^2 = \mu\varepsilon\omega^2- k_\lambda^2 \Rightarrow  k_\lambda=\sqrt{\mu\varepsilon\omega^2-\gamma_\lambda^2} \Rightarrow  \boxed{ k_\lambda=\sqrt{\mu\varepsilon}\sqrt{\omega^2-\omega_\lambda^2}}  
+	\end{equation}
+	Wobei $\omega_\lambda$ folgendermaßen definiert ist:
+	\begin{equation}
+		\omega_\lambda=\frac{\gamma_\lambda}{\sqrt{\mu\varepsilon}}
+	\end{equation}
+ Die \(z\)-Abhängigkeit der Lösung ist (z.B. für das elektrische Feld):
+	\begin{equation}
+		\ubar{\vec{E}}_\lambda(\vec{r} ) = \ubar{\vec{E}}_{0\lambda}(x,y)  \mathrm{e}^{\pm\mathrm{j} k_\lambda z}
+	\end{equation}
+ Für \textbf{\(\omega < \omega_\lambda\)} wird \( k_\lambda\) \textbf{imaginär} und die Lösung ist \textbf{keine propagierende Welle} mehr. Diese Lösungen sind \textbf{evaneszente Moden}:
+	\begin{equation}
+		\ubar{\vec{E}}_\lambda(\vec{r} ) = \ubar{\vec{E}}_{0\lambda}(x,y)  \mathrm{e}^{\mp| k_\lambda| z} \text{ für } \omega < \omega_\lambda
+	\end{equation}
+ Man hat also entweder ein exponentielles Wachstum oder eine exponentielle Dämpfung, wobei ersteres unphysikalisch ist. Die (Kreis)-Frequenz \(\omega_\lambda = 2\pi f_\lambda\) heißt \textbf{Cut-Off Frequenz} des Modes \(\lambda\). Die  Dispersionsrelation kann auf \( k_0=\sqrt{\mu\varepsilon}\omega\) normiert werden:
+	\begin{equation}
+		\frac{ k_\lambda}{ k_0}=\sqrt{1-\frac{\omega_\lambda^2}{\omega^2}}
+	\end{equation}
+ Dies ergibt folgendes Bild (den TEM-Mode gibt es nur, falls das Gebiet nicht einfach zusammenhängend ist):
+	\begin{center}
+		\input{res/EVM}
+	\end{center}
+	Von $\omega=0$ bis $\omega=\omega_1$ gibt es nur den TEM-Mode. Das ist z.B. für ein Koaxialkabel ein erstrebenswerter Frequenzbereich. Nimmt man bspw. einen Hohlwellenleiter, dann gibt es aufgrund des einfach zusammenhängenden Gebietes keinen TEM-Mode. Zwischen $\omega=\omega_1$ und $\omega=\omega_2$ gibt es dann nur einen Mode, es erstrebenswert einen Hohlleiter in diesem Frequenzbereich zu betreiben. Im Frequenzbereich zwischen $\omega=\omega_2$ und $\omega=\omega_3$ gibt es 2 ausbreitungsfähige Moden + ggf. zusätzlich den TEM-Mode. Je höher die Frequenz steigt, desto mehr Moden sind ausbreitungsfähig.
+	%Gliederung sinnvoll machen, nachedem fertig geguckt
+	\subsubsection{Modenentartung}
+	Gerade bei Querschnitten mit \textbf{hoher Symmetrie} (z.B. quadratischer Querschnitt) kommt es dazu, \textbf{Eigenwerte übereinstimmen}. Das ist i.d.R. nicht gewollt, quadratische Querschnitte sollten nicht eingesetzt werden. Man spricht in diesem Fall von \textbf{Entartung}. In diesem Fall ergeben sich verschiedene \textbf{Eigenfunktionen} (Moden) zu identischen Grenzfrequenzen \(\omega_{\lambda_1} = \omega_{\lambda_2}\). Gibt es \(n\) Eigenlösungen zu einem Eigenwert spricht man von einer \textbf{\(n\)-fachen Entartung}. Technisch ist es sehr häufig erwünscht, nur einen ausbreitungsfähigen Mode im Arbeitsbereich zu haben (\textbf{Single-Mode-Betrieb}).
+\subsection{Phasen- und Gruppengeschwindigkeiten}
+\subsubsection{Phasengeschwindigkeiten} 
+Die \textbf{Phasengeschwindigkeit} ist definiert als 
+\begin{equation}
+	v_\mathrm{p} = \frac{\omega}{ k}
+\end{equation} 
+	\begin{itemize}
+		\item TEM-Mode \( k_0=\sqrt{\varepsilon\mu}\, \omega\):
+		\begin{equation}
+			v_{p0} = \frac{\omega}{ k_0} = \frac{1}{\sqrt{\varepsilon\mu}} =  v_\mathrm{c}
+		\end{equation}
+		\item TM/TE-Mode \( k_\lambda=\sqrt{\mu\varepsilon}\sqrt{\omega^2-\omega_\lambda^2}\):
+		\begin{equation}\begin{split}
+			&v_{\mathrm{p}\lambda} = \frac{\omega}{ k_\lambda} = \frac{ v_{\mathrm{p}0}}{\sqrt{1-\frac{\omega_\lambda^2}{\omega^2}}} = \frac{ v_\mathrm{c}}{\sqrt{1-\frac{\omega_\lambda^2}{\omega^2}}}\\  &v_{\mathrm{p}\lambda}(\omega\to\omega_\lambda)\to\infty \\  &v_{\mathrm{p}\lambda}(\omega\to\infty)\to v_\mathrm{c}
+		\end{split}\end{equation}
+	\end{itemize}
+	\subsubsection{Gruppenentartung}
+	Die \textbf{Gruppengeschwindigkeit} ist definiert als 
+	\begin{equation}
+		v_\mathrm{g} = \frac{\partial \omega}{\partial  k}
+	\end{equation} 
+	\begin{itemize}
+		\item TEM-Mode \( k_0=\sqrt{\varepsilon\mu}\, \omega\):
+		\begin{equation}
+			v_\mathrm{g0} = \frac{\omega}{ k_0} = \frac{1}{\sqrt{\varepsilon\mu}} =  v_\mathrm{p0}= v_\mathrm{c}
+		\end{equation}
+		\item TM/TE-Mode \( k_\lambda=\sqrt{\mu\varepsilon}\sqrt{\omega^2-\omega_\lambda^2}\):
+		\begin{equation}\begin{split}
+			&v_{\mathrm{g}\lambda} = \frac{\partial \omega}{\partial  k_\lambda} =  v_\mathrm{c} \sqrt{1-\frac{\omega_\lambda^2}{\omega^2}} \\  &v_{\mathrm{g}\lambda}(\omega\to\omega_\lambda)=0 \\  &v_{g\lambda}(\omega\to\infty)\to v_\mathrm{c}
+		\end{split}\end{equation}	
+	\end{itemize}
+

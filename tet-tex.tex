@@ -1,0 +1,53 @@
+\input{header}
+% Specify only the chapter you work on to save compilation time. 
+%\includeonly{chapter1,chapter2,chapter6,chapter7,chapter8, appendixA,appendixB,appendixC}
+\begin{document}
+\makeatletter
+\begin{titlepage}
+	\center
+	\vspace*{3cm}
+	\textsc{\LARGE Technische Universität Dresden}\\[0.3cm] \textsc{\Large
+		Fakultät Elektrotechnik und Informationstechnik}\\[1.5cm] \HRule\\[0.4cm]
+	{\huge\bfseries Theoretische Elektrotechnik}\\[0.6cm] \Large Zusammenfassung
+	aus dem Studienjahr 2023/2024\\[0.3cm] \HRule\\[2.5cm] {\large\textit{Mitschriften von}}\\
+	Henning \textsc{Dierks}\\
+	{\large\textit{basierend auf:}}\\ \url{https://github.com/hgkdd/TET}
+	\\[2.5cm]
+	{	\includegraphics[width=0.3\textwidth]{res/CC_Logo}}
+	\vfill
+	\vfill
+	\includegraphics[width=0.3\textwidth]{res/tud}
+	\includegraphics[width=0.3\textwidth]{res/eui}
+	\\[1cm]
+	\vfill
+\end{titlepage}
+
+\makeatother
+\hypersetup{bookmarksdepth=3} % pdf outline depth
+\setcounter{tocdepth}{1}
+\chapter*{Vorwort}
+Das vorliegende Skript zur theoretischen Elektrotechnik ist im Studienjahr 2023/2024 auf Basis der Lehrveranstaltung von Prof. Krauthäuser entstanden (\href{https://github.com/hgkdd/TET}{Link}). Der mathematische Anhang basiert teilweise auf der Vorlesung von Prof. Franz aus den Jahren 2021-2023, einige Tabellen dort sind dem Taschenbuch der Mathematik von Bronstein entnommen.\\\\
+Da das Skript als Vorlesungsmitschrift entstanden ist, sind inhaltliche und insbesondere orthographische Fehler nicht auszuschließen. Verbesserungsvorschläge und Korrekturen sind als Pull request oder Issue im \href{https://github.com/henningf3/tet}{GitHub-Repo} gerne gesehen.\\\\
+Außerdem wurde das Dokument erst nachträglich referenziert, da es zunächst nicht zur Veröffentlichung gedacht war. Trotz großer Sorgfalt, können auch dabei Fehler passiert sein. Hinweise darauf sind jederzeit willkommen.\\\\
+\textbf{Nutzungshinweis:} Die Datei ist für eine digtale Nutzung konzipiert. In geeigneten PDF-Viewern (z.B. evince) ist es möglich, über Referenzen wie z.B. \ref{ind} zu hovern und dadurch den Inhalt an dieser Stelle des Dokumentes angezeigt zu bekommen. Außerdem sind externe Verweise häufig als Hyperlink gehalten, z.B. \href{https://github.com/hgkdd/TET}{Link}.
+
+
+\tableofcontents
+\include{chapter1}
+\include{chapter2}
+\include{chapter3}
+\include{chapter4}
+\include{chapter5}
+\include{chapter6}
+\include{chapter7}
+\include{chapter8}
+\include{chapter9}
+\include{chapter10}
+\include{chapter11}
+\appendix
+\include{appendixA}
+\include{appendixB}
+\include{appendixC}
+\include{appendixD}
+
+\end{document}

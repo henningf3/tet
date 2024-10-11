@@ -1,0 +1,16 @@
+\tdplotsetmaincoords{60}{110}
+\begin{tikzpicture}[scale=3, tdplot_main_coords]
+	\coordinate (O) at (0,0,0);
+	\draw[thick,->] (0,0,0) -- (1,0,0) node[anchor=north east]{$x$};
+	\draw[thick,->] (0,0,0) -- (0,1,0) node[anchor=north west]{$y$};
+	\draw[thick,->] (0,0,0) -- (0,0,1) node[anchor=east]{$z$};
+	\tdplotsetcoord{P}{1}{30}{60}
+	\draw plot [mark=*, mark size=0.2] (P) node [above] {\scriptsize$\vec{r} =(\rho,\varphi,z)$};
+	\draw[thick, ->] (O) -- (P);
+	\draw[dashed, color=black] (O) -- (Pxy) node [below right] {$\rho$};
+	\draw[dashed, color=black] (Pxy) -- (P) node [below right] {$z$};
+	\tdplotdrawarc{(O)}{0.2}{0}{60}{anchor=north}{$\varphi$}
+	% \draw[dashed, color=black] (P) -- (Pz) node [below left] {$z$};
+	\draw[thick,color=red, dashed] (0,0,1.2) -- (0,0,-0.6) node[anchor=north] {$\rho_L$};
+	\draw (0,-0.2,0.1) node{$V_1,\, \varepsilon_1$};
+\end{tikzpicture}

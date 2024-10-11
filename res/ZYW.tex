@@ -1,0 +1,9 @@
+\begin{tikzpicture}[scale=.9]
+	\draw [thin, -stealth] (-2,0) -- (2,0) node[right]{$x$};
+	\draw [thin, -stealth] (0,-2) -- (0,2) node[right]{$y$};
+	\draw [very thick, draw=black, fill=lightgray] plot [smooth cycle] coordinates {(-1,-2) (-1.7,0) (0,1.5) (1,1) (1,0) (0.5,-1) (0,-1)};
+	\draw [very thick, fill=darkgray] plot [smooth cycle] coordinates {(-.7,-.5) (-.4,-.4) (-.3,-.7)};
+	\draw [very thick, fill=darkgray] plot [smooth cycle] coordinates {(-.1,-.1) (-.1,.2) (0.4,0.4) (.3,-.1)};
+	\node at (1,1.8){$\kappa\to\infty$};
+	\node at (-.8,.5){$\varepsilon,\mu$};
+\end{tikzpicture}

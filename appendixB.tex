@@ -1,0 +1,416 @@
+\chapter{Differentialgleichungen}
+\section{Gewöhnliche Differentialgleichungen}
+Die \textbf{Ordnung} der Differentialgleichung ist die höchste auftretende Ableitungsordnung.
+\subsection{Differentialgleichungen 1. Ordnung}
+\subsubsection{Allgemein}
+Allgemein ist eine DGL 1. Ordnung gegeben als
+\begin{equation}
+	y^{\prime}=f(x, y), \quad y=y(x)
+\end{equation}
+wobei durch die \textbf{Anfangsbedingung} $y\left(x_{0}\right)=y_{0}$ die \textbf{Integrationskonstante} festgelegt wird. Die durch diese DGL bestimmten Steigungen von Lösungskurven lassen sich in einem \textbf{Richtungsfeld} veranschaulichen (der Anstieg von $y$ in einem Punkt wird durch $f$ charakterisiert):
+\begin{center}
+	\resizebox{.3\textwidth}{!}{\input{res/DGLRf}}
+\end{center}
+\subsubsection{Separable Differentialgleichungen, Trennung der Variablen (TdV)}
+Hat die DGL die Form
+\begin{equation}
+	y^\prime=\frac{\dd y}{\dd x}=\frac{g(x)}{h(y)}
+\end{equation}
+kann man das Leibniz-Kalkül anwenden und es folgt:
+\begin{equation}
+	\int h(y) \dd y = \int g(x) \dd x \implies H(y)=G(x)+C \text{ (implizit)}
+\end{equation}
+Da man hierbei ggf. durch 0 teilt, muss eine \textbf{Fallunterscheidung} gemacht werden. Durch geeignete Substitution ($y^\prime(x)=f(a+bx+cy(x))$ nicht separabel, aber $u(x) = a+bx+cy(x)\Rightarrow u^\prime(x) = b+cf(u(x))$ separabel) kann die DGL durch TdV gelöst werden. Auch die \textbf{Ähnlichkeitsdifferentialgleichung} kann durch geeignete Substitution überführt werden:
+\begin{equation}
+	y^\prime=f\left(\frac{y}{x}\right) \text{ mit } u=\frac{y}{x}\implies u^\prime =\frac{y^\prime x-y}{x^2}=\frac{1}{x}\left(f(u)-u\right)
+\end{equation}
+\subsubsection{Lineare Differentialgleichungen erster Ordnung} \label{lin}
+Die allgemeine Form ist:
+\begin{equation}
+	a(x)y^\prime (x)+b(x)y(x)=c(x), \quad c(x)=0\Rightarrow\textbf{homogen}, \quad c(x)\neq0\Rightarrow\textbf{inhomogen} 
+\end{equation} 
+Mit der \textbf{Linearitätseigenschaft} folgt:
+\begin{equation}
+		y_1(x) \text{ und } y_2(x) \text{ lösen \textbf{homogene} DGL}  \implies y=\bm{\alpha}y_1 + \bm{\beta}y_2 \text{ löst hom. DGL, } \alpha,\beta\in\IR
+\end{equation}
+Außerdem bilden die Lösungen der homogenen DGL einen eindimensionalen Vektorraum.\\
+Seien $y_1,y_2$ Lösungen der inhomogenen DGL, es gilt also:
+\begin{align*}
+	a(x)y_1^\prime (x)+b(x)y_1(x)&=c(x)\\
+	a(x)y_2^\prime (x)+b(x)y_2(x)&=c(x)
+\end{align*}
+Subtraktion beider Gleichungen und Definition von $y_\Delta:=y_1-y_2 \implies y_\Delta'=y_1'-y_2'$ liefert:
+\begin{equation*}
+	a(x)y_\Delta^\prime (x)+b(x)y_\Delta(x)=0
+\end{equation*}
+Die Differenz zweier Lösungen der inhomogenen Gleichung ($y_\Delta$) löst also die homogene Gleichung. Außerdem gilt: $y_1=y_\Delta+y_2$. Kennt man also eine Lösung der inhomogenen Gleichung, folgen weitere Lösungen durch Addition der Lösung der homogenen Gleichung. Diese ($y_\Delta$) enthält eine Integrationskonstante, besteht also aus einer Familie von unendlich vielen Funktionen. Mit ($y\leftrightarrow y_1, y_\text{p}\leftrightarrow y_2,y_\text{h}\leftrightarrow y_\Delta$) folgt also $y$ als Familie von Funktionen, die allesamt die inhomogene Gleichung lösen:
+\begin{equation}
+	y=y_\text{p}+y_\text{h}
+\end{equation}
+\textit{Anschauung:} $y_h\leftrightarrow$ \enquote{Richtungsvektor der Geraden aller Lösungen}, $y_p\leftrightarrow$ \enquote{Ortsvektor eines Aufpunktes der Geraden}, Integrationskonstante $\leftrightarrow$ \enquote{Laufparameter der Geraden}, DGL $n$-ter Ordnung $\leftrightarrow$ \enquote{Gerade wird zu $n$-dimensionaler (Hyper-)ebene}\\\\
+\textbf{Allgemeine partikuläre Lösung - Variation der Konstanten (VdK):}\\
+Ein allgemeiner Ansatz zum Finden der partikulären Lösung ist VdK:
+\begin{equation}
+	y_\text{p}(x)=C(x)\cdot y_\text{o}(x), \quad y_\text{o}:=y_\text{h} \text{ für ein spezielles } C\in\IR
+\end{equation}
+Setzt man diesen Ansatz in die (inhomogene) DGL ein, so erhält man eine DGL für $C$. Die erhaltene DGL vereinfacht man unter Ausnutzung dessen, dass die homogene Lösung beim Einsetzen in die DGL für jedes beliebige $C$ eine 0 erzeugt. Die Lösung der DGL für $C$ ist bis auf eine Konstante $D$ eindeutig. $D$ kann aber weggelassen werden, da in der finalen Lösung mit $C$ bereits eine Konstante vorkommt.
+\begin{equation}
+		ay_\text{h}^\prime+by_\text{h}=0 \implies a(y_\text{o} C^\prime+\underbrace{y_\text{o}^\prime C )+by_\text{o}C}_{=0}=c \implies C^\prime = \frac{c}{a y_\text{o}} \implies C=\int \frac{c}{a y_\text{o}} \dd x +D
+\end{equation}\\
+\textbf{Partikuläre Lösung bei konstanten Koeffizienten - Ansatz nach rechter Seite:}\\
+\begin{equation}
+	\begin{array}{lll}
+		\hline \multicolumn{1}{c}{f(x)=} & \lambda=?, r-\text { fach } & \multicolumn{1}{c}{\text { Ansatz } y_p(x)=} \\
+		\hline p_m(x) & \lambda=0 & x^r \cdot Q_m(x) \\
+		\hline p_m(x) \cdot \mathrm{e}^{\alpha x} & \lambda=\alpha &  {x}^r \cdot \mathrm{e}^{\alpha x} \cdot Q_m(x) \\
+		\hline p_m(x) \cdot \cos (\beta x) & \lambda= \pm  \mathrm{j}\beta &  {x}^r \cdot\left(Q_m(x) \cdot \cos (\beta  {x})+T_m(x) \cdot \sin (\beta  {x})\right) \\
+		p_m(x) \cdot \sin (\beta  {x}) & & \\
+		\hline p_m(x) \cdot \mathrm{e}^{\alpha x} \cdot \cos (\beta x) &\lambda=\alpha\pm \mathrm{j}\beta  &  {x}^r \cdot \mathrm{e}^{\alpha x} \cdot\left(Q_m(x) \cdot \cos (\beta  {x})+T_m(x) \cdot \sin (\beta  {x})\right) \\
+		 p_m(x) \cdot \mathrm{e}^{\alpha x} \cdot \sin (\beta  {x}) & \\
+		\hline
+	\end{array}
+\end{equation}
+$p_m(x)$ ist ein gegebenes Polynom des Grades $m$. $Q_m(x) \text{ und } T_m(x)$ sind allgemeine Polynome des Grades $m$. Statt $(\beta x)$ ist auch $(\beta x+\varphi)$ erlaubt. Ist die rechte Seite eine Summe mehrerer Funktionen, so kann für jeden Term ein separater Ansatz genutzt werden.
+\subsubsection{Spezielle Differentialgleichungen erster Ordnung}
+\textbf{Bernoulli-DGL:}
+\begin{equation}
+	y^\prime+ay+by^\alpha=0, \quad\alpha\notin\left\{0,1\right\}
+\end{equation}
+Substituiere $u=y^{1-\alpha}$ und erhalte lineare DGL\\\\
+\textbf{Exakte DGL:}\\
+Mit den Festlegungen
+$\Phi:\IR^2\rightarrow\IR,\quad y: \IR\rightarrow\IR,\quad c\in\IR$ folgt:
+\begin{align}
+	\Phi(x,y(x))&=c &&|\frac{\dd}{\dd x}\\
+	\frac{\partial}{\partial x}\Phi(x,y(x))\cdot 1+\frac{\partial}{\partial y}\Phi(x,y(x))\cdot y^\prime(x)&=0&&|\text{umbenennen}\\
+	p(x,y(x))+q(x,y(x))y^\prime(x)&=0
+\end{align}
+Sind nun die Integrabilitätsbedingungen ($	\frac{\partial}{\partial y}p=	\frac{\partial}{\partial x}q$) erfüllt heißt die erhaltene DGL \textbf{exakt} und es existiert ein $\Phi$. Diese Bedingungen folgen aus dem Satz von Schwarz ($\nearrow$\ref{SvS}). $\Phi$ kann durch Integration von $p=\frac{\partial}{\partial x}\Phi$ und $q=\frac{\partial}{\partial y}\Phi$ gefunden werden, wobei zu beachten ist, dass bei der Integration nach $x/y$ eine Konstante $C\bm{(y/x)}$ übrig bleibt, welche mit der zweiten Gleichung ermittelt wird. Einige DGL können durch Multiplikation mit einem integrierenden Faktor $\mu (x,y)$ zu exakten DGL gemacht werden.
+\subsection{Differentialgleichungen höherer Ordnung}
+\subsubsection{Lineare Differentialgleichungen höherer Ordnung}
+\textbf{Allgemeine Lösungstheorie:}\\
+Die Lösungsstruktur ($y_\text{p}$ ist eine partikuläre Lösung $\Rightarrow y(x)=y_\text{h}+y_\text{p}$) ist wie bei linearen DGL erster Ordnung. VdK und Ansatz nach Art der rechten Seite sind für die \textbf{partikuläre Lösung} analog anwendbar. Allerdings hat eine \textbf{homogene} DGL $n$-ter Ordnung eine Menge von $n$ linear unabhängigen Lösungen, das sogenannte \textbf{Fundamentalsystem} ($n$-dimensionaler Vektorraum mit Basis $\left\{y_1,...,y_n\right\}$). Somit lautet dann die allgemeine Lösung der homogenen DGL (Linearkombination linear unabhängiger Lösungen):
+\begin{equation}
+	y_\text{h}(x)=\sum\limits_{i=1}^n C_iy_i(x)
+\end{equation}\\
+\textbf{Lineare Unabhängikeit von Funktionen - Wronski-Determinante}:\\
+\begin{equation}
+	w(x)=\det\begin{pmatrix} 
+	y_{1} & \dots  & y_{n}\\
+	\vdots & \ddots & \vdots\\
+	y^{(n-1)}_1 & \dots  & y^{(n-1)}_n 
+	\end{pmatrix}
+\end{equation}
+Falls diese $\neq 0$ für ein beliebiges $x\in I$ ist, so ist sie für alle $x\in I$ $\neq 0$ und die $\left\{y_i\right\}$ bilden eine linear unabhängige Menge. \textit{Wenn $w(x)=0$ ist, folgt nicht die Abhängigkeit!}\\\\
+\textbf{\href{https://de.wikipedia.org/wiki/Reduktionsverfahren_von_d\%E2\%80\%99Alembert}{Ordnungsreduktion nach d'Alembert} (ggf. hilfreich bei Fundamentalsystem)}\\\\
+\textbf{Eulersche DGL:}\\
+\begin{equation}\label{EulerDGL}
+	x^2y^{\prime\prime}+xy^\prime+x^0y=0,\quad\text{Ansatz: } y(x)=x^\lambda, \lambda \in \IR
+\end{equation}\\
+\textbf{Finden des Fundamentalsystems bei konstanten Koeffizienten:}\\
+\begin{equation}\label{Fund}
+	\sum\limits_{i=0}^n a_iy^{(i)}(x) = 0,\quad\text{Ansatz: } y(x)=\mathrm{e}^{\lambda x} \implies \chi (\lambda)= \sum\limits_{i=0}^n a_i\lambda^{(i)} 
+\end{equation}
+Die Nullstellen von $\chi$ sind die gesuchten $\lambda$ für den Ansatz. Hat $\lambda\in\IR$ die algebraische Vielfachheit $m\geq 1$, dann sind $y_i=x^{i-1}\mathrm{e}^{\lambda x}$ für $i\in\left\{1,...,m\right\}$ Fundamentallösungen. Ist $\lambda=a+\mathrm{j} b\in\IC$, so kann man aufgrund der Linearitätseigenschaft ($\nearrow$\ref{lin}) zwei reelle Fundamentallösungen konstruieren: $y_1=\mathrm{e}^{a x}\cos bx, \quad y_2=\mathrm{e}^{a x}\sin bx$. Bei einer größeren algebraischen Vielfachheit von $\lambda$ sind analog $x\mathrm{e}^{a x}\cos bx,x^2\mathrm{e}^{a x}\cos bx,...,x\mathrm{e}^{a x}\sin bx,x^2\mathrm{e}^{a x}\sin bx,...$ Fundamentallösungen.
+\subsection{Besselsche Differentialgleichungen und Besselfunktionen}\label{bessel}
+Dieser Abschnitt basiert teilweise auf \href{https://de.wikipedia.org/wiki/Bessel-Funktion}{Wikipedia}.\\\\
+Als Beispiel für eine lineare Differentialgleichung zweiter Ordnung sei die \textbf{Besselsche Differentialgleichung} gegeben:
+\begin{equation}
+	x^2 \frac{\partial^2 f}{\partial x^2} + x \frac{\partial f}{\partial x} + f\cdot (x^2 - \nu^2) = 0
+\end{equation}
+Die Lösungen dieser Differentialgleichungen sind die sogenannten \textbf{Besselfunktionen erster Art} $J_\nu(x)$ und die \textbf{Besselfunktionen zweiter Art} (auch Weber- oder Neumannfunktionen) $Y_\nu(x)$. $\nu$ gibt die \textbf{Ordnung} der Besselfunktion an. Explizit sind die Besselfunktionen definiert als:
+\begin{equation}\begin{split}
+		J_\nu(x) =& \sum_{n=0}^\infty \frac{(-1)^n}{n! \Gamma(n+\nu+1)} \left(\frac{x}{2}\right)^{2n+\nu}\\
+		Y_\nu(x) =& \frac{J_\nu(x) \cos(\nu \pi) - J_{-\nu}(x)}{\sin(\nu \pi)}, \quad \nu \notin \mathbb{Z}\\
+		Y_m(x) =& \lim\limits_{\nu\to m} Y_\nu (x), \quad m \in \mathbb{Z}
+\end{split}\end{equation}
+Im Fall, dass $\nu$ ganzzahlig ist, sind die Besselfunktionen erster Art $J_\nu(x)$ und $J_{-\nu}(x)$ linear abhängig. Eine zweite unabhängige Lösung ist dann durch die Neumannfunktion gegeben. Ist $\nu$ hingegen nicht ganzzahlig, dann sind $J_\nu(x)$ und $J_{-\nu}(x)$ unabhängig voneinander. Zusätzlich kann man noch die \textbf{Hankelfunktionen} definieren:
+\begin{equation}
+	H_\nu^{(1,2)}(x) = J_\nu(x) \pm \mathrm{j} Y_\nu(x) 
+\end{equation}\\
+Die \textbf{modifizierte Besselsche Differentialgleichung} ist:
+\begin{equation}
+	x^2 \frac{\partial^2 f}{\partial x^2} + x \frac{\partial f}{\partial x} - f\cdot (x^2 + \nu^2) = 0
+\end{equation}
+Die Lösungen dieser Differentialgleichung sind die \textbf{modifizierten Besselfunktionen erster Art} $I_\nu(x)$ und die \textbf{modifizierten Besselfunktionen zweiter Art} $K_\nu(x)$. Explizit lässt sich hier schreiben:
+\begin{equation}\begin{split}
+	I_\nu(x) &= \mathrm{e}^{-\nu \pi \mathrm{j}/2} J_\nu(\mathrm{j}x) \\
+	K_\nu(x) &= \frac{\pi}{2} \mathrm{j} \mathrm{e}^{\nu \pi \mathrm{j}/2} H_\nu^{(1)}(\mathrm{j}x)
+	\end{split}\end{equation}
+	Wieder bilden für nicht ganzzahlige $\nu$ die modifizierten Besselfunktionen erster Art eine Basis, für ganzzahlige $\nu$ sind $I_\nu(x)$ und $I_{-\nu}(x)$ aber linear abhängig, man muss mit $K_\nu(x)$ eine zweite unabhängige Lösung hinzunehmen.
+\section{Partielle Differentialgleichungen}\label{pdgl}
+\textbf{Lösung von pDGL als gDGL:}\\
+Ist die pDGL eine gDGL (in einer Variablen), so können Lösungsmethoden für gDGL genutzt werden, wobei die Konstante eine Funktion der restlichen Variablen ist ($C=f[\text{restliche Variablen}]$).\\\\
+\textbf{Vereinfachung der pDGL durch Substitution:}\\
+Kann bei den auftretenden Ableitungen eine gemeinsame Ableitung ausgeklammert werden, so vereinfacht eine Substitution das Problem:
+\begin{equation}
+	u_{xx}+u_{xy}=1 \text{ wird mit } v=u_x \text{ zu } v_x+v_y=1
+\end{equation}\\
+\textbf{Lösung unter Nutzung der Symmetrie:}\\
+Manchmal kann man Invarianzen bezüglich Translation oder Rotation ausnutzen. Dadurch hängt die Lösung ggf. nur noch von einer Variablen ab, was die Lösung als gDGL möglich macht. Beispielhaft für $U\neq f(\vartheta,\varphi)$:
+\begin{equation}
+	\Delta U = \frac{1}{r^2} \frac{\partial}{\partial r}\left(r^2 \frac{\partial U}{\partial r}\right) 
+	+\cancel{\frac{1}{r^2 \sin \vartheta} \frac{\partial}{\partial \vartheta}\left(\sin \vartheta \frac{\partial U}{\partial \vartheta}\right) }
+	+\cancel{\frac{1}{r^2 \sin ^2 \vartheta} \frac{\partial^2 U}{\partial \varphi^2}}
+\end{equation}\\
+\textbf{Nutzung von Fourier-/Laplace-Transformation:}\\
+Differentialoperatoren werden im Bildbereich zu algebraischen Faktoren. Im Bildbereich wird das Problem gelöst und anschließend rücktransformiert.\\\\
+\textbf{Greensche Funktionen (Fundamentallösungen $\nearrow$ \ref{greenfkt}):}\\
+Das allgemeine Problem $\mathcal{L}\phi(\vec{r})=f(\vec{r})$ mit dem linearen Differentialoperator $\mathcal{L}$ (z.B. $\Delta$) ist gegeben. Man nimmt an, dass man die Greensche Funktion (die Lösung zu des Problems $\mathcal{L}G(\vec{r},\vec{r}\prime)=\delta(\vec{r}-\vec{r}\prime)$ mit der speziellen rechten Seite $\delta(\vec{r}-\vec{r}\prime)$) kennt. Dann ist $\phi(\vec{r})=\iiint\limits_V G(\vec{r},\vec{r}\prime)f(\vec{r}\prime)\dd^3\vec{r}\prime$ die Lösung.
+
+
+\subsection{Lineare und quasilineare Differentialgleichungen 1. Ordnung}
+Beispielhaft wird hier Vorgehen für $u:\IR^2\rightarrow\IR$ gezeigt. Eine lineare pDGL 1. Ordnung hat die Form:
+\begin{equation}\label{pdgl_lin}
+	\underbrace{a(x,y)u_x(x,y)+b(x,y)u_y(x,y)}_{=\nabla u(x,y)\cdot \vec{r} \text{ Richtungsableitung (\ref{Richtungsableitung3}) mit }\vec{r}=\binom{a}{b}}+c(x,y)u(x,y)=f(x,y)
+\end{equation}
+Idee des Ansatzes ist, das Koordinatensystem so zu drehen, dass eine Koordinatenrichtung in Richtung $\vec{r} (x,y)$ zeigt und die andere(n) Richtung(en) dazu unabhängig ist. Dann vereinfacht sich das pDGL zu einem gDGL-Problem. Erreicht wird dies mithilfe einer Substitution mit den  neuen Koordinaten $\xi(x,y)$ und $\eta(x,y)$. Es wird eine neue Funktion $\hat{u}$ eingeführt, welche ausgewertet in $\xi$ und $\eta$ die selben Funktionswerte liefert wie die Originalfunktion ausgewertet in $x$ und $y$: $\hat{u}(\xi,\eta)=u(x,y)$. Mit der Kettenregel gilt somit:
+\begin{equation}\label{pdgl_subs}
+	\begin{split}
+		u_x&=\hat{u}_\xi\xi_x+\hat{u}_\eta\eta_x\\
+		u_y&=\hat{u}_\xi\xi_y+\hat{u}_\eta\eta_y
+	\end{split}
+\end{equation}
+Setzt man nun \ref{pdgl_subs} in \ref{pdgl_lin} ein, erhält man folgende neue pDGL:
+\begin{equation}\label{pdgl_neko}
+	\hat{u}_\xi\underbrace{\left(a\xi_x+b\xi_y\right)}_{\nabla \xi \cdot \vec{r}}+\hat{u}_\eta\underbrace{\left(a\eta_x+b\eta_y\right)}_{\nabla \eta \cdot \vec{r}}+\hat{c}\hat{u}=\hat{f}
+\end{equation}
+Die neuen Koordinaten können nun so gewählt werden, dass eine in Richtung $\vec{r}(x,y)$ zeigt ($\nabla \eta \cdot \vec{r}=\hat{\varphi}\neq 0$) und die anderen dazu unahängig ($\nabla \xi \cdot \vec{r}=0$, bei $u:\IR^n\to\IR$ $n-1$ mal $=0$) sind. $\hat{\varphi}$ sollte möglichst einfach gewählt werden. Dadurch wird Gleichung \ref{pdgl_neko} zu:
+\begin{equation}
+	\hat{\varphi}\hat{u}_\eta+\hat{c}\hat{u}=\hat{f}
+\end{equation}
+Diese Gleichung kann als gDGL für $\hat{u}$ gelöst werden, wobei zu beachten ist, dass $C=f[\text{restliche Variablen}]$. Aus $\hat{u}$ kann man $u$ durch Rücksubstitution gewinnen. Für diese Rücksubstitution benötigt man explizite Gleichungen für $\xi(x,y)$ und $\eta(x,y)$, welche $\nabla \xi \cdot \vec{r}=0$ und $\nabla \eta \cdot \vec{r}=\hat{\varphi}$ genügen müssen. Dabei muss der Satz von Schwarz ($\nearrow$\ref{SvS}) geprüft werden (setzt man bspw. willkürlich $\xi_x=m(x,y),\xi_y=n(x,y)$ muss gelten: $\xi_{xy}=m_y=n_x=\xi_{yx}$). Im einfachsten Fall kann man $\xi_x,\xi_y,\eta_x$ und $\eta_y$ durch probieren (bzw. einfaches Festsetzen auf Konstanten) erhalten.
+\subsubsection{Finden der Variablensubstitution - Methode der Charakteristiken}
+Bei komplizierteren pDGL ist es jedoch schwer an die benötigten Richtungen durch probieren zu gelangen. Einen systematischen Ausweg bietet die Methode der Charakteristiken. \textbf{Charakteristiken} sind Kurven, auf denen die Lösung der Rumpf-DGL (alle Terme mit ersten Ableitungen $=0$, z.B. $au_{\mathrm{R}x}+bu_{\mathrm{R}y}+cu_{\mathrm{R}z}=0$) konstant ist, also $u_{\mathrm{R}}(x(t),y(t))=\const\forall t$ gilt ($x$ und $y$ sind durch $t$ eindeutig festgelegt, $u_{\mathrm{R}}$ ist Lösung der Rumpf-DGL). Deswegen folgt:
+\begin{equation}
+	\frac{\dd}{\dd t} u_{\mathrm{R}}(x(t),y(t)) =0=u_{\mathrm{R}x}x^\prime(t)+u_{\mathrm{R}y}y^\prime(t)\stackrel{\text{Rumpf-DGL}}{=}au_{\mathrm{R}x}+bu_{\mathrm{R}y}
+\end{equation}
+Vergleicht man Koeffizienten folgt das \textbf{charakteristische System}:
+\begin{equation}
+	\begin{split}
+	\frac{\dd x}{\dd t}&=a(x(t),y(t))\\
+	\frac{\dd y}{\dd t}&=b(x(t),y(t))\\
+	&\vdots
+	\end{split}
+\end{equation}
+Durch lösen des Systems erhält man eine analytische Beschreibung der Charakteristiken - also der Kurven, auf denen die Lösung der Rumpf-DGL konstant ist. Eliminiert man $t$ und bringt alle Integrationskonstaten $C_i$ auf eine Seite und alles andere auf die andere Seite, so hat man immernoch eine analytische Beschreibung der Kurven, aber gleichzeitig eine Lösung der Rumpf-DGL, da es sich um einen analytischen Ausdruck handelt, der auf der Charakteristik konstant ist.\\\\
+\textbf{Finden der Substitution ohne $t$:}\\
+Es gilt mit der Kettenregel: $\frac{\dd x}{\dd y}=\frac{\dd x}{\dd t}\frac{\dd t}{\dd y}=a\frac{1}{b}=\frac{a}{b}$. Das folgt auch mit dem \href{https://homepage.ruhr-uni-bochum.de/lukas.steenvoort/docs/analysis/differentiale.pdf}{Leibniz-Kalkül}. Bei diesem Ansatz muss man $t$ nicht eliminieren. \\
+Da $x$ und $y$ nicht unabhängig sind, darf eine Variable nicht als Konstante beim integrieren über die andere Variable aufgefasst werden. 
+\subsubsection{Geometrische Lösung mit Charakteristiken}
+Die Taylor-Entwicklung für $u:\IR^2\rightarrow \IR$ lautet (\enquote{Tangentialebene}):
+\begin{equation}
+	u(x,y)=\underbrace{u(x_0,y_0)}_{u_0}+u_x(x_0,y_0)(x-x_0)+u_y(x_0,y_0)(y-y_0) \Leftrightarrow \underbrace{\begin{pmatrix}
+		x-x_0\\y-y_0\\u-u_0\end{pmatrix}}_\text{Vek. in Ebene}\cdot\underbrace{\begin{pmatrix}
+		u_x\\u_y\\-1\end{pmatrix}}_\text{NV $\vec{n}$}=0
+\end{equation}
+Ein Vergleich mit der pDGL \ref{pdgl_lin} macht deutlich, dass der Vektor $\begin{pmatrix}
+	a,&b,&f-cu\end{pmatrix}^T$ in der Tangentialebene ist. Sucht eine tangentiale Kurve dazu (also eine Kurve der Lösungsfläche), muss das folgende Problem gelöst werden: $\partial_t \begin{pmatrix}
+	x(t),&y(t),&u(x(t),y(t))
+	\end{pmatrix}=\begin{pmatrix}
+	a,&b,&f-cu\end{pmatrix}$.  Mit $\begin{pmatrix}
+	x(t),&y(t),&u(x(t),y(t))
+	\end{pmatrix}^T$ erhält man somit eine Kurve der Lösungsfläche der pDGL, mit den Anfangsbedingungen kann daraus eine Lösung ermittelt werden. Für $f-cu=0$ (also eine Rumpf-DGL) ist $u(x,y)$ auf der Charakteristik konstant, im Allgemeinen ist das aber nicht der Fall.
+	\subsubsection{Spezielle Lösung durch Zusatzbedingungen}
+	Die allgemeine Lösung einer pDGL in $n$ Variablen enthält beliebige Funktionen $C:\IR^{n-1}\to\IR$. Mit einer zusätzlichen Bedingung auf einer $n-1$ dimensionalen Mannigfaltigkeit kann eine spezielle Lösung festgelegt werden (\textit{nicht jede Mannigfaltigkeit ist geeignet!}). Nur falls die Mannigfaltigkeit mit jeder Charakteristik genau einen Schnittpunkt besitzt, existiert genau eine spezielle Lösung ($u(x,y)$), die sowohl pDGL als auch Zusatzbedingung ($u\left(\vec{\gamma}(t)\right)=?$) erfüllt.
+	\subsubsection{Quasilineare pDGL}
+	Die quasilineare pDGL $	a(x,y,u)u_x(x,y)+b(x,y,u)u_y(x,y)+c(x,y,u)=0$ (für $u:\IR^2\rightarrow \IR$) kann in eine lineare pDGL mit $f(x,y,u)$ (für $f:\IR^3\rightarrow \IR$). Man erhält eine Implizite Lösung der Form $f(x,y,u)=\const$. Mit dem Hauptsatz über implizite Funktionen ($u_x=-\frac{f_x}{f_u},u_y=-\frac{f_y}{f_u},f_u\neq0!\nearrow$\ref{hs_impl}) folgt die lineare Gleichung in $f$:
+	\begin{equation}
+			a(x,y,u)f_x(x,y,u)+b(x,y,u)f_y(x,y,u)-c(x,y,u)f_u(x,y,u)=0
+	\end{equation}
+	Die Existenz einer global existierenden Lösung kann bei gegebener Zusatzbedingung nicht geklärt werden.
+\subsection{Differentialgleichungen 2. Ordnung}
+ \subsubsection{Typen pDGL 2. Ordnung}
+ Eine lineare pDGL 2. Ordnung besitzt für $u:\IR^n\rightarrow\IR$ die allgemeine Form:
+ \begin{equation}
+ 	(Lu)(\vec{x}):= \div\left(A(\vec{x})\cdot\grad u(\vec{x})\right)+\vec{b}(\vec{x})\cdot \grad u(\vec{x}) + c(\vec{x})u(\vec{x})
+ \end{equation}
+ mit $\vec{x}\in \Omega\subset\IR^n$ und Funktionen $a_{ij}, b_i, c_i : \Omega\rightarrow\IR$, wobei $\forall \vec{x}:a_{ij}(\vec{x})=a_{ji}(\vec{x}) \implies \forall \vec{x}: A=A^T$ (Satz von Schwarz $\nearrow$ \ref{SvS}). Die allgemeine pDGL 2. Ordnung kann mit Hilfe einer Koordinatentransformation (Vorgehen wie \href{https://de.wikipedia.org/wiki/Hauptachsentransformation}{Hauptachsentransformation}) auf eine Normalform ($A$=Diagonalmatrix) gebracht werden. Damit kann eine Unterteilung in drei Typen von pDGL 2. Ordnung erfolgen:
+	 \begin{enumerate}
+		 \item \textbf{Elliptische partielle Differentialgleichung 2. Ordnung} $\Delta \alpha(\vec{r} ) = \beta(\vec{r} )$\\
+			       Es gibt nur 2. Ableitungen (+,+,+), die Eigenwerte von $A$ haben das gleiche Vorzeichen. Ein Beispiel ist die Poisson-Gleichung $\Delta \phi(\vec{r} )=-\frac{\rho_\text{V}(\vec{r} )}{\varepsilon}$. Es werden zeitunabhängige (stationäre) Probleme beschrieben, die  Lösung beschreibt häufig den Zustand \textbf{minimaler Energie} ($\to$ Variationsproblem, Finite Elemente Methode (FEM)). Die Zusatzbedingungen werden \textbf{Randbedingungen} genannt (Dirichlet bzw. Neumann Randwerte), da sie im allgemeinen am Rand des Gebietes $\Omega$ gestellt werden.
+		 \item \textbf{Parabolische partielle Differentialgleichung 2. Ordnung} $\Delta \alpha(\vec{r} , t) - c\frac{\partial}{\partial t}\alpha(\vec{r} , t) = \beta(\vec{r} , t)$\\
+			      Es gibt bezüglich einer Variablen (Zeit) nur eine einfache Ableitung, die Vorzeichen der 2. Ableitungen sind (+,+,+,0). Genau ein Eigenwert von $A$ ist 0, die anderen haben das gleiche Vorzeichen. Ein Beispiel ist die Diffusions-Gleichung $\Delta E_x(\vec{r} , t) -\mu\kappa \frac{\partial}{\partial t} E_x(\vec{r} , t) = 0$.
+			       Es handelt sich nicht um ein stationäres Problem.  Neben \textbf{Randbedingungen} gibt es zusätzlich \textbf{Anfangsbedingungen} z.B. $\alpha(\vec{r} , t=0)$ vorgeben, die i.A. für $t=0$ (\enquote{Anfang}) gestellt werden (Anfangs-Randwertprobleme). 
+		 \item \textbf{Hyperbolische partielle Differentialgleichung 2. Ordnung} $\Delta \alpha(\vec{r} , t) - c^2\frac{\partial^2}{\partial t^2}\alpha(\vec{r} , t) = \beta(\vec{r} , t)$\\
+			       Die Vorzeichen der 2. Ableitungen sind (+,+,+,-). Genau ein Eigenwert von $A$ hat ein anderes Vorzeichen als die anderen. Ein Beispiel ist die Wellen-Gleichung. 
+			       Auch hier gibt es Anfangs-Randwertprobleme mit \textbf{zusätzlich} gegebener zeitlicher Ableitung bei $t=0$.
+	 \end{enumerate}
+	 Auf dem \textbf{Rand} $O(V)$ eines Lösungsgebietes $V$ kann entweder ein Wert (\textbf{Dirichlet}) oder eine Richtungs-/Normalenableitung ($\vec{n}\cdot\grad \phi=\frac{\partial\phi}{\partial n }$) in Richtung Lösungsgebiet (ausgedrückt durch den Normalenvektor $\vec{n}$ des Randes, \textbf{Neumann}) gegeben sein. Man hat eine \textbf{Existenz und Eindeutigkeit} der Lösung, wenn entweder $\phi$ oder $\vec{n}\cdot\grad \phi$ (oder die Mischung aus beidem) auf gesamt $O(V)$ gegeben sind.
+	  \subsubsection{Separationsansatz}\label{pdglsep}
+	  Für einige lineare pDGL 2. Ordnung mit Zusatzbedingungen können Lösungen aufgeschrieben werden. Dafür muss das Gebiet $\Omega$ als \textbf{Rechteck} beschrieben werden können. Dann hilft der Ansatz: $u(x,y)=X(x)Y(y), (x,y)\in\Omega\subset\IR^2$ (analog für $\IR^n$), der auf eindimensionale Eigenwertprobleme und Fourier-Reihen führt.\\
+	  {\color{gray} Gegeben sei die (hyperbolische) Wellengleichung $\partial_t^2 u-\partial_x^2 u=0  \text { in }(0, \infty) \times(0, \pi)=\Omega$ mit den Randbedingungen $u(t, 0)=u(t, \pi)=0$ und den Anfangsbedingungen $ u(0, x)=\sin (2 x) \text{ und }  \partial_t u(0, x)=0$.}\\
+	  Zunächst wird der Ansatz in die pDGL eingesetzt (teilen durch 0 wird ignoriert, da die 0-Lösung uninteressant ist).
+	   {\color{gray} Es folgt: $T^{\prime \prime}(t) X(x)-T(t) X^{\prime \prime}(x)=0\implies\frac{T^{\prime \prime}(t)}{T(t)}=\frac{X^{\prime \prime}(x)}{X(x)} $}. Da {\color{gray}$t$} und {\color{gray}$x$} unabhängige Variablen sind und diese Gleichung für alle {\color{gray}$t$} und {\color{gray}$x$} gelten muss, ist die einzige Möglichkeit, dass die Brüche jeweils konstant sind, also {\color{gray}$\frac{T^{\prime \prime}(t)}{T(t)}=\frac{X^{\prime \prime}(x)}{X(x)}=\lambda\in\IR$} gilt. Es folgen also gewöhnliche Differentialgleichungen. Da die triviale Lösung ({\color{gray} $T(t)=0$ bzw. $X(x)=0$}) nicht gewünscht ist (erfüllt Zusatzbedingung nicht), lassen sich weitere Schlussfolgerungen ziehen: {\color{gray}\begin{align} &\begin{aligned}
+	   		u(t, 0)&=T(t) X(0)=0 \Rightarrow X(0)=0 \nonumber \\
+	   		\hphantom{.u_t(0, x)}\llap{$u(t, \pi)$}&=T(t)  X(\pi)=0 \Rightarrow X(\pi)=0\\
+	   		 \end{aligned}\\
+	   		&\left.\begin{aligned}u(0, x)&=T(0) X(x)=\sin (2 x)   \nonumber\\
+	   			u_t(0, x)&=T^\prime(0) X(x)=0
+	   		\end{aligned}\right\rbrace \text{Zusatzbedingungen (ZB)}
+	   \end{align}} 
+   Die \textbf{Separation} liefert {\color{gray}2} Teilprobleme (und eine neue Unbekannte {\color{gray}$\lambda$}):
+   {\color{gray}\begin{align}
+   		\boxed{X^{\prime\prime}(x)-\lambda X(x)}&=0;\quad&&X(0)=0,X(\pi)=0\nonumber\\
+   		T^{\prime\prime}(t)-\lambda T(t)&=0;\quad&&\text{ZB am Ende betrachtet} \nonumber
+   	\end{align}}
+   Zuerst wird nun das/ein Eigenwert-Problem gelöst, also eine homogene gDGL mit homogenen Randbedingungen. {\color{gray} $\Box\Rightarrow$ Die Ableitung von $X$ ist ein Vielfaches von $X$, $\lambda$ heißt deshalb Eigenwert und $X$ Eigenfunktion.} Danach wird die übrig gebliebene DGL allgemein gelöst (es gibt noch keine Randbedingung). Anschließend wird alles zusammengesetzt und die noch offenen Zusatzbedingungen eingearbeitet. {\color{gray} Ansatz zur Lösung des Eigenwertproblems (\nearrow\ref{Fund}): $X(x)=\mathrm{e}^{\mu x}$, damit folgt das charakteristische Polynom: $\mu^2-\lambda=0\implies \mu^2=\lambda$.} Es gibt 3 Fälle:
+   \begin{enumerate}
+   	\item $\lambda>0$ ist \underline{nie} Teil der Lösung
+   	\item $\lambda=0$ ist \underline{manchmal} Teil der Lösung
+   	\item $\lambda=-k^2<0$ ist für manche $k$ \underline{immer} Teil der Lösung
+   \end{enumerate} 
+    {\color{gray} Hier gilt: $\lambda=\mu^2=-k^2\implies \mu=\mathrm{j}k$, somit ist $X(x)=A\cos(kx)+B\sin(kx)$ die Lösung. Wegen $X(0)=A=0$ und $X(\pi)=B\sin(k\pi)=0\land B\stackrel{!}{\neq}0$ folgt, dass $B$ beliebig ist und $k\in \IN$\footnote{Der Fall $k=0$ kann vernachlässigt werden, da er in der folgenden Überlagerung eine 0 liefert, $k<0$ kann vernachlässigt werden, da es nur ein negatives Vorzeichen liefert ($a\sin(g)+b\sin(-g)=(a-b)\sin(g)$)}. Es folgt die \textbf{Eigenfunktion} $X_k(x)=\sin(kx)$\footnote{$B$ entfällt, beim Zusammenfügen gibt es mit $A_k$ und $B_k$ genug Freiheitsgrade.} zum \textbf{Eigenwert} $\lambda_k=-k^2, k\in \IN$ (also für $\lambda\stackrel{\text{Bsp.}}{=}\lambda_2{=}-4$ löst $X(x)=B\sin(2x)$ für beliebige $B$ das Problem, denn $-4B\sin(2x)+4B\sin(2x)=0$).} \\
+    Nun wird das zweite Eigenwertproblem gelöst, wobei die für {\color{gray}$\lambda$} erhaltenen Einschränkungen weiterhin gelten. {\color{gray}$T_k^{\prime\prime}=\lambda_k T_k \implies T_k(t)=A_k \cos(kt)+B_k\sin(kt)$.} Nun werden für jede natürliche Zahl die Teillösungen zusammengefügt und die Gesamtlösung als \textbf{Superposition} aller Teillösungen dargestellt. Nach Einbringen der restlichen Zusatzbedingungen findet man eine Lösung, die die pDGL inklusive \textbf{aller} Zusatzbedingungen löst. {\color{gray}$u_k(t,x)=T_k(t)X_k(x)=\left[A_k \cos(kt)+B_k\sin(kt)\right]\sin(kx)$ erfüllt für $k\in\IN$ die pDGL und alle \enquote{aufgebrauchten} Zusatzbedingungen ( $u(t, 0)=u(t, \pi)=0$ ). Überlagert man alle noch möglichen Lösungen (wegen der Linearität ist das auch eine Lösung) erhält man eine allgemeine Gesamtlösung. Diese ist $u(t,x)=\sum\limits_{k=1}^\infty\left[A_k \cos(kt)+B_k\sin(kt)\right]\sin(kx)$. Die noch nicht \enquote{aufgebrauchten} Zusatzbedingungen müssen auch erfüllt werden, entsprechend wird die allgemeine Lösung weiter beschränkt und man erhält in diesem Fall: $u(t,x)=\sin(2x)\cos(2t)$.}\\
+    Im allgemeinen müssen die Anfangsbedingungen in eine Fourier-Reihe entwickelt werden. Das Gebiet $\Omega$ muss kein Rechteckgebiet sein, aber durch eines darstellbar sein. Das Innere des Einheitskreises ist beispielsweise in Polarkoordinaten ein Rechteckgebiet. Bei einer Koordinatentransformation verändern sich die Ableitungsoperatoren.\\\\
+    \textbf{Separationsansatz mit Koordinatentransformation:}\\
+    {\color{gray} Gegeben sei die pDGL $-\Delta u=0  \text{ in } D=\left\{(x, y): x^2+y^2<1\right\}$ mit der Randbedingung $u=g$ auf dem Rand $\Gamma$ von $D$, also $\Gamma=\left\{(x, y): x^2+y^2=1\right\}$. In Polarkoordinaten lässt sich $D$ als $\hat{D}=[0,1) \times[0,2 \pi)$ beschreiben. Mit \ref{difOpKo} und dem Separationsansatz folgt: 
+    	\begin{align*}
+    		\hat{u}(r,\varphi)=R(r)\Phi(\varphi)&&\Rightarrow&& R^{\prime\prime}\Phi+\frac{1}{r}R^\prime\Phi+\frac{1}{r^2}\Phi^{\prime\prime}R&=0\\
+    		&&\Leftrightarrow&& \frac{r^2R^{\prime\prime}}{R}+\frac{rR^\prime}{R}=-\frac{\Phi^{\prime\prime}}{\Phi}&=\lambda=+k^2
+    	\end{align*}
+    	Hier wird $+k^2$ genommen, da das Eigenwertproblem mit $\Phi$ gelöst wird. Zusätzlich folgen wegen der Koordinatentransformation zusätzliche Bedingungen an $\hat{u}$:
+    	\begin{enumerate}
+    		\item $\hat{u}$ ist periodisch in $\varphi$ (sonst hätte die Funktion unterschiedliche Funktionswerte an der selben Stelle) $\Rightarrow \Phi(0)=\Phi(2\pi),\Phi^\prime(0)=\Phi^\prime(2\pi) $ 
+    		\item $\hat{u}$ ist stetig für $r=0$ und muss die Randbedingung für $r=1$ erfüllen ($\hat{u}=\hat{g}$)
+    	\end{enumerate}
+    	Das Eigenwertproblem $\Phi^{\prime\prime}(\varphi)+k^2\Phi(\varphi)=0$ hat die allgemeine Lösung $\Phi_k(\varphi)=C_k\cos (k\varphi)+D_k\sin (k\varphi)$, das mit $k\in \IN_0$ sogar die Zusatzbedingungen ($\Phi(0)=\Phi(2\pi),\Phi^\prime(0)=\Phi^\prime(2\pi) $) erfüllt. Das weitere zu lösende gDGL-Problem lautet damit: $r^2 R^{\prime \prime}(r)+r R^\prime(r)-k^2 R(r)=0.
+    	$ Mit \ref{EulerDGL} ($R(r)=r^\lambda$) folgt: $\lambda(\lambda-1)r^{\lambda-2}r^2+\lambda r^{\lambda-1}r-k^2r^\lambda=0$. Für $k=0$ folgt: $\lambda(\lambda-1)r^{\lambda}+\lambda r^{\lambda}=(\lambda^2)r^\lambda=0\implies \lambda_1=\lambda_2=0$. Nach diesem Ansatz erhält man also nur eine von 2 linear unabhängigen Lösungen (2. Ordnung). Da die Ordnungsreduktion nach d'Alembert aufwendig ist, bietet sich eine Lösung durch Substitution an: $R^\prime(r)=v(r)\implies r^2 v^\prime(r)+r v(r)=0$. Nach Lösung durch Separation folgt: $R_0(r)=A_0\ln r +B_0$ für $r\neq 0$, für $r=0$ ist die Gleichung immer erfüllt ($R(r)$ beliebig). Bei $k\neq 0$ hat man hingegen $\left(\lambda(\lambda-1)+\lambda-k^2\right)r^\lambda=0 \implies \lambda=\pm k$. Hier erhält man durch den Ansatz zwei linear unabhängige Lösungen, deren Linearkombination die allgemeine Lösung des homogenen Problems ist: $R_k(r)=A_kr^k+B_kr^{-k}$ für $r\neq 0$, für $r=0$ ist die Gleichung immer erfüllt ($R(r)$ beliebig). $\hat{u}$ muss stetig in $r=0$ stetig sein, also folgt: $B_k=0\forall k\in \IN_0$. Damit ist $R_k(r)=A_kr^k\forall k\in \IN_0$.\\
+    	Unter Zusammenfassung der Konstanten lautet die Superposition (also die allgemeinste Lösung der pDGL unter Beachtung der bisher eingebrachten Zusatzbedingungen): $\hat{u}_k(r,\varphi)=\left(A_k\cos(k\varphi)+B_k\sin(k\varphi)\right)r^k$. Die Randbedingung lautet: $\hat{u}(1,\varphi)=\hat{g}(\varphi)=\left(A_k\cos(k\varphi)+B_k\sin(k\varphi)\right)$. Wird $\hat{g}$ in eine Fourier-Reihe ($\nearrow$\ref{FourReihe}) entwickelt, erhält man mit den Koeffizienten $A_k,B_k$ die Lösung der pDGL unter Beachtung der Zusatzbedingungen in Polarkoordinaten. Ist beispielsweise $\hat{g}(\varphi)=\cos (2\varphi)$, also $A_2=1;A_i=0 (i\neq 2),B_i=0$ gilt $\hat{u}(r,\varphi)=\cos(2\varphi)r^2=r^2\left(\cos^2(\varphi)-\sin^2(\varphi)\right)=x^2-y^2=u(x,y)$.}\\\\
+    	\textbf{Behandlung inhomogener pDGL:}\\
+    	Für inhomogene pDGL ($Lu=f$) lautet der Ansatz: $Lu=\mu u$. Es wird also ein pDGL-Eigenwert-Problem gelöst, gesucht sind die Eigenfunktionen $u_k$ mit Eigenwerten $\mu_k$, welche alle das Problem $Lu_k=\mu_k u_k$ lösen. Das bedeutet, dass die Superposition aller $u_k$ ($u=\sum C_k u_k$) die Gleichung $Lu=L\sum C_k u_k =  \sum C_k Lu_k=\sum C_k \mu_k u_k$ erfüllt. Vergleicht man mit dem zu lösenden Problem ($Lu=f$), stellt man fest, dass wenn  $\sum C_k \mu_k u_k=f$ ist $u=\sum C_k u_k$ die Lösung des Problems $Lu=f$ sein muss. Die Aufgabe besteht also darin $C_k$ zu bestimmen. Das wird über Fourier-Reihenentwicklungen (Projektionen auf eine Basis) mit $u_k$ als Basisfunktion bewerkstelligt.\\
+    	{\color{gray} Gegeben sei die Gleichung $-\Delta u=1$ im Gebiet $\Omega:=(0,1)^2$ mit der Randbedingung $u=0$ auf dem Rand $\Gamma$ von $\Omega$. Entsprechend dem Ansatz wird das pDGL-Eigenwert-Problem $-\Delta u=\mu u$ in $\Omega$ gelöst. Mit dem Separationsansatz folgt: $-XY^{\prime\prime}-X^{\prime\prime}Y=\mu XY\Rightarrow - \frac{X^{\prime\prime}}{X}=\frac{Y^{\prime\prime}}{Y}+\mu=\lambda\in\IR$ (da $x$ von $y$ unabhängig ist). Die Zusatzbedingungen lauten $X(0)=X(1)=Y(0)=Y(1)=0$. Hier hat man nun zwei gDGL-Eigenwert-Probleme, es ist irrelevant welches zuerst gelöst wird. Mit $X^{\prime\prime}+\lambda X=0$ erhält man zunächst $X(x)=A\cos(\sqrt{\lambda}x)+B\sin(\sqrt{\lambda}x)$ und weiter mit $X(0)=0\Rightarrow A=0$ und $X(1)=0=B\sin(\sqrt{\lambda})\Rightarrow \sqrt{\lambda}=k\pi, k\in \IN$, dass $\lambda_k=k^2\pi^2$ und $X_k=\sin(k\pi x)$ ist. Das zweite Eigenwert-Problem ist mit $\lambda\leftrightarrow \mu -\lambda$ strukturell identisch, also gilt: $\sqrt{\mu-\lambda}=l\pi,l\in\IN,Y_l(y)=\sin(l\pi y)$. Somit erhält man Eigenfunktionen und Eigenwerte des pDGL-Eigenwert-Problems:
+    	$$
+    	u_{k,l}(x,y)=X_k(x)Y_l(y)=\sin(k\pi x)\sin(l\pi y)\quad\quad\quad \mu_{k,l}=(l^2+k^2)\pi^2$$ 
+    	Da alle diese Funktionen das pDGL-Eigenwert-Problem lösen tut dies wegen der Linearität auch die Superposition: $u(x,y)=\sum\limits_{k=1}^\infty\sum\limits_{l=1}^\infty c_{kl}u_{kl}(xy)$. Bildet man $-\Delta u(x,y)=-\Delta\sum\limits_{k=1}^\infty\sum\limits_{l=1}^\infty c_{kl}u_{kl}(xy)=\sum\limits_{k=1}^\infty\sum\limits_{l=1}^\infty c_{kl}(-\Delta u_{kl}(xy))=\sum\limits_{k=1}^\infty\sum\limits_{l=1}^\infty c_{kl}(\mu_{kl} u_{kl}(xy))\stackrel{!}{=}f=1$, muss nur noch $c_{kl}$ ermittelt werden, um eine Lösung aufschreiben zu können. Dafür wird auf beiden Seiten das $L^2((0,1)^2)$-Skalarprodukt (nach \ref{FktSP}, siehe Anmerkung \ref{anmSEP}) gebildet, analog zu den Fourier-Koeffizienten ($\nearrow$ \ref{FourKAllg}):
+    	\begin{equation*}
+    		\begin{split}
+    			\langle\sum\limits_{k=1}^\infty\sum\limits_{l=1}^\infty c_{kl}(\mu_{kl} u_{kl}),u_{mn}\rangle &= \langle1,u_{mn}\rangle\\
+    			c_{mn}\mu_{mn} \langle u_{mn}, u_{mn} \rangle &= \langle1,u_{mn}\rangle\\
+    			c_{mn}&=\frac{\langle1,u_{mn}\rangle}{\mu_{mn} \langle u_{mn}, u_{mn}\rangle}\\
+    			&=\frac{\int\limits_0^1\int\limits_0^1 \sin(m\pi x) \sin(n\pi y)\dd x \dd y}{(m^2+n^2)\pi^2\int\limits_0^1\int\limits_0^1 \sin^2(m\pi x) \sin^2(n\pi y) \dd x \dd y}\\
+    			&=\frac{\frac{1-(-1)^m}{\pi m}\frac{1-(-1)^n}{\pi n}}{(m^2+n^2)\pi^2\frac{1}{2}\frac{1}{2}}
+    		\end{split}
+    		\end{equation*}
+    	Das Ergebnis ist:
+    	\begin{equation*}
+    		\xRightarrow{m,n\text{ gerade}\Rightarrow 0 \text{ entsteht}} u(x,y)=\underbrace{\sum\limits_{k=0}^\infty\sum\limits_{l=0}^\infty}_{\text{ab 0 wegen } +1} \frac{16\sin((2k+1)\pi x)\sin((2l+1)\pi y)}{\pi^4(2l+1)(2k+1)\left((2l+1)^2+(2k+1)^2\right)} 
+    		\end{equation*}}
+    	\\\\
+    	\textbf{Vorgehen bei inhomogenen Randbedingungen:}\\
+    	Der Separationsansatz kann nur durchgeführt werden, wenn eines der Teilprobleme ein Eigenwert-Problem ist, also insbesondere homogene Randwertbedingungen besitzt. Bei $-\Delta u =f$ in $\Omega$ und $u=g$ auf dem Rand $\Gamma$ muss zuerst die Randbedingung homogenisiert werden. $v$ bezeichne dabei die Fortsetzung von $g$ ins Innere von $\Omega$, das heißt $v=g$ auf dem Rand und $v$ ist zweimal differenzierbar (damit die Fortsetzung funktioniert). Daraus folgt, dass $u:=v+w$ mit unbekanntem $w$ ist $\Rightarrow -\Delta u =-\Delta v - \Delta w$, so dass $-\Delta w= f+ \Delta v$ in $\Omega$ und $w=0$ auf dem Rand gilt, was eine homogene Randbedingung darstellt.\\ 
+     	{\color{gray}Gegeben sei die homogene PDGL mit inhomogenen Randbedingungen
+    	$$
+    	\begin{aligned}
+    		-\Delta u & =0 \text { in }(0,1)^2=: \Omega \\
+    		u(0, y) & =0 \text { für } y \in(0,1), \\
+    		u(x, 0) & =0 \text { für } x \in(0,1), \\
+    		u(1, y) & =y^2 \text { für } y \in(0,1), \\
+    		u(x, 1) & =x^2 \text { für } x \in(0,1) .
+    	\end{aligned}
+    	$$
+    	Eine mögliche Fortsetzung der Randdaten ins Innere von $\Omega$ ist mit
+    	$
+    	v(x, y)=x^2 y^2
+    	$
+    	gegeben. Dann gilt für $w=u-v$
+    	$$
+    	\begin{aligned}
+    		-\Delta w & =-\Delta u+\Delta v=2\left(x^2+y^2\right) \text { in } \Omega, \\
+    		w & =0 \text { auf } \Gamma .
+    	\end{aligned}
+    	$$
+    	Dies ist also vergleichbar mit dem vorherigen Beispiel, aber einer anderen rechten Seite. Es ist bereits bekannt, dass das zugehörige Eigenwertproblem die Eigenfunktionen
+    	$
+    	u_{k, \ell}(x, y)=\sin (k \pi x) \sin (\ell \pi y)
+    	$
+    	und die Eigenwerte
+    	$
+    	\mu_{k, \ell}=\left(k^2+\ell^2\right) \pi^2
+    	$
+    	besitzt. Mit der Darstellung der Lösung $u$ als Fourierreihe
+    	$
+    	w(x, y)=\sum\limits_{k=1}^{\infty} \sum\limits_{\ell=1}^{\infty} c_{k, \ell} u_{k, t}(x, y)
+    	$
+    	muss nur noch die rechte Seite in eine zweidimensionale Fourierreihe entwickelt werden, analog zum vorherigen Beispiel. Hier gilt nun mit
+    	$$
+    	\begin{aligned}
+    		\int_{0}^{1} \sin (k \pi x) \mathrm{d} x & =\frac{1-(-1)^{k}}{k \pi}=: a_{k} \\
+    		\int_{0}^{1} x^{2} \sin (k \pi x) \mathrm{d} x & =\frac{(-1)^{k+1}}{k \pi}+\frac{2(-1)^{k}-2}{k^{3} \pi^{3}}=: b_{k},
+    	\end{aligned}
+    	$$
+    	die folgende Rechnung	
+    	$$
+    	\int_{0}^{1} \int_{0}^{1}\left(x^{2}+y^{2}\right) \sin (k \pi x) \mathrm{d} x \sin (\ell \pi y) \mathrm{d} y=\int_{0}^{1}\left(b_{k}+a_{k} y^{2}\right) \sin (\ell \pi y) \mathrm{d} y=a_{\ell} b_{k}+a_{k} b_{\ell} .
+    	$$
+    	Es folgt somit für die Koeffizienten    	
+    	$
+    	c_{k, \ell}=\frac{2}{\mu_{k, \ell}}\left(a_{k} b_{\ell}+a_{\ell} b_{k}\right)
+    	$
+    	und
+    	$$
+    	\begin{aligned}
+    		u(x, y) & =v(x, y)+w(x, y)=x^{2} y^{2}+\sum_{k=1}^{\infty} \sum_{\ell=1}^{\infty} \frac{2}{\mu_{k, \ell}}\left(a_{k} b_{\ell}+a_{\ell} b_{k}\right) u_{k, l}(x, y) \\
+    		& =x^{2} y^{2}+\frac{8}{\pi^{4}} \sin (\pi x) \sin (\pi y)-\frac{2}{5 \pi^{4}} \sin (2 \pi x) \sin (\pi y)-\frac{2}{5 \pi^{4}} \sin (\pi x) \sin (2 \pi y) \ldots
+    	\end{aligned}
+    	$$}
+   \subsection{Lösung der Laplace-Gleichung in anderen Koordinaten}\label{laplkoord}
+   \subsubsection{Zylinderkoordinaten}
+   Gelöst werden soll die Laplace-Gleichung in Zylinderkoordinaten:
+   \begin{equation}
+   	\Delta \phi = \frac{\partial^2 \phi}{\partial \rho^2} + \frac{1}{\rho} \frac{\partial \phi}{\partial \rho} + \frac{1}{\rho^2} \frac{\partial^2 \phi}{\partial \varphi^2} + \frac{\partial^2 \phi}{\partial z^2} = 0
+   \end{equation}
+   Die Lösung soll mithilfe eines Separationsansatzes erfolgen. Dazu wird die Lösung in der Form $\phi(\rho, \varphi, z) = R(\rho) \Phi(\varphi) Z(z)$ angenommen. Einsetzen in die Laplace-Gleichung ergibt:
+   \begin{equation}\begin{split}
+   		\frac{\partial^2 R}{\partial \rho^2}\Phi Z + \frac{1}{\rho} \frac{\partial R}{\partial \rho} \Phi Z + \frac{1}{\rho^2} R \frac{\partial^2 \Phi}{\partial \varphi^2} Z + R \Phi \frac{\partial^2 Z}{\partial z^2} &= 0\\
+   		\frac{1}{R} \frac{\partial^2 R}{\partial \rho^2} + \frac{1}{\rho R} \frac{\partial R}{\partial \rho} + \frac{1}{\rho^2 \Phi} \frac{\partial^2 \Phi}{\partial \varphi^2} + \frac{1}{Z} \frac{\partial^2 Z}{\partial z^2} &= 0
+   \end{split}\end{equation}
+   Da die Variablen voneinander unabhängig sind, müssen einzelne Terme konstant sein, da man sonst nicht sicherstellen könnte, dass die Gleichung für alle Werte der Variablen erfüllt ist.
+   \begin{equation} \begin{split}
+   		\frac{1}{Z} \frac{\partial^2 Z}{\partial z^2} = k^2 &\implies Z(z)=A \mathrm{e}^{kz} + B \mathrm{e}^{-kz}=\hat{A} \sinh(kz) + \hat{B} \cosh(kz)\\
+   		\frac{1}{\rho^2 \Phi} \frac{\partial^2 \Phi}{\partial \varphi^2} = - \frac{\nu^2}{\rho^2} &\implies \Phi(\varphi) = C \mathrm{e}^{i \nu \varphi} + D \mathrm{e}^{-i \nu \varphi} = \hat{C} \sin(\nu \varphi) + \hat{D} \cos(\nu \varphi)
+   	\end{split}
+   \end{equation}
+   Das positive Vorzeichen von $k^2$ ist hier willkürlich gesetzt. Ist aufgrund der Randbedingungen eine periodische Funktion in $z-$Richtung sinnvoll, dann kann man auch ein negatives Vorzeichen ansetzen. Statt auf eine Besselsche Differentialgleichung kommt man auf eine modifizierte Besselsche Differentialgleichung, welche ebenfalls in \ref{bessel} diskutiert wird. Dass man in $\varphi$-Richtung das negative Vorzeichen ansetzt kann man damit erklären, dass die Funktion in $\varphi$ periodisch sein muss, da $\varphi=0$ die gleiche Ebene im Koordinatensystem beschreibt wie $\varphi=2\pi$. Aus der Periodizität folgt auch, dass $\nu\in\mathbb{Z}$ sein muss. Schließlich ergibt sich mit den Ersetzungen:
+   \begin{equation}\begin{split}
+   		\frac{1}{R} \frac{\partial^2 R}{\partial \rho^2} + \frac{1}{\rho R} \frac{\partial R}{\partial \rho} - \frac{\nu^2}{\rho^2} + k^2 &= 0\\
+   		\rho^2 \frac{\partial^2 R}{\partial \rho^2} + \rho \frac{\partial R}{\partial \rho}   + R\cdot (k^2 \rho^2 - \nu^2 )&= 0
+   \end{split}\end{equation}
+   Mit der Substituition $x=k\rho$ ergibt sich die Differentialgleichung ergibt sich zunächst mit der Kettenregel:
+   \begin{equation}
+   	\frac{\partial R(\rho(x)=\frac{x}{k})}{\partial x}=\frac{\partial \rho(x)}{\partial x} \frac{\partial R(\rho)}{\partial \rho}=\frac{1}{k} \frac{\partial R}{\partial \rho} \quad \text{und} \quad \frac{\partial^2 R(\frac{x}{k})}{\partial x^2} = \frac{1}{k^2} \frac{\partial^2 R}{\partial \rho^2}
+   \end{equation}
+   Was eingesetzt die Differentialgleichung ergibt:
+   \begin{equation}
+   	x^2 \frac{\partial^2 R}{\partial x^2} + x \frac{\partial R}{\partial x} + R\cdot (x^2 - \nu^2) = 0
+   \end{equation}
+   Das ist eine Besselsche Differentialgleichung, deren Lösung in \ref{bessel} diskutiert wird. Für $R$ gilt:
+   \begin{equation}
+   	R(\rho) = EJ_\nu(k\rho) + F Y_\nu(k\rho)
+   \end{equation}
+   Die Konstanten müssen in Abhängigkeit der Randbedingungen bestimmt werden.
+   \subsubsection{Kugelkoordinaten}
+   		  Es wird die Laplace-Gleichung in Kugelkoordinaten $(r, \vartheta,\varphi)$ betrachtet:
+   \begin{equation}\begin{split}
+   		\Delta \phi = 0 \text{ mit } \Delta = \underbrace{\frac{1}{r^2}\frac{\partial}{\partial r} \left( r^2 \frac{\partial}{\partial r} \right)}_{\Delta _r: \text{ Radialanteil}} + \frac{1}{r^2} \underbrace{\left( \frac{1}{\sin\vartheta} \frac{\partial}{\partial\vartheta} \sin\vartheta \frac{\partial}{\partial\vartheta} + \frac{1}{\sin^2\vartheta} \frac{\partial^2}{\partial\varphi^2}  \right)}_{\Delta _{\vartheta\varphi}: \text{ Winkelanteil}}
+   \end{split}\end{equation}
+   Der Ansatz zur Lösung ist die Seperation der Variablen ($\nearrow$\ref{sep},\ref{pdglsep})
+   \begin{equation}\label{produktans}\begin{split}
+   		\phi(r,\vartheta,\varphi) = R_l(r) \cdot Y_{lm} (\vartheta,\varphi), \text{ Produktansatz}
+   \end{split}\end{equation}
+   Die allgmeinste Form der endgültigen Lösung für $\Delta \phi = 0$ ist in \ref{entwicklungKugelf} angegeben. $A_{lm}$ und $B_{lm}$ werden durch Randbedingungen festgelegt. Einsetzen vom Ansatz in die Laplace-Gleichung liefert:
+   \begin{equation}\begin{split}
+   		\Delta \phi = \Delta \left( R_l Y_{lm}\right) = \left(\Delta _r + \frac{1}{r^2}\Delta _{\vartheta\varphi}\right) \left( R_l Y_{lm}\right) = \boxed{Y_{lm} \Delta _r R_l + \frac{R_l}{r^2}\Delta _{\vartheta\varphi} Y_{lm} \stackrel{!}{=} 0}
+   \end{split}\end{equation}
+   Umgeformt ergibt das ($ l(l+1)$ willkürlich):
+   \begin{equation}\begin{split}
+   		\boxed{\frac{r^2\Delta _rR_l}{R_l} = - \frac{\Delta _{\vartheta\varphi} Y_{lm}}{Y_{lm}} = \text{const.} = l(l+1)}
+   \end{split}\end{equation}
+   Die gefundene Identität liefert zwei neue Differentialgleichungen (eine gDGL und eine pDGL):
+   \begin{align}
+   	\Delta _r R_l                     & = \frac{l(l+1)}{r^2} R_l & \quad & \text{(Radialgleichung, gDGL)} \to \boxed{R_l(r) = A_l r^l+ B_l r^{-(l+1)}} \\
+   	\Delta _{\vartheta\varphi} Y_{lm} & = - l(l+1) Y_{lm}        & \quad & \text{(Winkelgleichung)}
+   \end{align}
+   Die \textbf{Winkelgleichung} ist eine \textbf{Eigenwertgleichung}: Die Funktionen $Y_{lm}$ sind Eigenfunktionen zu den Eigenwerten $-l(l+1)$.
+   Der doppelte Index \enquote{$lm$} deutet schon an, dass es zu jedem Eigenwert $-l(l+1)$ \textbf{mehrere Eigenfunktionen} geben kann, das nennt man \textbf{Entartung}. Lösungen der Winkelgleichungen existieren für $l \in \mathbb{N}_0$ und $m = -l, -l+1, \dots, l-1, l$. Diese Lösungen $Y_{lm}$ heißen \textbf{Kugelflächenfunktionen} ($\nearrow$\ref{kugelf}).
+   Die Kugelflächenfunktionen $Y_{lm}$ bilden ein \textbf{vollständiges Funktionensystem auf der Einheitskugel} (ihr Definitionsbereich ist $[0,\pi] \times [0,2\pi]$).

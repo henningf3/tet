@@ -1,0 +1,174 @@
+\begin{minipage}[t]{0.33\textwidth}
+	\subsubsection{Kartesische Koordinaten}
+		% 3D AXIS with kartesian coordinates with unit vectors
+		\tdplotsetmaincoords{60}{110}
+		\begin{tikzpicture}[scale=2.2,tdplot_main_coords]
+
+			% VARIABLES
+			\def\l{0.30} % length scale unit vector
+			\def\rtheta{0.7*\l} % length theta arc
+			\def\rvec{1.2}
+			\def\phivec{46}
+			\def\thetavec{48}
+
+			% AXES
+			\coordinate (O) at (0,0,0);
+			\tdplotsetcoord{P}{\rvec}{\phivec}{\thetavec};
+			%\draw[dashed,blue] (O)  -- (Pxy);
+			\draw[thick,->] (0,0,0) -- (1,0,0) node[below left]{$x$};
+			\draw[thick,->] (0,0,0) -- (0,1,0) node[right]{$y$};
+			\draw[thick,->] (0,0,0) -- (0,0,1) node[above]{$z$};
+			%\draw (Pxy)++(0,0,0.12) --++ (\thetavec+180:0.12) --++ (0,0,-0.12);
+
+			% VECTORS & DASHED
+			\node[circle,inner sep=0.9,fill=blue]
+			(P) at ({\rvec*sin(\thetavec)*cos(\phivec)},{\rvec*sin(\thetavec)*sin(\phivec)},{\rvec*cos(\thetavec)}) {};
+			\draw[dashed,black] (P)  -- (Pz);
+			%node[pos=0.55,above right=-6] {\contour{white}{$\rho$}};
+			\draw[dashed,black] (Py) -- (Pxy) -- (Px);
+
+			% MEASURES
+			\draw[dashed,black] (0,0,0) -- (Pxy);
+			\draw[<->,gray] (\thetavec:{\rvec*sin(\phivec)}) -- (P)
+			node[blue,pos=0.35]{\contour{white}{$z$}};
+			\draw[<->,gray] (Py) -- (Pxy)
+			node[blue,pos=0.55]{\contour{white}{$x$}};
+			\draw[<->,gray] (Px) -- (Pxy)
+			node[blue,pos=0.55]{\contour{white}{$y$}};
+
+			% UNITT VECTORS
+			\draw[unit vector] (0,0,0) -- (\l,0,0)
+			node[left=]{$\vu{x}$};
+			\draw[unit vector] (0,0,0) -- (0,\l,0)
+			node[above=0.1]{$\vu{y}$};
+			\draw[unit vector] (0,0,0) -- (0,0,\l)
+			node[left]{$\vu{z}$};
+
+			% VECTORS
+			\draw[vector] (O)  -- (P)
+			node[right] {$\vec{r} = (x,y,z)$};
+
+			% Wertebereiche
+			\node at (-.3,1,1) {$x,y,z \in \IR$};
+		\end{tikzpicture}
+		$\vu{x}, \vu{y}, \vu{z}:$ konstante Vektoren\\
+		$\vec{r}=x\vu{x}+y \vu{y}+z\vu{z}$
+\end{minipage}
+\begin{minipage}[t]{0.33\textwidth}
+	\subsubsection{Zylinder Koordinaten}
+
+		% 3D AXIS with cylindrical coordinates with unit vectors
+		\tdplotsetmaincoords{60}{110}
+		\begin{tikzpicture}[scale=2.2,tdplot_main_coords]
+
+			% VARIABLES
+			\def\l{0.30} % length scale unit vector
+			\def\rtheta{0.7*\l} % length theta arc
+			\def\rvec{1.2}
+			\def\phivec{46}
+			\def\thetavec{48}
+
+			% AXES
+			\coordinate (O) at (0,0,0);
+			\tdplotsetcoord{P}{\rvec}{\phivec}{\thetavec};
+			\draw[thick,->] (0,0,0) -- (1,0,0) node[below left]{$x$};
+			\draw[thick,->] (0,0,0) -- (0,1,0) node[right]{$y$};
+			\draw[thick,->] (0,0,0) -- (0,0,1) node[above]{$z$};
+			%\draw (Pxy)++(0,0,0.12) --++ (\thetavec+180:0.12) --++ (0,0,-0.12);
+
+			% VECTORS & DASHED
+			\node[circle,inner sep=0.9,fill=blue]
+			(P) at ({\rvec*sin(\thetavec)*cos(\phivec)},{\rvec*sin(\thetavec)*sin(\phivec)},{\rvec*cos(\thetavec)}) {};
+			\draw[dashed,black] (P)  -- (Pz);
+			%node[pos=0.55,above right=-6] {\contour{white}{$\rho$}};
+			\draw[dashed,black] (Py) -- (Pxy) -- (Px);
+
+			% MEASURES
+			\draw[->,gray] (0,0,0) -- (\thetavec:{\rvec*sin(\phivec)})
+			node[blue,pos=0.8]{\contour{white}{$\rho$}};
+			\draw[<->,gray] (\thetavec:{\rvec*sin(\phivec)}) -- (P)
+			node[blue, pos=0.35]{\contour{white}{$z$}};
+			\draw[->, gray] (\rtheta,0,0) arc(0:\thetavec:\rtheta)
+			node[below left,blue] {$\varphi$};
+
+			% UNITT VECTORS
+			\draw[unit vector] (0,0,0) -- (\thetavec:1.2*\l)
+			node[right=-0.2]{$\vu{\rho}$};
+			\draw[unit vector] (0,0,0) -- (\thetavec+90:\l)
+			node[right=-0.3]{$\vu{\varphi}$};
+			\draw[unit vector] (0,0,0) -- (0,0,\l)
+			node[left]{$\vu{z}$};
+
+			% VECTORS
+			\draw[vector] (O)  -- (P) node[right] {$\vec{r} = (\rho,\varphi,z)$};
+
+			% Wertebereiche
+			\node[align=left] at (-.3,1,1) {$\rho \in \IR_0^+$\\$\varphi \in [0, 2\pi]$\\$z \in \IR$};
+
+		\end{tikzpicture}
+		$\vu{\rho}=\vu{\rho}(\varphi)$ \\ $\vu{\varphi}=\vu{\varphi}(\varphi)$\\
+		$\vu{z}:$ konstant\\
+		$\vec{r}=\rho\vu{\rho}(\varphi)+z\vu{z}$
+\end{minipage}
+\begin{minipage}[t]{0.33\textwidth}
+	\subsubsection{Kugel Koordinaten}
+		% 3D AXIS with cylindrical coordinates with unit vectors
+		\tdplotsetmaincoords{60}{110}
+		\begin{tikzpicture}[scale=2.2,tdplot_main_coords]
+
+			% VARIABLES
+			\def\l{0.30} % length scale unit vector
+			\def\rtheta{0.7*\l} % length theta arc
+			\def\rvec{1.2}
+			\def\phivec{46}
+			\def\thetavec{48}
+
+			% AXES
+			\coordinate (O) at (0,0,0);
+			\tdplotsetcoord{P}{\rvec}{\phivec}{\thetavec};
+			\draw[dashed,black] (O)  -- (Pxy);
+			\draw[thick,->] (0,0,0) -- (1,0,0) node[below left]{$x$};
+			\draw[thick,->] (0,0,0) -- (0,1,0) node[right]{$y$};
+			\draw[thick,->] (0,0,0) -- (0,0,1) node[above]{$z$};
+			%\draw (Pxy)++(0,0,0.12) --++ (\thetavec+180:0.12) --++ (0,0,-0.12);
+
+			% VECTORS & DASHED
+			\node[circle,inner sep=0.9,fill=blue]
+			(P) at ({\rvec*sin(\thetavec)*cos(\phivec)},{\rvec*sin(\thetavec)*sin(\phivec)},{\rvec*cos(\thetavec)}) {};
+			\draw[dashed,black] (P)  -- (Pz);
+			%node[pos=0.55,above right=-6] {\contour{white}{$\rho$}};
+			\draw[dashed,black] (Py) -- (Pxy) -- (Px);
+			\draw[dashed,black] (Pxy) -- (P);
+
+			% MEASURES
+			%\draw[->,green] (0,0,0) -- (\thetavec:{\rvec*sin(\phivec)})
+			% node[blue,pos=0.65,scale=0.9]{\contour{white}{$\rho$}};
+			%\draw[<->,green] (\thetavec:{\rvec*sin(\phivec)}) -- (P)
+			%  node[blue,pos=0.55,scale=0.9]{\contour{white}{$z$}};
+			\draw[->, gray] (\rtheta,0,0) arc(0:\thetavec:\rtheta)
+			node[below left,blue] {$\varphi$};
+
+			%UNITT VECTORS
+			\draw[unit vector] (0,0,0) -- ({\rvec*sin(\thetavec)*cos(\phivec)*2*\l}, {\rvec*sin(\thetavec)*sin(\phivec)*2*\l}, {\rvec*cos(\thetavec)*2*\l})
+			node[above]{$\vu{r}$};
+			\draw[unit vector] (0,0,0) -- (\thetavec+90:\l)
+			node[right=-0.2]{$\vu{\varphi}$};
+			%\draw[unit vector] (0,0,0) -- (0,0,\l)
+			% node[left,scale=0.8]{$\vu{z}$};
+			\tdplotsetcoord{Ptheta}{\l}{90+\thetavec}{\phivec}
+			\draw[unit vector] (0,0,0) -- (Ptheta)
+			node[below]{$\vu{\vartheta}$};
+
+			%   # ARC
+			\tdplotsetthetaplanecoords{\phivec}
+			\tdplotdrawarc[->,tdplot_rotated_coords, gray]{(0,0,0)}{0.36*\rvec}{0}{\thetavec}{right=2,above=-0.6, blue}{$\vartheta$}
+
+			% % VECTORS
+			\draw[vector] (O)  -- (P)  node[right] {$\vec{r} = (r,\vartheta,\varphi)$} node[below=-0.7, right] {$r=|\vec{r}|$};
+			% Wertebereiche
+			\node[align=left] at (-.3,1,1) {$r \in \IR_0^+$\\$\vartheta \in [0, \pi]$\\$\varphi \in [0, 2\pi]$};
+
+		\end{tikzpicture}
+		$\vu{r}=\vu{r}(\vartheta, \varphi)$ \\$\vu{\vartheta}=\vu{\vartheta}(\vartheta,\varphi)$\\$\vu{\varphi}=\vu{\varphi}(\varphi)$\\
+		$\vec{r}=r\vu{r}(\vartheta, \varphi)$
+\end{minipage}

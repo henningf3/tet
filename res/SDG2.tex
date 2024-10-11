@@ -1,0 +1,11 @@
+\begin{tikzpicture}[scale=1.8]
+	\draw[->] (-1.2, 0) -- (1.2, 0) node[right] {$r$};
+	\draw[->] (0, -0.6) -- (0, 0.6) node[above] {$z$};
+	\draw[thick,red,variable=\th,domain=0:180,samples=90]
+	plot ( {(sin(\th))^3} , {cos(\th)*(sin(\th))^2} );
+	\draw[thick, dashed,red,variable=\th,domain=0:180,samples=90]
+	plot ( {-(sin(\th))^3} , {cos(\th)*(sin(\th))^2} );
+	\draw [thin] (0,0) -- (30:{(sin(60))^2}) node[midway, right]{$\sin^2\vartheta$};
+	\draw [thin,-stealth] (0,0.4) arc (90:30:0.4) node[midway,above]{$\vartheta$};
+	\draw [thin] (1,0) -- (1,-0.1) node[below]{$1$};
+\end{tikzpicture}
