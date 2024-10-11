@@ -12,7 +12,7 @@ Außerdem wurde das Dokument erst nachträglich referenziert, da es zunächst ni
 Veröffentlichung gedacht war. Trotz großer Sorgfalt, können auch dabei Fehler passiert sein.
 Hinweise darauf sind jederzeit willkommen..
 
-Selbst kompiliert werden können die Dateien durch Ausführung von `make` (wenn lualatex und alle verwendeten Pakete installiert sind). Bei Problemen gerne einen Issue raisen. Das Kompilat steht als `tet-tex.pdf` zur Verfügung.
+Selbst kompiliert werden können die Dateien durch Ausführung von `make` (wenn lualatex und alle verwendeten Pakete installiert sind). Bei Problemen gerne einen Issue raisen. Das Kompilat steht hier im Repo als `tet-tex.pdf` zur Verfügung.
 
 
 
